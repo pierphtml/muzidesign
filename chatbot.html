@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente AI | Muzi Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .chatbot-container {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .message.user {
+            justify-content: flex-end;
+        }
+        
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .message.bot .message-content {
+            background: white;
+            color: var(--dark);
+            border: 1px solid #e9ecef;
+            margin-left: 10px;
+        }
+        
+        .message.user .message-content {
+            background: var(--secondary);
+            color: white;
+            margin-right: 10px;
+        }
+        
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .message.bot .message-avatar {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .message.user .message-avatar {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .chat-input {
+            padding: 20px;
+            border-top: 1px solid #e9ecef;
+            background: white;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .chat-input input:focus {
+            border-color: var(--secondary);
+        }
+        
+        .send-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .send-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .quick-question {
+            background: white;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .quick-question:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 5px;
+            margin-left: 45px;
+            color: var(--gray);
+            font-size: 13px;
+        }
+        
+        .typing-dots {
+            display: flex;
+            gap: 3px;
+        }
+        
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gray);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        
+        @media (max-width: 768px) {
+            .chatbot-container {
+                margin: 20px;
+                height: calc(100vh - 40px);
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design">
+                </a>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="categorie.html">Categorie</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="chatbot.html">Assistente AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <h2><i class="fas fa-robot"></i> Assistente AI Muzi Design</h2>
+                <p>Sono qui per aiutarti! Chiedimi tutto sui nostri prodotti e servizi</p>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        Ciao! Sono l'assistente virtuale di Muzi Design. Sono qui per aiutarti con qualsiasi domanda sui nostri prodotti, servizi o per guidarti nella scelta dell'arredamento perfetto per la tua casa. Come posso aiutarti oggi?
+                    </div>
+                </div>
+                
+                <div class="quick-questions">
+                    <div class="quick-question" onclick="sendQuickQuestion('Quali cucine avete disponibili?')">Cucine disponibili</div>
+                    <div class="quick-question" onclick="sendQuickQuestion('Quanto costa una consulenza?')">Costi consulenza</div>
+                    <div class="quick-question" onclick="sendQuickQuestion('Dove si trova il vostro showroom?')">Dove siete</div>
+                    <div class="quick-question" onclick="sendQuickQuestion('Che garanzie offrite?')">Garanzie</div>
+                    <div class="quick-question" onclick="sendQuickQuestion('Tempi di consegna?')">Tempi di consegna</div>
+                </div>
+            </div>
+            
+            <div class="typing-indicator" id="typingIndicator">
+                <span>L'assistente sta scrivendo</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <div class="input-group">
+                    <input type="text" id="messageInput" placeholder="Scrivi la tua domanda..." onkeypress="handleKeyPress(event)">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Database delle risposte AI
+        const responses = {
+            'cucine': {
+                keywords: ['cucina', 'cucine', 'kitchen'],
+                answer: 'Offriamo cucine di alta qualità dei migliori brand italiani come Veneta Cucine. Le nostre proposte includono:\n\n🏠 **Oyster** - Design minimalista con apertura senza maniglie\n🏠 **Iconica** - Design innovativo e asimmetrico\n🏠 **Lounge** - Funzionale e compatta\n\nTutte le cucine sono completamente personalizzabili. Vuoi sapere di più su un modello specifico?'
+            },
+            'prezzi': {
+                keywords: ['prezzo', 'costo', 'costa', 'spesa', 'budget'],
+                answer: 'I nostri prezzi variano in base a diversi fattori:\n\n💰 **Consulenza**: GRATUITA per la prima visita\n💰 **Cucine**: Da €3.000 a €25.000+ (a seconda di dimensioni e finiture)\n💰 **Zona Giorno**: Da €2.000 a €15.000+\n💰 **Zona Notte**: Da €1.500 a €10.000+\n\nOffriamo anche soluzioni di finanziamento personalizzate. Ti consiglio di prenotare una consulenza gratuita per un preventivo preciso!'
+            },
+            'consulenza': {
+                keywords: ['consulenza', 'appuntamento', 'visitare', 'preventivo'],
+                answer: 'La nostra consulenza è **COMPLETAMENTE GRATUITA** e include:\n\n✅ Sopralluogo del tuo spazio\n✅ Analisi delle tue esigenze\n✅ Proposte personalizzate\n✅ Rendering 3D del progetto\n✅ Preventivo dettagliato\n\nPuoi prenotarla attraverso il nostro sito nella sezione Contatti o chiamandoci al 800 202 530!'
+            },
+            'showroom': {
+                keywords: ['dove', 'indirizzo', 'showroom', 'negozio', 'ubicazione'],
+                answer: 'Il nostro showroom si trova a:\n\n📍 **Via Artena 54, Valmontone (RM)**\n\n🕒 **Orari di apertura:**\n• Lunedì - Venerdì: 9:00 - 19:00\n• Sabato: 9:00 - 18:00\n• Domenica: Chiuso\n\n📞 Telefono: 800 202 530\n📧 Email: info@muzidesign.it'
+            },
+            'garanzie': {
+                keywords: ['garanzia', 'garanzie', 'assistenza', 'post-vendita'],
+                answer: 'Offriamo garanzie complete su tutti i nostri prodotti:\n\n🛡️ **Cucine**: 5 anni di garanzia\n🛡️ **Mobili**: 2-5 anni (a seconda del brand)\n🛡️ **Divani**: 2 anni di garanzia\n\n**Servizi inclusi:**\n✅ Assistenza post-vendita\n✅ Manutenzione programmata\n✅ Ricambi originali\n✅ Supporto tecnico dedicato'
+            },
+            'consegna': {
+                keywords: ['consegna', 'tempi', 'spedizione', 'montaggio'],
+                answer: 'I nostri tempi di consegna sono:\n\n⏰ **Prodotti a catalogo**: 2-4 settimane\n⏰ **Mobili su misura**: 4-12 settimane\n⏰ **Cucine complete**: 6-16 settimane\n\n**Servizi inclusi:**\n🚚 Consegna gratuita nell\'area di Roma\n🔧 Montaggio professionale\n📦 Ritiro imballi\n📞 Assistenza dedicata'
+            },
+            'divani': {
+                keywords: ['divano', 'divani', 'poltrona', 'poltrone'],
+                answer: 'La nostra collezione divani include:\n\n🛋️ **EgoItaliano Plaza** - Modulare e personalizzabile\n🛋️ **Cattelan Italia** - Design contemporaneo\n🛋️ **Novamobili** - Comfort e stile\n\n**Caratteristiche:**\n✅ Rivestimenti antimacchia o pelle\n✅ Configurazioni personalizzabili\n✅ Comfort ergonomico\n✅ Design italiano\n\nVuoi vedere i modelli disponibili?'
+            },
+            'brand': {
+                keywords: ['brand', 'marchi', 'marche', 'produttori'],
+                answer: 'Collaboriamo con i migliori brand del design italiano:\n\n🏆 **Veneta Cucine** - Leader nelle cucine\n🏆 **EgoItaliano** - Divani di qualità\n🏆 **Cattelan Italia** - Design contemporaneo\n🏆 **Novamobili** - Soluzioni innovative\n\nTutti i nostri partner garantiscono qualità, design e sostenibilità. Da oltre 60 anni scegliamo solo il meglio per i nostri clienti!'
+            },
+            'finanziamento': {
+                keywords: ['finanziamento', 'rate', 'pagamento', 'prestito'],
+                answer: 'Offriamo diverse soluzioni di finanziamento:\n\n💳 **Rate personalizzate** - Da 6 a 84 mesi\n💳 **Tasso agevolato** - Condizioni vantaggiose\n💳 **Anticipo flessibile** - Anche senza anticipo\n💳 **Approvazione rapida** - Risposta in 24h\n\nContattaci per una valutazione gratuita e personalizzata!'
+            }
+        };
+
+        function findBestResponse(message) {
+            const normalizedMessage = message.toLowerCase();
+            let bestMatch = null;
+            let maxMatches = 0;
+
+            for (const category in responses) {
+                const response = responses[category];
+                let matches = 0;
+                
+                response.keywords.forEach(keyword => {
+                    if (normalizedMessage.includes(keyword)) {
+                        matches++;
+                    }
+                });
+
+                if (matches > maxMatches) {
+                    maxMatches = matches;
+                    bestMatch = response;
+                }
+            }
+
+            if (bestMatch) {
+                return bestMatch.answer;
+            }
+
+            // Risposta di default
+            return 'Mi dispiace, non ho capito bene la tua domanda. Potresti riformularla? \n\nPosso aiutarti con informazioni su:\n• Cucine e prodotti\n• Prezzi e preventivi\n• Consulenze gratuite\n• Showroom e contatti\n• Garanzie e assistenza\n• Tempi di consegna\n\nOppure puoi contattare direttamente il nostro team al 800 202 530!';
+        }
+
+        function addMessage(content, isUser = false) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.innerHTML = isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            messageContent.innerHTML = content.replace(/\n/g, '<br>');
+            
+            if (isUser) {
+                messageDiv.appendChild(messageContent);
+                messageDiv.appendChild(avatar);
+            } else {
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(messageContent);
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'flex';
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTyping() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'none';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            // Aggiungi messaggio utente
+            addMessage(message, true);
+            input.value = '';
+            
+            // Mostra indicatore di digitazione
+            showTyping();
+            
+            // Simula tempo di risposta
+            setTimeout(() => {
+                hideTyping();
+                const response = findBestResponse(message);
+                addMessage(response);
+            }, 1000 + Math.random() * 2000);
+        }
+
+        function sendQuickQuestion(question) {
+            const input = document.getElementById('messageInput');
+            input.value = question;
+            sendMessage();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Focus sull'input al caricamento
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('messageInput').focus();
+        });
+    </script>
+</body>
+</html>
