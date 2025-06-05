@@ -9,15 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a3a4c;
-            --secondary: #c19a6b;
-            --accent: #8a6552;
-            --light: #f8f5f2;
-            --dark: #2a2a2a;
-            --gray: #6c757d;
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --accent: #2c2c2c;
+            --light: #1e1e1e;
+            --dark: #0a0a0a;
+            --gray: #8a8a8a;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.35);
             --radius: 12px;
             --radius-lg: 20px;
         }
@@ -30,9 +30,9 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            color: var(--dark);
+            color: #e0e0e0;
             line-height: 1.6;
-            background-color: #fff;
+            background-color: #0f0f0f;
             overflow-x: hidden;
             position: relative;
         }
@@ -44,7 +44,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(248, 245, 242, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+            background: radial-gradient(circle at 10% 20%, rgba(26, 26, 26, 0.8) 0%, rgba(15, 15, 15, 0.9) 100%);
             z-index: -1;
         }
 
@@ -144,8 +144,8 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background-color: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
             backdrop-filter: blur(10px);
         }
@@ -184,7 +184,7 @@
         }
 
         .nav-links a {
-            color: var(--dark);
+            color: #e0e0e0;
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
@@ -262,24 +262,24 @@
         }
 
         .slide-1 {
-            background: linear-gradient(90deg, rgba(26, 58, 76, 0.85) 0%, rgba(26, 58, 76, 0.6) 100%), url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            background: linear-gradient(90deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.6) 100%), url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
 
         .slide-2 {
-            background: linear-gradient(90deg, rgba(26, 58, 76, 0.85) 0%, rgba(26, 58, 76, 0.6) 100%), url('https://images.unsplash.com/photo-1615529162924-f8605384963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            background: linear-gradient(90deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.6) 100%), url('https://images.unsplash.com/photo-1615529162924-f8605384963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
 
         .slide-3 {
-            background: linear-gradient(90deg, rgba(26, 58, 76, 0.85) 0%, rgba(26, 58, 76, 0.6) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            background: linear-gradient(90deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.6) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
 
         .hero-content {
             max-width: 800px;
             padding: 40px;
-            background: rgba(26, 58, 76, 0.7);
+            background: rgba(10, 10, 10, 0.8);
             border-radius: var(--radius-lg);
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .hero h1 {
@@ -488,7 +488,7 @@
         }
 
         .product-card {
-            background-color: white;
+            background-color: #1a1a1a;
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -545,7 +545,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background-color: white;
+            background-color: #2c2c2c;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -571,7 +571,7 @@
 
         /* Promotions Section */
         .promotions {
-            background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #0a0a0a 100%);
             color: white;
             text-align: center;
             position: relative;
@@ -642,7 +642,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            background: white;
+            background: #1a1a1a;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -650,7 +650,7 @@
 
         .contact-info {
             padding: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #0a0a0a 100%);
             color: white;
         }
 
@@ -709,12 +709,13 @@
         .contact-form select {
             width: 100%;
             padding: 16px 20px;
-            border: 1px solid #ddd;
+            border: 1px solid #444;
             border-radius: var(--radius);
             font-family: 'Montserrat', sans-serif;
             font-size: 16px;
             transition: var(--transition);
-            background: #f9f9f9;
+            background: #2c2c2c;
+            color: #e0e0e0;
         }
 
         .contact-form input:focus,
@@ -722,8 +723,8 @@
         .contact-form select:focus {
             outline: none;
             border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(193, 154, 107, 0.2);
-            background: white;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            background: #333;
         }
 
         .contact-form textarea {
@@ -781,7 +782,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(26, 58, 76, 0.8);
+            background: rgba(10, 10, 10, 0.9);
             color: white;
             display: flex;
             align-items: center;
@@ -796,7 +797,7 @@
 
         /* Map Section */
         .map {
-            background-color: white;
+            background-color: #1a1a1a;
         }
 
         .map-container {
@@ -955,7 +956,7 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: #1a1a1a;
             margin: 5% auto;
             padding: 0;
             border-radius: var(--radius-lg);
@@ -967,7 +968,7 @@
         }
 
         .modal-header {
-            background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #0a0a0a 100%);
             color: white;
             padding: 30px;
             border-radius: var(--radius-lg) var(--radius-lg) 0 0;
@@ -991,6 +992,7 @@
 
         .modal-body {
             padding: 40px;
+            color: #e0e0e0;
         }
 
         .modal-product-grid {
