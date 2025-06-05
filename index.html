@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -5,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muzi Design | Arredamento di Qualità dal 1957</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1a3a4c;
             --secondary: #c19a6b;
+            --accent: #8a6552;
             --light: #f8f5f2;
             --dark: #2a2a2a;
             --gray: #6c757d;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
             --radius: 12px;
+            --radius-lg: 20px;
         }
 
         * {
@@ -30,6 +34,18 @@
             line-height: 1.6;
             background-color: #fff;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(248, 245, 242, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+            z-index: -1;
         }
 
         h1, h2, h3, h4 {
@@ -40,14 +56,14 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 16px 36px;
             background-color: var(--secondary);
             color: white;
             text-decoration: none;
@@ -56,15 +72,33 @@
             transition: var(--transition);
             border: 2px solid var(--secondary);
             text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            width: 100%;
         }
 
         .btn:hover {
-            background-color: transparent;
-            color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .btn-outline {
@@ -78,6 +112,32 @@
             color: white;
         }
 
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         /* Header & Navigation */
         header {
             position: fixed;
@@ -87,6 +147,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
 
         .header-scrolled {
@@ -102,16 +163,14 @@
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
 
-        .logo span {
-            color: var(--secondary);
+        .logo img {
+            height: 50px;
+            margin-right: 0;
         }
 
         .nav-links {
@@ -120,7 +179,8 @@
         }
 
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 35px;
+            position: relative;
         }
 
         .nav-links a {
@@ -130,21 +190,23 @@
             font-size: 16px;
             transition: var(--transition);
             position: relative;
-            padding: 5px 0;
+            padding: 8px 0;
+            display: block;
         }
 
-        .nav-links a:after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 3px;
             background-color: var(--secondary);
             transition: var(--transition);
+            border-radius: 2px;
         }
 
-        .nav-links a:hover:after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
@@ -156,29 +218,73 @@
             display: none;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             color: var(--primary);
+            z-index: 1001;
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            min-height: 800px;
-            background: linear-gradient(rgba(26, 58, 76, 0.7), rgba(26, 58, 76, 0.7)), url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            min-height: 900px;
             display: flex;
             align-items: center;
             color: white;
             padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background: linear-gradient(90deg, rgba(26, 58, 76, 0.85) 0%, rgba(26, 58, 76, 0.6) 100%), url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+        }
+
+        .slide-2 {
+            background: linear-gradient(90deg, rgba(26, 58, 76, 0.85) 0%, rgba(26, 58, 76, 0.6) 100%), url('https://images.unsplash.com/photo-1615529162924-f8605384963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+        }
+
+        .slide-3 {
+            background: linear-gradient(90deg, rgba(26, 58, 76, 0.85) 0%, rgba(26, 58, 76, 0.6) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
 
         .hero-content {
-            max-width: 700px;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(26, 58, 76, 0.7);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: 4.5rem;
+            margin-bottom: 25px;
             line-height: 1.1;
             opacity: 0;
             transform: translateY(30px);
@@ -186,8 +292,8 @@
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeUp 0.8s forwards 0.5s;
@@ -200,63 +306,39 @@
         }
 
         .hero-btns .btn {
-            margin-right: 15px;
-            margin-bottom: 15px;
+            margin-right: 20px;
+            margin-bottom: 20px;
         }
 
         /* Categories Section */
         .section {
-            padding: 100px 0;
+            padding: 120px 0;
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary);
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray);
+            max-width: 900px;
+            margin: 0 auto 80px;
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
 
         .category-card {
-            border-radius: var(--radius);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            height: 400px;
+            height: 500px;
         }
 
         .category-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-hover);
         }
 
         .category-img {
@@ -267,7 +349,7 @@
         }
 
         .category-card:hover .category-img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .category-overlay {
@@ -275,14 +357,20 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 30px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
             color: white;
         }
 
         .category-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .category-desc {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
         }
 
         /* About Section */
@@ -292,27 +380,75 @@
             overflow: hidden;
         }
 
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(193, 154, 107, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .about-text h2 {
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .about-text p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary);
         }
 
         .about-img {
-            border-radius: var(--radius);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow);
-            height: 500px;
+            height: 600px;
+            position: relative;
         }
 
         .about-img img {
@@ -322,56 +458,74 @@
             transition: var(--transition);
         }
 
+        .about-img::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--secondary);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
         .about-img:hover img {
             transform: scale(1.05);
+        }
+
+        .about-img:hover::after {
+            top: 15px;
+            left: 15px;
         }
 
         /* Products Section */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         .product-card {
             background-color: white;
-            border-radius: var(--radius);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--shadow-hover);
         }
 
         .product-img {
-            height: 250px;
+            height: 300px;
             width: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
         }
 
         .product-info {
-            padding: 20px;
+            padding: 30px;
         }
 
         .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .product-price {
-            font-weight: 700;
-            color: var(--secondary);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--primary);
         }
 
         .product-description {
             color: var(--gray);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
 
         /* Partners Section */
@@ -400,7 +554,7 @@
 
         .partner-logo:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-hover);
         }
 
         .partner-logo img {
@@ -417,112 +571,159 @@
 
         /* Promotions Section */
         .promotions {
-            background: linear-gradient(to right, var(--primary), #2a4d63);
+            background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .promotions h2 {
-            margin-bottom: 20px;
-            font-size: 2.5rem;
+        .promotions::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            z-index: 0;
         }
 
         .promo-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .highlight {
             color: var(--secondary);
             font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 40px 0;
+            gap: 25px;
+            margin: 50px 0;
+            flex-wrap: wrap;
         }
 
         .countdown-item {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            min-width: 100px;
+            background-color: rgba(255, 255, 255, 0.12);
+            padding: 25px;
+            border-radius: var(--radius);
+            min-width: 120px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .countdown-number {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            color: white;
         }
 
         .countdown-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            opacity: 0.8;
         }
 
         /* Contact Section */
         .contact {
-            background-color: var(--light);
+            background: linear-gradient(to bottom, var(--light) 50%, white 50%);
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .contact-info {
+            padding: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
+            color: white;
         }
 
         .contact-info h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
         }
 
         .contact-detail {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .contact-icon {
             background-color: var(--secondary);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 20px;
             flex-shrink: 0;
+            font-size: 20px;
         }
 
         .contact-text h4 {
-            margin-bottom: 5px;
-            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
         }
 
-        .contact-form .form-group {
-            margin-bottom: 20px;
+        .contact-form {
+            padding: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
         }
 
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .contact-form select {
             width: 100%;
-            padding: 14px;
+            padding: 16px 20px;
             border: 1px solid #ddd;
             border-radius: var(--radius);
             font-family: 'Montserrat', sans-serif;
             font-size: 16px;
             transition: var(--transition);
+            background: #f9f9f9;
         }
 
         .contact-form input:focus,
-        .contact-form textarea:focus {
+        .contact-form textarea:focus,
+        .contact-form select:focus {
             outline: none;
             border-color: var(--secondary);
             box-shadow: 0 0 0 3px rgba(193, 154, 107, 0.2);
+            background: white;
         }
 
         .contact-form textarea {
@@ -530,34 +731,122 @@
             resize: vertical;
         }
 
+        .contact-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 300px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 58, 76, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Map Section */
+        .map {
+            background-color: white;
+        }
+
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%);
+            transition: var(--transition);
+        }
+
+        .map-container:hover iframe {
+            filter: grayscale(0%);
+        }
+
         /* Footer */
         footer {
             background-color: var(--primary);
             color: white;
-            padding: 70px 0 30px;
+            padding: 100px 0 40px;
+            position: relative;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
         }
 
         .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
-        .footer-col h3:after {
+        .footer-col h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 2px;
+            height: 3px;
             background-color: var(--secondary);
         }
 
@@ -566,13 +855,21 @@
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            width: 25px;
+            color: var(--secondary);
         }
 
         .footer-links a:hover {
@@ -583,20 +880,21 @@
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
             text-decoration: none;
             transition: var(--transition);
+            font-size: 18px;
         }
 
         .social-link:hover {
@@ -606,10 +904,131 @@
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 1rem;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+        }
+
+        /* Product Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
+            color: white;
+            padding: 30px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--secondary);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .modal-product-img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .modal-product-info h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .modal-product-specs {
+            background: var(--light);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+        }
+
+        .modal-product-specs h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
         }
 
         /* Animations */
@@ -632,20 +1051,38 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+            
+            .section {
+                padding: 100px 0;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.2rem;
             }
-
+            
             .about-content {
                 grid-template-columns: 1fr;
             }
-
-            .about-img {
-                height: 400px;
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                padding: 40px;
+            }
+            
+            .contact-form {
+                padding: 40px;
             }
 
-            .contact-grid {
+            .modal-product-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -657,56 +1094,89 @@
 
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: 0;
                 width: 100%;
-                background-color: white;
+                height: 100vh;
+                background: var(--primary);
                 flex-direction: column;
                 align-items: center;
+                justify-content: center;
                 padding: 30px 0;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                clip-path: circle(0px at 90% -10%);
                 transition: var(--transition);
+                z-index: 1000;
             }
 
             .nav-links.active {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                clip-path: circle(1500px at 90% -10%);
             }
 
             .nav-links li {
-                margin: 15px 0;
+                margin: 20px 0;
             }
 
+            .nav-links a {
+                color: white;
+                font-size: 1.5rem;
+            }
+            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
-
-            .section {
-                padding: 70px 0;
-            }
-
+            
             .section-title {
-                font-size: 2rem;
+                font-size: 2.3rem;
             }
-
-            .countdown {
-                flex-wrap: wrap;
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-card {
+                height: 450px;
             }
         }
 
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.3rem;
             }
-
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
             .hero-btns .btn {
                 display: block;
                 width: 100%;
                 margin-bottom: 15px;
+                margin-right: 0;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .product-card {
+                margin-bottom: 30px;
             }
 
-            .category-card {
-                height: 350px;
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+
+            .modal-header {
+                padding: 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
             }
         }
     </style>
@@ -717,7 +1187,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design" style="height: 50px;">
+                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design">
                 </a>
                 <button class="mobile-toggle">
                     <i class="fas fa-bars"></i>
@@ -728,6 +1198,7 @@
                     <li><a href="#about">Chi Siamo</a></li>
                     <li><a href="#products">Prodotti</a></li>
                     <li><a href="#promotions">Promozioni</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact">Contatti</a></li>
                 </ul>
             </nav>
@@ -736,6 +1207,11 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-slider">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>Oltre l'arredare, creiamo esperienze</h1>
@@ -760,7 +1236,7 @@
                     <img src="https://www.muzidesign.it/wp-content/uploads/2024/11/Napoleon_Keramik_Design_Table_Desktop_Cattelan_Italia_24-1.jpg" alt="Zona Giorno" class="category-img">
                     <div class="category-overlay">
                         <h3 class="category-title">Zona Giorno</h3>
-                        <p>Il cuore della casa, dove comfort e design si incontrano</p>
+                        <p class="category-desc">Il cuore della casa, dove comfort e design si incontrano</p>
                         <a href="#" class="btn btn-outline">Scopri di più</a>
                     </div>
                 </div>
@@ -768,7 +1244,7 @@
                     <img src="https://www.muzidesign.it/wp-content/uploads/2022/04/Notte2020_pag_250-251.jpg" alt="Zona Notte" class="category-img">
                     <div class="category-overlay">
                         <h3 class="category-title">Zona Notte</h3>
-                        <p>Soluzioni eleganti per il tuo spazio più intimo e personale</p>
+                        <p class="category-desc">Soluzioni eleganti per il tuo spazio più intimo e personale</p>
                         <a href="#" class="btn btn-outline">Scopri di più</a>
                     </div>
                 </div>
@@ -776,17 +1252,18 @@
                     <img src="https://www.venetacucine.com/cache/media/2024/12/memory_1000x560_24327.jpg/06021138733b85f70343fed9e1278831.jpg" alt="Cucine" class="category-img">
                     <div class="category-overlay">
                         <h3 class="category-title">Cucine</h3>
-                        <p>Dove tradizione e innovazione creano il cuore pulsante della casa</p>
+                        <p class="category-desc">Dove tradizione e innovazione creano il cuore pulsante della casa</p>
                         <a href="#" class="btn btn-outline">Scopri di più</a>
-                      
                     </div>
                 </div>
-              <div class="category-card fade-in">
-                <img src="https://www.muzidesign.it/wp-content/uploads/2024/01/Egoitaliano_caveoso_blu.jpg">
-                <div class="category-overlay">
-                    <h3 class="category-title">Divani e Poltrone</h3>
-                    <p>Dove comfort e design si incontrano per dare forma all’anima accogliente della casa.</p>
-                    <a href="#" class="btn btn-outline">Scopri di più</a>
+                <div class="category-card fade-in">
+                    <img src="https://www.muzidesign.it/wp-content/uploads/2024/01/Egoitaliano_caveoso_blu.jpg" alt="Divani e Poltrone" class="category-img">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Divani e Poltrone</h3>
+                        <p class="category-desc">Dove comfort e design si incontrano per dare forma all'anima accogliente della casa.</p>
+                        <a href="#" class="btn btn-outline">Scopri di più</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -796,9 +1273,12 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Muzi Design: Oltre 60 anni di eccellenza</h2>
-                    <p>Muzi Design è oggi sinonimo di affidabilità e professionalità, frutto di una lunga storia iniziata nel 1957 con una piccola bottega fondata dai nonni Torello e Lina Muzi. La crescita è stata guidata dalla passione familiare e dall’attenzione alle esigenze del mercato, soprattutto grazie ai genitori Stefania e Ugo. Negli ultimi anni, sotto la guida di Riccardo e Filippo, l’azienda ha superato la crisi economica e avviato una partnership esclusiva con Febal Casa, diventando uno dei principali rivenditori in Italia. Oggi, nello showroom rinnovato di Valmontone, Muzi Design propone brand d’eccellenza come Veneta Cucine, Egoitaliano, Cattelan e altri, grazie al lavoro appassionato di un team affiatato e competente..</p>
-                    <a href="#contact" class="btn">Visita il nostro Store</a>
+                    <h2 class="section-title">Muzi Design: Oltre 60 anni di eccellenza</h2>
+                    <p>Muzi Design è oggi sinonimo di affidabilità e professionalità, frutto di una lunga storia iniziata nel 1957 con una piccola bottega fondata dai nonni Torello e Lina Muzi. La crescita è stata guidata dalla passione familiare e dall'attenzione alle esigenze del mercato, soprattutto grazie ai genitori Stefania e Ugo.</p>
+                    <p>Negli ultimi anni, sotto la guida di Riccardo e Filippo, l'azienda ha superato la crisi economica e avviato una partnership esclusiva con Febal Casa, diventando uno dei principali rivenditori in Italia.</p>
+                    <p>Oggi, nello showroom rinnovato di Valmontone, Muzi Design propone brand d'eccellenza come Veneta Cucine, Egoitaliano, Cattelan e altri, grazie al lavoro appassionato di un team affiatato e competente.</p>
+                    
+                    <a href="#contact" class="btn" style="margin-top: 30px;">Visita il nostro Store</a>
                 </div>
                 <div class="about-img fade-in">
                     <img src="https://www.muzidesign.it/wp-content/uploads/2025/01/WhatsApp-Image-2024-12-21-at-17.00.58.jpeg" alt="Muzi Design Store">
@@ -820,7 +1300,7 @@
                     <div class="product-info">
                         <h3 class="product-title">Veneta Cucine Oyster</h3>
                         <p class="product-description">Cucina minimalista con apertura senza maniglie (ShellSystem), superfici lisce e ampio ventaglio di finiture moderne.</p>
-                        <a href="#" class="btn btn-outline">Dettagli</a>
+                        <a href="#" class="btn btn-outline product-detail-btn" data-product="oyster">Dettagli</a>
                     </div>
                 </div>
                 <div class="product-card fade-in">
@@ -828,7 +1308,7 @@
                     <div class="product-info">
                         <h3 class="product-title">Veneta Cucine Iconica</h3>
                         <p class="product-description">Design innovativo e asimmetrico, mix di materiali pregiati (vetro, legno, metallo), massimo livello di personalizzazione.</p>
-                        <a href="#" class="btn btn-outline">Dettagli</a>
+                        <a href="#" class="btn btn-outline product-detail-btn" data-product="iconica">Dettagli</a>
                     </div>
                 </div>
                 <div class="product-card fade-in">
@@ -836,7 +1316,7 @@
                     <div class="product-info">
                         <h3 class="product-title">Veneta Cucine Lounge</h3>
                         <p class="product-description">Cucina funzionale e compatta con zoccolo ribassato (8 cm), offre più spazio contenitivo e combinazioni materiche ricercate.</p>
-                        <a href="#" class="btn btn-outline">Dettagli</a>
+                        <a href="#" class="btn btn-outline product-detail-btn" data-product="lounge">Dettagli</a>
                     </div>
                 </div>
                 <div class="product-card fade-in">
@@ -844,7 +1324,7 @@
                     <div class="product-info">
                         <h3 class="product-title">EgoItaliano Plaza</h3>
                         <p class="product-description">Divano modulare e profondo, con braccioli larghi, rivestimenti antimacchia o in pelle, e configurazione personalizzabile.</p>
-                        <a href="#" class="btn btn-outline">Dettagli</a>
+                        <a href="#" class="btn btn-outline product-detail-btn" data-product="plaza">Dettagli</a>
                     </div>
                 </div>
             </div>
@@ -888,10 +1368,10 @@
     <section id="promotions" class="section promotions">
         <div class="container">
             <div class="promo-content">
-                <h2>Promozioni Esclusive</h2>
+                <h2 class="section-title">Promozioni Esclusive</h2>
                 <p>Fino al <span class="highlight">70% di sconto</span> su una selezione di arredi per la tua casa. Approfitta delle nostre offerte speciali!</p>
-                <p>Promozione valida fino al 30 Giugno 2025</p>
-
+                <p>Promozione valida fino al <span class="highlight">30 Giugno 2025</span></p>
+                
                 <div class="countdown">
                     <div class="countdown-item">
                         <div class="countdown-number" id="days">25</div>
@@ -910,9 +1390,57 @@
                         <div class="countdown-label">Secondi</div>
                     </div>
                 </div>
-
+                
                 <a href="#contact" class="btn">Prenota la tua consulenza gratuita</a>
-                <p class="highlight" style="margin-top: 20px;">"Chi prima arriva, MEGLIO ARREDA!"</p>
+                <p class="highlight" style="margin-top: 30px; font-size: 1.2rem;">"Chi prima arriva, MEGLIO ARREDA!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gallery Prodotti</h2>
+                <p class="section-subtitle">Scopri le nostre realizzazioni e lasciati ispirare</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://www.muzidesign.it/wp-content/uploads/2024/11/Napoleon_Keramik_Design_Table_Desktop_Cattelan_Italia_24-1.jpg" alt="Soggiorno moderno">
+                    <div class="gallery-overlay">
+                        <h3>Soggiorno Moderno</h3>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.venetacucine.com/cache/media/2021/05/oyster-bianca-veneta-cucine-be-personal-1000x560_6900.jpg/f5651754e98d5c2752f8f7cd3ec57080.jpg" alt="Cucina Oyster">
+                    <div class="gallery-overlay">
+                        <h3>Cucina Oyster</h3>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.muzidesign.it/wp-content/uploads/2022/04/Notte2020_pag_250-251.jpg" alt="Camera da letto">
+                    <div class="gallery-overlay">
+                        <h3>Camera da Letto</h3>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.muzidesign.it/wp-content/uploads/2024/01/Egoitaliano_caveoso_blu.jpg" alt="Divano EgoItaliano">
+                    <div class="gallery-overlay">
+                        <h3>Divano EgoItaliano</h3>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.venetacucine.com/cache/media/2023/04/iconica_anteprima_01_13089.jpg/11553f147e7fa6806ef86f78ec163877.jpg" alt="Cucina Iconica">
+                    <div class="gallery-overlay">
+                        <h3>Cucina Iconica</h3>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.venetacucine.com/cache/media/2023/06/veneta_cucine_-_lounge_shellsystem__13653.jpg/77437985ce50331b883db44ce03ec079.jpg" alt="Cucina Lounge">
+                    <div class="gallery-overlay">
+                        <h3>Cucina Lounge</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -993,6 +1521,24 @@
         </div>
     </section>
 
+    <!-- Map Section -->
+    <section class="section map">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Come Raggiungerci</h2>
+                <p class="section-subtitle">Vieni a trovarci nel nostro showroom di Valmontone</p>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2985.5426923450643!2d12.925469315557937!3d41.76849417923645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1325907a8e2b0e8d%3A0x8e8a9e8e8e8e8e8e!2sVia%20Artena%2C%2054%2C%2000038%20Valmontone%20RM%2C%20Italy!5e0!3m2!1sen!2sus!4v1640995200000!5m2!1sen!2sus"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1010,29 +1556,29 @@
                 <div class="footer-col">
                     <h3>Link Utili</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#about">Chi Siamo</a></li>
-                        <li><a href="#categories">Categorie</a></li>
-                        <li><a href="#products">Prodotti</a></li>
-                        <li><a href="#promotions">Promozioni</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="#categories"><i class="fas fa-chevron-right"></i> Categorie</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
+                        <li><a href="#promotions"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Categorie</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Cucine</a></li>
-                        <li><a href="#">Zona Giorno</a></li>
-                        <li><a href="#">Zona Notte</a></li>
-                        <li><a href="#">Camerette</a></li>
-                        <li><a href="#">Arredamento Completo</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cucine</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Camerette</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Arredamento Completo</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Contatti</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</li>
-                        <li><i class="fas fa-phone-alt"></i> +39 06 123 4567</li>
-                        <li><i class="fas fa-envelope"></i> info@muzidesign.it</li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</a></li>
+                        <li><a href="tel:800202530"><i class="fas fa-phone-alt"></i> 800 202 530</a></li>
+                        <li><a href="mailto:info@muzidesign.it"><i class="fas fa-envelope"></i> info@muzidesign.it</a></li>
                     </ul>
                 </div>
             </div>
@@ -1042,15 +1588,62 @@
         </div>
     </footer>
 
+    <!-- Back to top button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Dettagli Prodotto</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-product-grid">
+                    <div>
+                        <img id="modalImage" src="" alt="" class="modal-product-img">
+                    </div>
+                    <div class="modal-product-info">
+                        <h2 id="modalProductTitle"></h2>
+                        <p id="modalProductDescription"></p>
+                        <div class="modal-product-specs">
+                            <h4>Specifiche Tecniche</h4>
+                            <div id="modalSpecs"></div>
+                        </div>
+                        <a href="#contact" class="btn" style="margin-top: 20px;">Richiedi Preventivo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
+            const backToTop = document.querySelector('.back-to-top');
+            
             if (window.scrollY > 50) {
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
             }
+            
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
         // Mobile menu toggle
@@ -1063,15 +1656,24 @@
             this.querySelector('i').classList.toggle('fa-times');
         });
 
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-
+                
                 navLinks.classList.remove('active');
                 mobileToggle.querySelector('i').classList.add('fa-bars');
                 mobileToggle.querySelector('i').classList.remove('fa-times');
-
+                
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     window.scrollTo({
@@ -1082,49 +1684,161 @@
             });
         });
 
+        // Hero slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+        
         // Countdown timer for promotions
         function updateCountdown() {
             const endDate = new Date('June 30, 2025 23:59:59').getTime();
             const now = new Date().getTime();
             const timeLeft = endDate - now;
-
+            
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
+            
             document.getElementById('days').textContent = days.toString().padStart(2, '0');
             document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
-
+        
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
         // Fade-in animation for elements
         const fadeElements = document.querySelectorAll('.fade-in');
-
+        
         function checkFade() {
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-
+                
                 if (elementTop < windowHeight - 50) {
                     element.classList.add('appear');
                 }
             });
         }
-
+        
         window.addEventListener('scroll', checkFade);
         window.addEventListener('load', checkFade);
-
+        
         // Form submission
         const form = document.getElementById('consultationForm');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Grazie per la tua richiesta! Un nostro consulente ti contatterà al più presto per confermare l\'appuntamento.');
             form.reset();
+        });
+
+        // Product detail modal
+        const modal = document.getElementById('productModal');
+        const modalClose = document.querySelector('.modal-close');
+        
+        const productData = {
+            oyster: {
+                title: 'Veneta Cucine Oyster',
+                image: 'https://www.venetacucine.com/cache/media/2021/05/oyster-bianca-veneta-cucine-be-personal-1000x560_6900.jpg/f5651754e98d5c2752f8f7cd3ec57080.jpg',
+                description: 'Cucina minimalista con apertura senza maniglie (ShellSystem), superfici lisce e ampio ventaglio di finiture moderne. Design pulito ed elegante per chi ama la semplicità raffinata.',
+                specs: {
+                    'Materiali': 'Laminato opaco, Legno',
+                    'Apertura': 'ShellSystem senza maniglie',
+                    'Colori disponibili': 'Bianco, Grigio, Noce',
+                    'Personalizzazione': 'Completamente personalizzabile',
+                    'Garanzia': '5 anni'
+                }
+            },
+            iconica: {
+                title: 'Veneta Cucine Iconica',
+                image: 'https://www.venetacucine.com/cache/media/2023/04/iconica_anteprima_01_13089.jpg/11553f147e7fa6806ef86f78ec163877.jpg',
+                description: 'Design innovativo e asimmetrico, mix di materiali pregiati (vetro, legno, metallo), massimo livello di personalizzazione. Una cucina che non passa inosservata.',
+                specs: {
+                    'Materiali': 'Vetro, Legno, Metallo',
+                    'Design': 'Asimmetrico innovativo',
+                    'Finiture': 'Premium e ricercate',
+                    'Personalizzazione': 'Massimo livello',
+                    'Garanzia': '5 anni'
+                }
+            },
+            lounge: {
+                title: 'Veneta Cucine Lounge',
+                image: 'https://www.venetacucine.com/cache/media/2023/06/veneta_cucine_-_lounge_shellsystem__13653.jpg/77437985ce50331b883db44ce03ec079.jpg',
+                description: 'Cucina funzionale e compatta con zoccolo ribassato (8 cm), offre più spazio contenitivo e combinazioni materiche ricercate. Perfetta per spazi moderni.',
+                specs: {
+                    'Zoccolo': 'Ribassato 8 cm',
+                    'Spazio': 'Maggiore contenimento',
+                    'Materiali': 'Combinazioni ricercate',
+                    'Stile': 'Moderno e funzionale',
+                    'Garanzia': '5 anni'
+                }
+            },
+            plaza: {
+                title: 'EgoItaliano Plaza',
+                image: 'https://immagini.designbest.com/pictures/product-107022-80482.jpg',
+                description: 'Divano modulare e profondo, con braccioli larghi, rivestimenti antimacchia o in pelle, e configurazione personalizzabile. Comfort e design in perfetto equilibrio.',
+                specs: {
+                    'Tipo': 'Modulare personalizzabile',
+                    'Rivestimenti': 'Antimacchia o pelle',
+                    'Braccioli': 'Larghi e comodi',
+                    'Configurazione': 'Completamente personalizzabile',
+                    'Garanzia': '2 anni'
+                }
+            }
+        };
+
+        // Event listeners for product detail buttons
+        document.querySelectorAll('.product-detail-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productId = this.getAttribute('data-product');
+                const product = productData[productId];
+                
+                if (product) {
+                    document.getElementById('modalTitle').textContent = 'Dettagli Prodotto';
+                    document.getElementById('modalProductTitle').textContent = product.title;
+                    document.getElementById('modalImage').src = product.image;
+                    document.getElementById('modalImage').alt = product.title;
+                    document.getElementById('modalProductDescription').textContent = product.description;
+                    
+                    const specsContainer = document.getElementById('modalSpecs');
+                    specsContainer.innerHTML = '';
+                    
+                    Object.entries(product.specs).forEach(([key, value]) => {
+                        const specItem = document.createElement('div');
+                        specItem.className = 'spec-item';
+                        specItem.innerHTML = `<strong>${key}:</strong><span>${value}</span>`;
+                        specsContainer.appendChild(specItem);
+                    });
+                    
+                    modal.style.display = 'block';
+                }
+            });
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
         });
     </script>
 </body>
