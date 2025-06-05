@@ -374,6 +374,47 @@
             margin-bottom: 20px;
         }
 
+        /* Partners Section */
+        .partners {
+            background-color: var(--light);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 120px;
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+        }
+
         /* Promotions Section */
         .promotions {
             background: linear-gradient(to right, var(--primary), #2a4d63);
@@ -675,7 +716,9 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Muzi<span>Design</span></a>
+                <a href="#" class="logo">
+                    <img src="https://www.muzidesign.it/wp-content/uploads/2022/02/muzi-logo-2022.png" alt="Muzi Design" style="height: 50px;">
+                </a>
                 <button class="mobile-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -768,40 +811,73 @@
             </div>
             <div class="products-grid">
                 <div class="product-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Cucina Pavese" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Cucina Veneta Lounge" class="product-img">
                     <div class="product-info">
-                        <h3 class="product-title">Cucina Pavese</h3>
-                        <div class="product-price">€ 4.200</div>
-                        <p class="product-description">Tradizione e modernità si fondono in questa cucina che unisce fascino senza tempo e praticità quotidiana.</p>
+                        <h3 class="product-title">Cucina Veneta Lounge</h3>
+                        <div class="product-price">€ 8.500</div>
+                        <p class="product-description">Design contemporaneo e funzionalità italiana. La cucina Lounge di Veneta Cucine unisce eleganza e praticità quotidiana.</p>
                         <a href="#" class="btn btn-outline">Dettagli</a>
                     </div>
                 </div>
                 <div class="product-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1813&q=80" alt="Cabina Armadio Moderna" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Cucina Veneta Ethica" class="product-img">
                     <div class="product-info">
-                        <h3 class="product-title">Cabina Armadio Moderna</h3>
-                        <div class="product-price">€ 2.800</div>
-                        <p class="product-description">Soluzione su misura per organizzare con eleganza e funzionalità la tua zona notte.</p>
+                        <h3 class="product-title">Cucina Veneta Ethica</h3>
+                        <div class="product-price">€ 6.200</div>
+                        <p class="product-description">Sostenibilità e design si incontrano nella cucina Ethica, realizzata con materiali eco-compatibili di alta qualità.</p>
                         <a href="#" class="btn btn-outline">Dettagli</a>
                     </div>
                 </div>
                 <div class="product-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80" alt="Soggiorno Contemporaneo" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1565182999561-18d7dc61c393?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Cucina Veneta Tablet" class="product-img">
                     <div class="product-info">
-                        <h3 class="product-title">Soggiorno Contemporaneo</h3>
-                        <div class="product-price">€ 3.500</div>
-                        <p class="product-description">Il design che dà forma alla tua quotidianità, creando il cuore pulsante della casa.</p>
+                        <h3 class="product-title">Cucina Veneta Tablet</h3>
+                        <div class="product-price">€ 7.800</div>
+                        <p class="product-description">La tecnologia incontra il design nella cucina Tablet, con soluzioni innovative per una cucina del futuro.</p>
                         <a href="#" class="btn btn-outline">Dettagli</a>
                     </div>
                 </div>
                 <div class="product-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Cameretta Junior" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Divano EgoITALIANO" class="product-img">
                     <div class="product-info">
-                        <h3 class="product-title">Cameretta Junior</h3>
-                        <div class="product-price">€ 1.950</div>
-                        <p class="product-description">Un ambiente creativo che cresce con i tuoi bambini, unendo divertimento, sicurezza e praticità.</p>
+                        <h3 class="product-title">Divano EgoITALIANO</h3>
+                        <div class="product-price">€ 3.200</div>
+                        <p class="product-description">Comfort italiano e design esclusivo. Il divano EgoITALIANO trasforma il tuo soggiorno in un'oasi di relax.</p>
                         <a href="#" class="btn btn-outline">Dettagli</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section partners">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">I Nostri Partner</h2>
+                <p class="section-subtitle">Collaboriamo con i migliori brand del design italiano per offrirti soluzioni d'arredamento di eccellenza</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-logo fade-in">
+                    <img src="https://www.venetacucine.com/wp-content/themes/venetacucine/dist/images/logo.png" alt="Veneta Cucine">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="https://www.novamobili.it/assets/images/logo.png" alt="Novamobili">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="https://www.cattelanitalia.com/static/frontend/Cattelan/base/it_IT/images/logo.svg" alt="Cattelan Italia">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="https://www.egoitaliano.it/wp-content/themes/egoitaliano/assets/img/logo.png" alt="EgoITALIANO">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="https://www.cinquanta3.it/assets/img/logo.png" alt="Cinquanta3">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="https://www.nidi.it/wp-content/themes/nidi/assets/images/logo.svg" alt="Nidi">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="https://www.targetpoint.it/wp-content/themes/targetpoint/assets/img/logo.png" alt="Target Point">
                 </div>
             </div>
         </div>
