@@ -329,3 +329,63 @@ function slideNext(event, sliderName) {
     current = (current + 1) % images.length;
     images[current].classList.add('active');
 }
+
+// === INIZIO: Swipe touch per slider ===
+function addSwipeToSlider(sliderSelector, nextFn, prevFn) {
+    const sliders = document.querySelectorAll(sliderSelector);
+    sliders.forEach(slider => {
+        let startX = 0;
+        let endX = 0;
+        slider.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 1) {
+                startX = e.touches[0].clientX;
+            }
+        });
+        slider.addEventListener('touchmove', function(e) {
+            if (e.touches.length === 1) {
+                endX = e.touches[0].clientX;
+            }
+        });
+        slider.addEventListener('touchend', function(e) {
+            const deltaX = endX - startX;
+            if (Math.abs(deltaX) > 40) { // soglia minima swipe
+                if (deltaX < 0) {
+                    nextFn(slider);
+                } else {
+                    prevFn(slider);
+                }
+            }
+            startX = 0;
+            endX = 0;
+        });
+    });
+}
+
+// Swipe per Hero slider (slide con classe .slide)
+if (slides.length > 0) {
+    addSwipeToSlider('.hero-slider, .slider-hero, .slider-hero-container', function() {
+        nextSlide();
+    }, function() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    });
+}
+
+// Swipe per slider con immagini (classico)
+document.querySelectorAll('.slider').forEach(slider => {
+    addSwipeToSlider('#' + slider.id, function(sliderEl) {
+        // Trova il nome sliderName dal data-slider o id
+        let sliderName = sliderEl.getAttribute('data-slider');
+        if (!sliderName && sliderEl.id) sliderName = sliderEl.id;
+        if (sliderName) {
+            slideNext({preventDefault:()=>{}}, sliderName);
+        }
+    }, function(sliderEl) {
+        let sliderName = sliderEl.getAttribute('data-slider');
+        if (!sliderName && sliderEl.id) sliderName = sliderEl.id;
+        if (sliderName) {
+            slidePrev({preventDefault:()=>{}}, sliderName);
+        }
+    });
+});
+// === FINE: Swipe touch per slider ===
