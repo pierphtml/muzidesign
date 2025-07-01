@@ -1239,6 +1239,10 @@ footer {
     .category-card {
         height: 450px;
     }
+
+    .slider-btn {
+        display: block !important;
+    }
 }
 
 @media (max-width: 576px) {
