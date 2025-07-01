@@ -1,4 +1,3 @@
-
 // Header scroll effect
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
@@ -28,39 +27,62 @@ if (backToTopBtn) {
     });
 }
 
-// Mobile menu toggle
-const mobileToggle = document.querySelector('.mobile-toggle');
-const navLinks = document.querySelector('.nav-links');
+// Mobile menu toggle - versione robusta che funziona con diversi percorsi
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileToggle = document.querySelector('.modern-mobile-toggle');
+    const mobileMenu = document.querySelector('.modern-mobile-menu');
 
-if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        this.querySelector('i').classList.toggle('fa-bars');
-        this.querySelector('i').classList.toggle('fa-times');
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            mobileToggle.querySelector('i').classList.add('fa-bars');
-            mobileToggle.querySelector('i').classList.remove('fa-times');
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            mobileMenu.classList.toggle('open');
+            document.body.classList.toggle('menu-open');
+            
+            const icon = this.querySelector('i');
+            if (icon) {
+                if (mobileMenu.classList.contains('open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
         });
-    });
-}
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.modern-mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('menu-open');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('menu-open');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+        });
+    }
+});
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        if (navLinks) {
-            navLinks.classList.remove('active');
-        }
-        if (mobileToggle) {
-            mobileToggle.querySelector('i').classList.add('fa-bars');
-            mobileToggle.querySelector('i').classList.remove('fa-times');
-        }
         
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -244,3 +266,93 @@ if (modal && modalClose) {
         }
     });
 }
+
+// HEADER MODERNA: Mobile menu toggle
+const modernMobileToggle = document.querySelector('.modern-mobile-toggle');
+const modernMobileMenu = document.querySelector('.modern-mobile-menu');
+
+if (modernMobileToggle && modernMobileMenu) {
+    modernMobileToggle.addEventListener('click', function() {
+        modernMobileMenu.classList.toggle('open');
+        this.querySelector('i').classList.toggle('fa-bars');
+        this.querySelector('i').classList.toggle('fa-times');
+    });
+    // Chiudi menu mobile al click su un link
+    modernMobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            modernMobileMenu.classList.remove('open');
+            modernMobileToggle.querySelector('i').classList.add('fa-bars');
+            modernMobileToggle.querySelector('i').classList.remove('fa-times');
+        });
+    });
+}
+
+// Funzione slider immagini per Extra ed Ethica
+function plusSlides(sliderId, n) {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+    const slides = slider.querySelectorAll('.slider-img');
+    let current = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    slides[current].classList.remove('active');
+    let next = current + n;
+    if (next >= slides.length) next = 0;
+    if (next < 0) next = slides.length - 1;
+    slides[next].classList.add('active');
+}
+
+// Slider moderno per Extra ed Ethica (compatibile con data-slider)
+function slidePrev(event, sliderName) {
+    event.preventDefault();
+    const slider = document.querySelector('.slider[data-slider="' + sliderName + '"]');
+    const images = slider.querySelectorAll('.slider-img');
+    let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+    images[current].classList.remove('active');
+    current = (current - 1 + images.length) % images.length;
+    images[current].classList.add('active');
+}
+function slideNext(event, sliderName) {
+    event.preventDefault();
+    const slider = document.querySelector('.slider[data-slider="' + sliderName + '"]');
+    const images = slider.querySelectorAll('.slider-img');
+    let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
+}
+
+// === SLIDER PRODOTTI (MADEINITALY) ===
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('madeItalyTrack');
+    const btnPrev = document.querySelector('.carousel-btn.prev.madeinitaly-btn');
+    const btnNext = document.querySelector('.carousel-btn.next.madeinitaly-btn');
+    function setArrowState() {
+        if (window.innerWidth <= 700) {
+            if (btnPrev) btnPrev.style.display = 'none';
+            if (btnNext) btnNext.style.display = 'none';
+        } else {
+            if (btnPrev) btnPrev.style.display = '';
+            if (btnNext) btnNext.style.display = '';
+        }
+    }
+    setArrowState();
+    window.addEventListener('resize', setArrowState);
+    if (track && btnPrev && btnNext) {
+        const scrollAmount = () => {
+            const firstItem = track.querySelector('.madeinitaly-item');
+            if (firstItem) return firstItem.offsetWidth + 32;
+            return 300;
+        };
+        btnPrev.addEventListener('click', function(e) {
+            if (window.innerWidth > 700) {
+                e.preventDefault();
+                track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+            }
+        });
+        btnNext.addEventListener('click', function(e) {
+            if (window.innerWidth > 700) {
+                e.preventDefault();
+                track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+            }
+        });
+    }
+});

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -8,28 +7,100 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .privacy-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .privacy-checkbox input[type="checkbox"] {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .privacy-checkbox label {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--gray);
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+        }
+        
+        .privacy-checkbox label a {
+            color: var(--primary);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .privacy-checkbox label a:hover {
+            color: var(--secondary);
+        }
+        
+        .privacy-checkbox.required {
+            border-color: rgba(220, 53, 69, 0.3);
+            background: rgba(220, 53, 69, 0.05);
+        }
+        
+        .privacy-checkbox.required label {
+            color: #dc3545;
+        }
+        
+        .form-error {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-error.show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
-    <header>
+    <header class="modern-header fade-in">
         <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
                 </a>
-                <button class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-links">
+                <ul class="modern-nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="categorie.html">Categorie</a></li>
                     <li><a href="chi-siamo.html">Chi Siamo</a></li>
                     <li><a href="prodotti.html">Prodotti</a></li>
                     <li><a href="promozioni.html">Promozioni</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contatti.html">Contatti</a></li>
                 </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una consulenza</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
         </div>
     </header>
 
@@ -80,27 +151,32 @@
                         </div>
                         <div class="contact-text">
                             <h4>Orari di Apertura</h4>
-                            <p>Lun - Ven: 9:00 - 19:00<br>Sabato: 9:00 - 18:00<br>Domenica: Chiuso</p>
+                            <ul class="orari-list" style="list-style: none; padding-left: 0; margin-bottom: 0;">
+                                <li><b>Lunedì:</b> 15:30 - 19:30</li>
+                                <li><b>Martedì - Venerdì:</b> 10:00 - 13:00 &nbsp; | &nbsp; 15:30 - 19:30</li>
+                                <li><b>Sabato:</b> 10:00 - 13:00 &nbsp; | &nbsp; 14:30 - 19:30</li>
+                                <li><b>Domenica:</b> 10:00 - 13:00 &nbsp; | &nbsp; 14:30 - 19:30 <span style="font-weight: normal;">(SOLO ULTIMA DOMENICA DEL MESE)</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <h3>Richiedi una Consulenza</h3>
-                    <form id="consultationForm">
+                    <form action="https://formspree.io/f/xdkzypzq" method="POST" id="consultationForm">
                         <div class="form-group">
-                            <input type="text" placeholder="Nome *" required>
+                            <input type="text" name="nome" placeholder="Nome *" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Cognome *" required>
+                            <input type="text" name="cognome" placeholder="Cognome *" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email *" required>
+                            <input type="email" name="email" placeholder="Email *" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Telefono *" required>
+                            <input type="tel" name="telefono" placeholder="Telefono *" required>
                         </div>
                         <div class="form-group">
-                            <select required>
+                            <select name="consulenza" required>
                                 <option value="">Seleziona il tipo di consulenza *</option>
                                 <option value="cucina">Cucine</option>
                                 <option value="living">Zona Giorno</option>
@@ -111,13 +187,16 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Descrivi il tuo progetto e le tue esigenze..."></textarea>
+                            <textarea name="messaggio" placeholder="Descrivi il tuo progetto e le tue esigenze..."></textarea>
                         </div>
-                        <div class="form-group" style="margin-bottom: 30px;">
-                            <label style="display: flex; align-items: center; font-size: 14px; color: var(--gray);">
-                                <input type="checkbox" required style="margin-right: 10px;">
-                                Accetto l'informativa sulla privacy e autorizzo il trattamento dei miei dati personali *
+                        <div class="privacy-checkbox" id="privacyCheckbox">
+                            <input type="checkbox" id="privacyAccept" name="privacy" required>
+                            <label for="privacyAccept">
+                                Accetto l'<a href="#" onclick="openPrivacyPolicy()">informativa sulla privacy</a> e autorizzo il trattamento dei miei dati personali per finalità commerciali e di marketing, ai sensi del Regolamento UE 2016/679 (GDPR) *
                             </label>
+                        </div>
+                        <div class="form-error" id="privacyError">
+                            È necessario accettare l'informativa sulla privacy per procedere
                         </div>
                         <button type="submit" class="btn" style="width: 100%;">Invia Richiesta</button>
                     </form>
@@ -139,74 +218,6 @@
                     allowfullscreen="" 
                     loading="lazy">
                 </iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section" style="background-color: var(--light);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">I Nostri Servizi</h2>
-                <p class="section-subtitle">Un servizio completo per realizzare la casa dei tuoi sogni</p>
-            </div>
-            <div class="overview-grid">
-                <div class="overview-card fade-in">
-                    <div class="overview-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>Consulenza a Domicilio</h3>
-                    <p>I nostri esperti vengono da te per valutare gli spazi e proporre le migliori soluzioni</p>
-                </div>
-                <div class="overview-card fade-in">
-                    <div class="overview-icon">
-                        <i class="fas fa-drafting-compass"></i>
-                    </div>
-                    <h3>Progettazione 3D</h3>
-                    <p>Visualizza il tuo futuro arredamento con rendering fotorealistici in 3D</p>
-                </div>
-                <div class="overview-card fade-in">
-                    <div class="overview-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Consegna e Montaggio</h3>
-                    <p>Ci occupiamo di tutto: dalla consegna al montaggio finale dei tuoi mobili</p>
-                </div>
-                <div class="overview-card fade-in">
-                    <div class="overview-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Assistenza Post-Vendita</h3>
-                    <p>Il nostro supporto continua anche dopo l'acquisto con assistenza e manutenzione</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Domande Frequenti</h2>
-                <p class="section-subtitle">Risposte alle domande più comuni dei nostri clienti</p>
-            </div>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="overview-card" style="text-align: left; margin-bottom: 30px;">
-                    <h4 style="color: var(--primary); margin-bottom: 15px;">Quanto tempo richiede una consulenza?</h4>
-                    <p>Una consulenza standard dura circa 60-90 minuti, tempo necessario per valutare gli spazi e discutere le vostre esigenze.</p>
-                </div>
-                <div class="overview-card" style="text-align: left; margin-bottom: 30px;">
-                    <h4 style="color: var(--primary); margin-bottom: 15px;">La consulenza è gratuita?</h4>
-                    <p>Sì, la prima consulenza è completamente gratuita e senza impegno. Include sopralluogo e proposte preliminari.</p>
-                </div>
-                <div class="overview-card" style="text-align: left; margin-bottom: 30px;">
-                    <h4 style="color: var(--primary); margin-bottom: 15px;">Offrite servizi di finanziamento?</h4>
-                    <p>Sì, collaboriamo con diversi istituti di credito per offrire soluzioni di finanziamento personalizzate.</p>
-                </div>
-                <div class="overview-card" style="text-align: left; margin-bottom: 30px;">
-                    <h4 style="color: var(--primary); margin-bottom: 15px;">Quali sono i tempi di consegna?</h4>
-                    <p>I tempi variano in base al prodotto, generalmente da 4 a 12 settimane per mobili su misura e 2-4 settimane per prodotti a catalogo.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -265,5 +276,140 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Gestione checkbox privacy
+        const privacyCheckbox = document.getElementById('privacyCheckbox');
+        const privacyInput = document.getElementById('privacyAccept');
+        const privacyError = document.getElementById('privacyError');
+        const form = document.getElementById('consultationForm');
+        
+        // Gestione cambio stato checkbox
+        privacyInput.addEventListener('change', function() {
+            if (this.checked) {
+                privacyCheckbox.classList.remove('required');
+                privacyError.classList.remove('show');
+            } else {
+                privacyCheckbox.classList.add('required');
+                privacyError.classList.add('show');
+            }
+        });
+        
+        // Gestione submit form con Formspree
+        form.addEventListener('submit', function(e) {
+            // Validazione privacy
+            if (!privacyInput.checked) {
+                e.preventDefault();
+                privacyCheckbox.classList.add('required');
+                privacyError.classList.add('show');
+                privacyInput.focus();
+                return false;
+            }
+            
+            // Mostra messaggio di caricamento
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Invio in corso...';
+            submitBtn.disabled = true;
+            
+            // Il form verrà inviato automaticamente a Formspree
+            // Non serve altro JavaScript per l'invio
+        });
+        
+        // Funzione per aprire privacy policy (placeholder)
+        function openPrivacyPolicy() {
+            alert('Informativa sulla Privacy - Muzi Design\n\n' +
+                  'Ai sensi del Regolamento UE 2016/679 (GDPR), i dati personali forniti saranno trattati da Muzi Design per:\n\n' +
+                  '• Finalità commerciali e di marketing\n' +
+                  '• Invio di comunicazioni promozionali\n' +
+                  '• Gestione delle richieste di consulenza\n\n' +
+                  'I dati saranno conservati per il tempo necessario al raggiungimento delle finalità per cui sono stati raccolti.\n\n' +
+                  'L\'interessato può esercitare i diritti di accesso, rettifica, cancellazione, limitazione e opposizione al trattamento.\n\n' +
+                  'Per maggiori informazioni: info@muzidesign.it');
+        }
+    </script>
+    
+    <!-- Script universale per menu mobile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestione menu moderno (.modern-mobile-toggle)
+            const modernToggle = document.querySelector('.modern-mobile-toggle');
+            const modernMenu = document.querySelector('.modern-mobile-menu');
+            if (modernToggle && modernMenu) {
+                // Aggiungi freccia se non presente
+                if (!modernMenu.querySelector('.close-mobile-menu')) {
+                    const closeBtn = document.createElement('button');
+                    closeBtn.className = 'close-mobile-menu';
+                    closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                    closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                    modernMenu.insertBefore(closeBtn, modernMenu.firstChild);
+                }
+                modernToggle.addEventListener('click', function() {
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                });
+                // Chiudi con freccia
+                const closeBtn = modernMenu.querySelector('.close-mobile-menu');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                    });
+                }
+                // Chiudi cliccando fuori
+                document.addEventListener('click', function(e) {
+                    if (!modernMenu.contains(e.target) && !modernToggle.contains(e.target)) {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            }
+            // Gestione menu super (.super-mobile-toggle)
+            const superToggle = document.querySelector('.super-mobile-toggle');
+            const superMenu = document.querySelector('.super-mobile-menu');
+            if (superToggle && superMenu) {
+                if (!superMenu.querySelector('.close-mobile-menu')) {
+                    const closeBtn = document.createElement('button');
+                    closeBtn.className = 'close-mobile-menu';
+                    closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                    closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                    superMenu.insertBefore(closeBtn, superMenu.firstChild);
+                }
+                superToggle.addEventListener('click', function() {
+                    superMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                });
+                const closeBtn = superMenu.querySelector('.close-mobile-menu');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                    });
+                }
+                document.addEventListener('click', function(e) {
+                    if (!superMenu.contains(e.target) && !superToggle.contains(e.target)) {
+                        superMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            }
+            // Gestione menu vecchio (.mobile-toggle)
+            const oldToggle = document.querySelector('.mobile-toggle');
+            const oldMenu = document.querySelector('.nav-links');
+            if (oldToggle && oldMenu) {
+                oldToggle.addEventListener('click', function() {
+                    oldMenu.classList.toggle('active');
+                    document.body.classList.toggle('menu-open');
+                });
+                document.addEventListener('click', function(e) {
+                    if (!oldMenu.contains(e.target) && !oldToggle.contains(e.target)) {
+                        oldMenu.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

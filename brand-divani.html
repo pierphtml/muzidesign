@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Divani - Muzi Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero {
+            background: none;
+            color: var(--primary);
+            text-align: center;
+            height: 400px;
+            min-height: 400px;
+            max-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-decor {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-decor .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.28);
+        }
+        .hero-decor .circle1 {
+            width: 240px; height: 240px;
+            left: 4%; top: 10%;
+        }
+        .hero-decor .circle2 {
+            width: 110px; height: 110px;
+            right: 10%; top: 38%;
+        }
+        .hero-decor .circle3 {
+            width: 80px; height: 80px;
+            left: 22%; bottom: 12%;
+        }
+        .hero-decor .line {
+            position: absolute;
+            width: 140px; height: 6px;
+            background: rgba(52, 152, 219, 0.32);
+            border-radius: 3px;
+        }
+        .hero-decor .line1 {
+            left: 32%; top: 14%; transform: rotate(-18deg);
+        }
+        .hero-decor .line2 {
+            right: 16%; bottom: 18%; transform: rotate(12deg);
+        }
+        .hero-box {
+            background: #1a3a4c;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            padding: 38px 32px 28px 32px;
+            max-width: 520px;
+            margin: 0 auto 10px auto;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-box h1,
+        .hero-box p {
+            color: #fff;
+        }
+        .hero-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 18px;
+        }
+        .hero-box p {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                height: 220px;
+                min-height: 220px;
+                max-height: 220px;
+            }
+            .hero-box {
+                padding: 22px 10px 16px 10px;
+            }
+            .hero-box h1 {
+                font-size: 2rem;
+            }
+            .hero-box p {
+                font-size: 1rem;
+            }
+        }
+        .brands {
+            padding: 30px 0 60px 0;
+        }
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .brand-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .brand-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .brand-logo {
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .brand-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .brand-info {
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            position: relative;
+        }
+        .brand-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+        }
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        .brand-count {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .brand-description {
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .brand-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            font-weight: 600;
+            margin-top: auto;
+            position: relative;
+        }
+        .brand-btn::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+        .brand-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        .brand-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="modern-header fade-in">
+        <div class="container">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
+                </a>
+                <ul class="modern-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una visita</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-decor">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+        </div>
+        <div class="hero-box">
+            <h1>Brand Divani</h1>
+            <p>Scopri le collezioni dei migliori brand italiani di divani</p>
+        </div>
+    </section>
+    <!-- Brands Section -->
+    <section class="brands">
+        <div class="container">
+            <div class="brands-grid">
+                <!-- Egoitaliano -->
+                <a href="egoitaliano-divani.html" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="attached_assets/PRODOTTI/EGOITALIANO/idae6XM_kA_logos.png" alt="Egoitaliano">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-title">Egoitaliano</h3>
+                        <p class="brand-description">Design italiano contemporaneo, comfort artigianale e qualità made in Italy. Collezione completa per ogni esigenza di arredamento.</p>
+                        <div class="brand-btn">Scopri la collezione</div>
+                    </div>
+                </a>
+                <!-- Novamobili -->
+                <a href="novamobili-divani.html" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="attached_assets/PRODOTTI/NOVAMOBILI/idVzTltcdc_1750753949777.png" alt="Novamobili">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-title">Novamobili</h3>
+                        <p class="brand-description">Innovazione e design moderno si incontrano in questa collezione di divani dalle linee pulite e funzionali.</p>
+                        <div class="brand-btn">Scopri la collezione</div>
+                    </div>
+                </a>
+                <!-- Cattelan -->
+                <a href="cattelan-divani.html" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="attached_assets/PRODOTTI/CATTELAN/idn5BFcQ5P_1750753919795.jpeg" alt="Cattelan">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-title">Cattelan</h3>
+                        <p class="brand-description">Design internazionale e qualità artigianale. Collezione di divani che unisce eleganza e comfort per ambienti raffinati.</p>
+                        <div class="brand-btn">Scopri la collezione</div>
+                    </div>
+                </a>
+                <!-- Cubo Rosso -->
+                <a href="cubo-rosso-divani.html" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="attached_assets/images.jpeg" alt="Cubo Rosso">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-title">Cubo Rosso</h3>
+                        <p class="brand-description">Novità 2025! Collezione innovativa con design all'avanguardia e comfort rivoluzionario.</p>
+                        <div class="brand-btn">Scopri la collezione</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Muzi Design</h3>
+                    <p>Arredamento di qualità dal 1957. Uniamo tradizione artigianale e design contemporaneo per creare spazi unici e personali.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Utili</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Categorie</a></li>
+                        <li><a href="prodotti.html"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
+                        <li><a href="promozioni.html"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categorie</h3>
+                    <ul class="footer-links">
+                        <li><a href="cucine-moderne.html"><i class="fas fa-chevron-right"></i> Cucine Moderne</a></li>
+                        <li><a href="cucine-contemporanee.html"><i class="fas fa-chevron-right"></i> Cucine Contemporanee</a></li>
+                        <li><a href="cucine-classiche.html"><i class="fas fa-chevron-right"></i> Cucine Classiche</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Camerette</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><a href="contatti.html"><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</a></li>
+                        <li><a href="tel:800202530"><i class="fas fa-phone-alt"></i> 800 202 530</a></li>
+                        <li><a href="mailto:info@muzidesign.it"><i class="fas fa-envelope"></i> info@muzidesign.it</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Muzi Design. Tutti i diritti riservati. P.IVA IT15934181007</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- Floating AI Chatbot Button -->
+    <button class="floating-chatbot">
+        <i class="fas fa-robot"></i>
+    </button>
+    <script src="script.js"></script>
+    <script>
+        // Script universale per menu mobile moderno e super
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modern
+            var modernToggle = document.querySelector('.modern-mobile-toggle');
+            var modernMenu = document.querySelector('.modern-mobile-menu');
+            var modernClose = document.querySelector('.modern-mobile-menu .close-mobile-menu');
+            if (modernToggle && modernMenu) {
+                if (modernClose) {
+                    modernClose.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                }
+                modernToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                    var icon = this.querySelector('i');
+                    if (icon) {
+                        if (modernMenu.classList.contains('open')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+                document.querySelectorAll('.modern-mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+            // Super
+            var superToggle = document.querySelector('.super-mobile-toggle');
+            var superMenu = document.querySelector('.super-mobile-menu');
+            var superClose = document.querySelector('.super-mobile-menu .close-mobile-menu');
+            if (superToggle && superMenu) {
+                if (superClose) {
+                    superClose.addEventListener('click', function() {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    superMenu.classList.toggle('open');
+                    superToggle.classList.toggle('open');
+                    if (superMenu.classList.contains('open')) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    var bars = superToggle.querySelector('.fa-bars');
+                    var times = superToggle.querySelector('.fa-times');
+                    if (superToggle.classList.contains('open')) {
+                        if (bars) bars.style.opacity = 0;
+                        if (times) times.style.opacity = 1;
+                    } else {
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+                var closeBtn = document.querySelector('.super-mobile-menu-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superMenu.addEventListener('click', function(e) {
+                    if (e.target === superMenu) {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

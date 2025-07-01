@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babouche - Muzi Design</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .hero {
+            background-image: url('https://www.venetacucine.com/cache/media/2024/12/memory_1000x560_24327.jpg/06021138733b85f70343fed9e1278831.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .product-detail {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        .product-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        .product-info h2 {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .product-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .feature-card i {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="super-header">
+        <nav class="super-navbar">
+            <div class="super-navbar-inner">
+                <a href="index.html" class="super-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
+                </a>
+                <ul class="super-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="super-cta-btn">Prenota una visita</a>
+                <button class="super-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="super-mobile-menu">
+                <div class="super-mobile-menu-logo" style="width:100%;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:32px;gap:0;min-height:72px;">
+                    <button class="super-mobile-menu-close" aria-label="Chiudi menu" style="position:absolute;top:12px;left:8px;background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;z-index:10;padding:8px 18px 8px 8px;border-radius:50%;box-shadow:none;transition:color 0.18s,transform 0.18s;"><i class="fas fa-arrow-left"></i></button>
+                    <img src="attached_assets/logo.png" alt="Muzi Design" style="max-width: 160px; width: 90vw; margin: 0 auto; display: block; position:relative; top:0;">
+                </div>
+                <ul>
+                    <li><a href="index.html" style="color:#fff;">Home</a></li>
+                    <li><a href="chi-siamo.html" style="color:#fff;">Chi Siamo</a></li>
+                    <li><a href="prodotti.html" style="color:#fff;">Prodotti</a></li>
+                    <li><a href="promozioni.html" style="color:#fff;">Promozioni</a></li>
+                    <li><a href="gallery.html" style="color:#fff;">Gallery</a></li>
+                    <li><a href="contatti.html" style="color:#fff;">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="super-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UN APPUNTAMENTO</span></a>
+            </div>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Babouche</h1>
+                <p>Design destrutturato e componibile con moduli e dormosa</p>
+            </div>
+        </div>
+    </section>
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-info">
+                <h2>Caratteristiche Principali</h2>
+                <p>Babouche è un divano dal design destrutturato e componibile, che offre una flessibilità compositiva elevata grazie ai suoi elementi mobili.</p>
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-couch"></i>
+                        <h3>Design Modulare</h3>
+                        <p>Componibile con moduli e dormosa per una flessibilità compositiva elevata.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-palette"></i>
+                        <h3>Rivestimenti</h3>
+                        <p>Rivestimento misto in tessuto e pelle per un look contemporaneo e sofisticato.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-plus"></i>
+                        <h3>Optional</h3>
+                        <p>Disponibile con relax, dormosa e pouf per personalizzare il comfort.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Link Utili</h3>
+                    <ul>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contatti</h3>
+                    <p>Email: info@muzidesign.it</p>
+                    <p>Tel: +39 123 456 7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Muzi Design. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // Script universale per menu mobile
+    // Inserisce una freccia indietro come pulsante di chiusura
+    // Funziona per modern, super e vecchio menu mobile
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestione menu moderno (.modern-mobile-toggle)
+        const modernToggle = document.querySelector('.modern-mobile-toggle');
+        const modernMenu = document.querySelector('.modern-mobile-menu');
+        if (modernToggle && modernMenu) {
+            // Aggiungi freccia se non presente
+            if (!modernMenu.querySelector('.close-mobile-menu')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-mobile-menu';
+                closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                modernMenu.insertBefore(closeBtn, modernMenu.firstChild);
+            }
+            modernToggle.addEventListener('click', function() {
+                modernMenu.classList.toggle('open');
+                document.body.classList.toggle('menu-open');
+            });
+            // Chiudi con freccia
+            const closeBtn = modernMenu.querySelector('.close-mobile-menu');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    modernMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                });
+            }
+            // Chiudi cliccando fuori
+            document.addEventListener('click', function(e) {
+                if (!modernMenu.contains(e.target) && !modernToggle.contains(e.target)) {
+                    modernMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+        // Gestione menu super (.super-mobile-toggle)
+        const superToggle = document.querySelector('.super-mobile-toggle');
+        const superMenu = document.querySelector('.super-mobile-menu');
+        if (superToggle && superMenu) {
+            if (!superMenu.querySelector('.close-mobile-menu')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-mobile-menu';
+                closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                superMenu.insertBefore(closeBtn, superMenu.firstChild);
+            }
+            superToggle.addEventListener('click', function() {
+                superMenu.classList.toggle('open');
+                document.body.classList.toggle('menu-open');
+            });
+            const closeBtn = superMenu.querySelector('.close-mobile-menu');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    superMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                });
+            }
+            document.addEventListener('click', function(e) {
+                if (!superMenu.contains(e.target) && !superToggle.contains(e.target)) {
+                    superMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+        // Gestione menu vecchio (.mobile-toggle)
+        const oldToggle = document.querySelector('.mobile-toggle');
+        const oldMenu = document.querySelector('.nav-links');
+        if (oldToggle && oldMenu) {
+            oldToggle.addEventListener('click', function() {
+                oldMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!oldMenu.contains(e.target) && !oldToggle.contains(e.target)) {
+                    oldMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html> 

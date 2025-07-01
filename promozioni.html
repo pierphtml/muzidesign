@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,28 +10,38 @@
 </head>
 <body>
     <!-- Header & Navigation -->
-    <header>
+    <header class="modern-header fade-in">
         <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
                 </a>
-                <button class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-links">
+                <ul class="modern-nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="categorie.html">Categorie</a></li>
                     <li><a href="chi-siamo.html">Chi Siamo</a></li>
                     <li><a href="prodotti.html">Prodotti</a></li>
                     <li><a href="promozioni.html">Promozioni</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contatti.html">Contatti</a></li>
                 </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una consulenza</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
         </div>
     </header>
-
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
@@ -40,14 +49,12 @@
             <p>Approfitta delle nostre offerte esclusive per arredare la tua casa con stile e convenienza</p>
         </div>
     </section>
-
     <!-- Main Promotion Section -->
     <section class="section promotions">
         <div class="container">
             <div class="promo-content">
                 <h2 class="section-title" style="color: white;">Offerta Estiva <span class="highlight">2025</span></h2>
                 <p style="font-size: 1.3rem; margin-bottom: 30px;">Sconto del <span class="highlight">25%</span> su tutte le cucine Veneta Cucine e <span class="highlight">15%</span> su divani EgoItaliano</p>
-                
                 <div class="countdown">
                     <div class="countdown-item">
                         <div class="countdown-number" id="days">00</div>
@@ -66,12 +73,10 @@
                         <div class="countdown-label">Secondi</div>
                     </div>
                 </div>
-                
                 <a href="contatti.html" class="btn" style="font-size: 1.2rem; padding: 20px 40px;">Approfitta dell'Offerta</a>
             </div>
         </div>
     </section>
-
     <!-- Featured Promotions -->
     <section class="section">
         <div class="container">
@@ -80,7 +85,7 @@
                 <p class="section-subtitle">Le migliori promozioni del momento sui nostri prodotti di punta</p>
             </div>
             <div class="products-grid">
-                <div class="product-card fade-in">
+                <div class="product-card fade-in appear">
                     <img src="https://www.venetacucine.com/cache/media/2021/05/oyster-bianca-veneta-cucine-be-personal-1000x560_6900.jpg/f5651754e98d5c2752f8f7cd3ec57080.jpg" alt="Cucina Veneta Oyster" class="product-img">
                     <div class="product-info">
                         <h3 class="product-title">Cucina Veneta Oyster</h3>
@@ -92,7 +97,7 @@
                         <a href="contatti.html" class="btn">Richiedi Preventivo</a>
                     </div>
                 </div>
-                <div class="product-card fade-in">
+                <div class="product-card fade-in appear">
                     <img src="https://immagini.designbest.com/pictures/product-107022-80482.jpg" alt="Divano EgoItaliano Plaza" class="product-img">
                     <div class="product-info">
                         <h3 class="product-title">Divano EgoItaliano Plaza</h3>
@@ -104,7 +109,7 @@
                         <a href="contatti.html" class="btn">Richiedi Preventivo</a>
                     </div>
                 </div>
-                <div class="product-card fade-in">
+                <div class="product-card fade-in appear">
                     <img src="https://www.venetacucine.com/cache/media/2023/04/iconica_anteprima_01_13089.jpg/11553f147e7fa6806ef86f78ec163877.jpg" alt="Cucina Veneta Iconica" class="product-img">
                     <div class="product-info">
                         <h3 class="product-title">Cucina Veneta Iconica</h3>
@@ -119,7 +124,6 @@
             </div>
         </div>
     </section>
-
     <!-- Special Offers Section -->
     <section class="section" style="background-color: var(--light);">
         <div class="container">
@@ -159,7 +163,6 @@
             </div>
         </div>
     </section>
-
     <!-- Terms and Conditions -->
     <section class="section">
         <div class="container">
@@ -192,7 +195,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -240,12 +242,441 @@
             </div>
         </div>
     </footer>
-
     <!-- Back to top button -->
     <div class="back-to-top">
         <i class="fas fa-chevron-up"></i>
     </div>
-
+    <!-- Floating AI Chatbot Button -->
+    <a href="chatbot.html" class="floating-chatbot" title="Chatta con il nostro assistente AI">
+        <i class="fas fa-robot"></i>
+    </a>
     <script src="script.js"></script>
+    <script>
+        // Script universale per menu mobile moderno e super
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modern
+            var modernToggle = document.querySelector('.modern-mobile-toggle');
+            var modernMenu = document.querySelector('.modern-mobile-menu');
+            var modernClose = document.querySelector('.modern-mobile-menu .close-mobile-menu');
+            if (modernToggle && modernMenu) {
+                if (modernClose) {
+                    modernClose.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                }
+                modernToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                    var icon = this.querySelector('i');
+                    if (icon) {
+                        if (modernMenu.classList.contains('open')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+                document.querySelectorAll('.modern-mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+            // Super
+            var superToggle = document.querySelector('.super-mobile-toggle');
+            var superMenu = document.querySelector('.super-mobile-menu');
+            var superClose = document.querySelector('.super-mobile-menu .close-mobile-menu');
+            if (superToggle && superMenu) {
+                if (superClose) {
+                    superClose.addEventListener('click', function() {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    superMenu.classList.toggle('open');
+                    superToggle.classList.toggle('open');
+                    if (superMenu.classList.contains('open')) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    var bars = superToggle.querySelector('.fa-bars');
+                    var times = superToggle.querySelector('.fa-times');
+                    if (superToggle.classList.contains('open')) {
+                        if (bars) bars.style.opacity = 0;
+                        if (times) times.style.opacity = 1;
+                    } else {
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+                var closeBtn = document.querySelector('.super-mobile-menu-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superMenu.addEventListener('click', function(e) {
+                    if (e.target === superMenu) {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+    <style>
+    .super-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+        transition: background 0.3s, box-shadow 0.3s;
+        animation: fadeInDown 0.8s cubic-bezier(.77,0,.18,1) 0.1s both;
+        width: 100%;
+    }
+    @keyframes fadeInDown {
+        0% { opacity: 0; transform: translateY(-40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    .super-navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 32px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .super-navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 90px;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+        overflow: visible;
+    }
+    .super-logo {
+        flex-shrink: 0;
+    }
+    .super-logo img {
+        max-width: 160px;
+        min-width: 90px;
+        width: 12vw;
+        display: block;
+        transition: transform 0.2s, max-width 0.2s;
+    }
+    @media (min-width: 1600px) {
+        .super-navbar-inner { max-width: 1300px; }
+        .super-logo img { max-width: 200px; }
+        .super-nav-links { gap: 48px; }
+    }
+    @media (max-width: 1200px) {
+        .super-navbar { padding: 0 10px; }
+        .super-navbar-inner { max-width: 1000px; }
+        .super-nav-links { gap: 22px; }
+    }
+    @media (max-width: 900px) {
+        .super-navbar-inner { min-height: 70px; }
+        .super-logo img { max-width: 110px; }
+        .super-cta-btn {
+            display: none !important;
+    }
+    @media (max-width: 800px) {
+        .super-nav-links, .super-cta-btn { display: none; }
+        .super-mobile-toggle { display: block; }
+        .super-navbar-inner { min-height: 60px; }
+    }
+    @media (max-width: 600px) {
+        .super-logo img { max-width: 80px; }
+        .super-navbar { padding: 0 4vw; }
+    }
+    .super-nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 38px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.13rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    @media (max-width: 1219px) {
+        .super-nav-links, .super-cta-btn { display: none; }
+        .super-mobile-toggle { display: block; }
+    }
+    .super-mobile-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        width: 52px;
+        height: 52px;
+        font-size: 2.1rem;
+        color: var(--primary);
+        margin-left: 24px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.25s, color 0.2s, transform 0.2s;
+        position: relative;
+        z-index: 10001;
+    }
+    .super-mobile-toggle:hover {
+        background: linear-gradient(135deg, var(--secondary) 60%, #fff 100%);
+        color: #fff;
+        transform: scale(1.08);
+    }
+    .super-mobile-toggle .fa-bars,
+    .super-mobile-toggle .fa-times {
+        transition: opacity 0.25s, transform 0.25s;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .super-mobile-toggle .fa-times {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7) rotate(-90deg);
+    }
+    .super-mobile-toggle.open .fa-bars {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7) rotate(90deg);
+    }
+    .super-mobile-toggle.open .fa-times {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    @media (max-width: 1219px) {
+        .super-mobile-toggle { display: flex; }
+    }
+    .super-nav-links li a {
+        color: var(--primary);
+        text-decoration: none;
+        padding: 8px 0;
+        position: relative;
+        transition: color 0.2s;
+    }
+    .super-nav-links li a::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 0;
+        background: var(--secondary);
+        border-radius: 2px;
+        transition: width 0.25s cubic-bezier(.77,0,.18,1);
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+    }
+    .super-nav-links li a:hover {
+        color: var(--secondary);
+    }
+    .super-nav-links li a:hover::after {
+        width: 100%;
+    }
+    .super-cta-btn {
+        background: linear-gradient(90deg, var(--secondary) 0%, #bfa77a 100%);
+        color: #fff;
+        font-weight: 700;
+        border-radius: 32px;
+        padding: 0.95rem 2.3rem;
+        font-size: 1.13rem;
+        box-shadow: 0 6px 24px rgba(191,167,122,0.18), 0 1.5px 6px rgba(0,0,0,0.07);
+        border: none;
+        outline: none;
+        margin-left: 32px;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow 0.2s, transform 0.18s, background 0.25s;
+    }
+    .super-cta-btn::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        background: linear-gradient(90deg, #bfa77a 0%, var(--secondary) 100%);
+        opacity: 0;
+        transition: opacity 0.25s;
+        z-index: 0;
+        border-radius: 32px;
+    }
+    .super-cta-btn:hover::before {
+        opacity: 1;
+    }
+    .super-cta-btn:hover {
+        color: #fff;
+        box-shadow: 0 12px 32px rgba(191,167,122,0.22), 0 2px 8px rgba(0,0,0,0.10);
+        transform: translateY(-2px) scale(1.04);
+        background: linear-gradient(90deg, #bfa77a 0%, var(--secondary) 100%);
+    }
+    .super-cta-btn span {
+        position: relative;
+        z-index: 1;
+    }
+    .super-mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(120deg, #ffe6b0 0%, #ffe6b0 10%, rgba(255,255,255,0.97) 40%, var(--primary) 100%);
+        /* giallo a sinistra, blu a destra */
+        backdrop-filter: blur(16px);
+        box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        padding-top: 120px;
+        transition: all 0.3s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .super-mobile-menu::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.82);
+        z-index: 0;
+        pointer-events: none;
+    }
+    .super-mobile-menu.open {
+        display: flex;
+        animation: fadeInMobileMenu 0.4s cubic-bezier(.77,0,.18,1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .super-mobile-menu ul {
+        position: relative;
+        z-index: 1;
+    }
+    .super-mobile-menu ul li a {
+        color: var(--primary);
+        font-size: 1.35rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.2s, letter-spacing 0.18s, background 0.18s, box-shadow 0.18s;
+        padding: 18px 38px;
+        border-radius: 28px;
+        display: inline-block;
+        margin-bottom: 8px;
+        outline: none;
+    }
+    .super-mobile-menu ul li a:hover,
+    .super-mobile-menu ul li a:focus {
+        color: #fff;
+        background: linear-gradient(90deg, var(--secondary) 0%, #bfa77a 100%);
+        box-shadow: 0 4px 18px rgba(191,167,122,0.13);
+        letter-spacing: 1.5px;
+        outline: 2px solid var(--secondary);
+        outline-offset: 2px;
+    }
+    .super-mobile-menu ul li:last-child { margin-bottom: 0; }
+    .super-cta-btn-mobile {
+        margin-top: 32px;
+        border-radius: 36px;
+        font-size: 1.22rem;
+        font-weight: 800;
+        padding: 1.1rem 2.7rem;
+        background: linear-gradient(90deg, var(--primary) 0%, #ffe6b0 100%);
+        color: #fff;
+        box-shadow: 0 10px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(191,167,122,0.10);
+        border: none;
+        outline: none;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: inline-block;
+        transition: box-shadow 0.2s, transform 0.18s, background 0.25s, color 0.18s;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .super-cta-btn-mobile:hover,
+    .super-cta-btn-mobile:focus {
+        background: linear-gradient(90deg, #ffe6b0 0%, var(--primary) 100%);
+        color: var(--primary);
+        box-shadow: 0 18px 48px rgba(0,0,0,0.18), 0 2px 8px rgba(191,167,122,0.13);
+        transform: translateY(-2px) scale(1.06);
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+    @media (max-width: 600px) {
+        .super-mobile-menu ul li a {
+            font-size: 1.1rem;
+            padding: 14px 18px;
+        }
+        .super-cta-btn-mobile {
+            font-size: 1rem;
+            padding: 0.9rem 1.2rem;
+        }
+    }
+    /* Blocca lo scroll sotto il menu mobile */
+    body.menu-open {
+        overflow: hidden !important;
+        height: 100vh;
+    }
+    /* Stile opzionale per il logo mobile */
+    .super-mobile-menu-logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        position: relative;
+        z-index: 2;
+    }
+    </style>
 </body>
 </html>

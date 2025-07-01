@@ -7,159 +7,1137 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        :root {
+            --primary: #1a3a4c;
+            --secondary: #c19a6b;
+            --gray: #6c757d;
+            --light: #f8f5f2;
+            --radius: 18px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 32px rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--light);
+            color: var(--primary);
+            margin: 0;
+            padding: 0;
+        }
+        /* Elementi decorativi di sfondo */
+        .decorative-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.08;
+        }
+        .decorative-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(ellipse at 20% 80%, rgba(193,154,107,0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(26,58,76,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 40%, rgba(193,154,107,0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 60%, rgba(26,58,76,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 10% 30%, rgba(193,154,107,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 70%, rgba(26,58,76,0.1) 0%, transparent 50%);
+            background-size: 300px 200px, 250px 180px, 280px 220px, 200px 150px, 320px 240px, 180px 120px;
+            animation: marbleFloat 25s ease-in-out infinite;
+        }
+        @keyframes marbleFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                filter: hue-rotate(0deg);
+            }
+            25% { 
+                transform: translateY(-15px) rotate(0.5deg) scale(1.02); 
+                filter: hue-rotate(5deg);
+            }
+            50% { 
+                transform: translateY(-25px) rotate(1deg) scale(1.05); 
+                filter: hue-rotate(10deg);
+            }
+            75% { 
+                transform: translateY(-10px) rotate(0.3deg) scale(1.03); 
+                filter: hue-rotate(3deg);
+            }
+        }
+        /* Pattern marmo aggiuntivo per sezioni */
+        .marble-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image: 
+                linear-gradient(45deg, transparent 30%, rgba(193,154,107,0.1) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(26,58,76,0.08) 50%, transparent 70%),
+                radial-gradient(circle at 25% 25%, rgba(193,154,107,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(26,58,76,0.12) 0%, transparent 50%);
+            background-size: 100px 100px, 80px 80px, 150px 150px, 120px 120px;
+            animation: marbleShift 30s ease-in-out infinite;
+        }
+        @keyframes marbleShift {
+            0%, 100% { 
+                transform: translateX(0px) translateY(0px) rotate(0deg); 
+            }
+            33% { 
+                transform: translateX(10px) translateY(-5px) rotate(1deg); 
+            }
+            66% { 
+                transform: translateX(-5px) translateY(10px) rotate(-0.5deg); 
+            }
+        }
+        /* Elementi decorativi fluttuanti */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        /* Miglioramenti sezioni */
+        .section {
+            position: relative;
+            overflow: hidden;
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 48%, rgba(193,154,107,0.02) 50%, transparent 52%);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+        /* Card con effetti migliorati */
+        .service-card, .overview-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before, .overview-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(193,154,107,0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        .service-card:hover::before, .overview-card:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+        /* Icone animate */
+        .service-icon, .overview-icon {
+            position: relative;
+        }
+        .service-icon::after, .overview-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(193,154,107,0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+        .service-card:hover .service-icon::after, .overview-card:hover .overview-icon::after {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        /* Made in Italy Carousel Styles */
+        .carousel-item {
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: #fff;
+            min-width: 200px;
+            max-width: 280px;
+        }
+        .carousel-item:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .carousel-item:hover img {
+            transform: scale(1.1);
+        }
+        .carousel-label {
+            padding: 16px;
+            background: #fff;
+            color: #333;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+        }
+        .carousel-item:hover .carousel-label {
+            background: var(--primary);
+            color: #fff;
+        }
+        /* HERO */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-bg-slider {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+        }
+        .hero-bg-slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.2s cubic-bezier(.77,0,.18,1);
+            z-index: 0;
+        }
+        .hero-bg-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 18px 60px 18px;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.18);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(26,58,76,0.62) 60%, rgba(193,154,107,0.18) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            letter-spacing: 1px;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 38px;
+            font-weight: 400;
+            color: #f8f5f2;
+        }
+        .hero-content .btn {
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            padding: 16px 38px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .hero-content .btn:hover {
+            background: #fff;
+            color: var(--primary);
+        }
+        /* INTRO */
+        .intro-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 56px 18px 32px 18px;
+            background: #fff;
+            gap: 32px;
+        }
+        .intro-content {
+            max-width: 540px;
+            text-align: center;
+        }
+        .intro-content p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        .intro-media {
+            width: 100%;
+            max-width: 480px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            aspect-ratio: 16/9;
+            background: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .intro-media img, .intro-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* SERVIZI */
+        .services-section {
+            background: var(--light);
+            padding: 56px 0 32px 0;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 36px 24px 28px 24px;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 260px;
+        }
+        .service-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-6px) scale(1.03);
+        }
+        .service-icon {
+            font-size: 2.6rem;
+            color: var(--secondary);
+            margin-bottom: 18px;
+        }
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .service-desc {
+            color: var(--gray);
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        /* BRAND CAROUSEL */
+        .brands-section {
+            background: #fff;
+            padding: 90px 0 60px 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .brands-carousel-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .brands-carousel {
+            display: flex;
+            gap: 60px;
+            overflow-x: hidden;
+            padding: 20px 0 20px 0;
+            scroll-behavior: smooth;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            /* Nascondi scrollbar su tutti i browser */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .brands-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .brand-logo {
+            max-width: 420px;
+            max-height: 220px;
+            width: auto;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            background: #f6f6f6;
+            border-radius: 16px;
+            padding: 32px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+            object-fit: contain;
+        }
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.07);
+        }
+        .brands-slider-btn {
+            position: relative;
+            z-index: 2;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            width: 48px;
+            height: 48px;
+            font-size: 1.7rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .brands-slider-btn:hover {
+            background: var(--secondary);
+            color: #fff;
+        }
+        .brands-slider-btn.prev {
+            margin-right: 18px;
+        }
+        .brands-slider-btn.next {
+            margin-left: 18px;
+        }
+        .brands-section .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+        }
+        .made-in-italy-section {
+            background: #fff;
+            padding: 56px 0 32px 0;
+            text-align: center;
+        }
+        .made-in-italy-section .section-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .made-in-italy-section .section-subtitle {
+            font-size: 1.18rem;
+            color: var(--gray);
+            margin-bottom: 28px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        .madeinitaly-cta {
+            font-size: 1.08rem;
+            padding: 14px 36px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-transform: uppercase;
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .madeinitaly-cta:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .made-in-italy-gallery {
+            background: var(--light);
+            padding: 32px 0 32px 0;
+        }
+        .made-in-italy-gallery .categories-grid-3x3 {
+            margin-top: 0;
+            gap: 32px;
+        }
+        .made-in-italy-gallery .category-box {
+            min-height: 220px;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            background: #fff;
+            transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+        }
+        .made-in-italy-gallery .category-img {
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 18px 18px 0 0;
+            width: 100%;
+            height: 180px;
+            background: #f6f6f6;
+        }
+        .made-in-italy-gallery .category-box span {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 18px 0 12px 0;
+            display: block;
+        }
+        @media (max-width: 1024px) {
+            .made-in-italy-gallery .categories-grid-3x3 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .made-in-italy-gallery .category-img {
+                height: 120px;
+            }
+        }
+        @media (max-width: 700px) {
+            .made-in-italy-section {
+                padding: 36px 0 18px 0;
+            }
+            .made-in-italy-gallery {
+                padding: 18px 0 18px 0;
+            }
+            .made-in-italy-gallery .categories-grid-3x3 {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .made-in-italy-gallery .category-img {
+                height: 90px;
+            }
+            .made-in-italy-section .section-title {
+                font-size: 1.3rem;
+            }
+            .made-in-italy-section .section-subtitle {
+                font-size: 1rem;
+            }
+            .madeinitaly-cta {
+                font-size: 1rem;
+                padding: 12px 18px;
+            }
+            .hero-muzi-content h1 {
+                font-size: 2.5rem !important;
+            }
+            .hero-muzi-content h1 span {
+                font-size: 1.5rem !important;
+            }
+        }
+        .made-in-italy-gallery-slider {
+            background: var(--light);
+            padding: 32px 0 32px 0;
+        }
+        .slider-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            position: relative;
+        }
+        .categories-slider {
+            display: flex;
+            gap: 32px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px 0;
+            flex: 1;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .categories-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .category-box {
+            min-width: 260px;
+            max-width: 320px;
+            flex: 0 0 auto;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            background: #fff;
+            transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .category-img {
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 18px 18px 0 0;
+            width: 100%;
+            height: 180px;
+            background: #f6f6f6;
+        }
+        .category-box span {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 18px 0 12px 0;
+            display: block;
+        }
+        .slider-btn {
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            width: 48px;
+            height: 48px;
+            font-size: 1.7rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .slider-btn:hover {
+            background: var(--secondary);
+            color: #fff;
+        }
+        .slider-btn.prev {
+            margin-right: 12px;
+        }
+        .slider-btn.next {
+            margin-left: 12px;
+        }
+        @media (max-width: 1024px) {
+            .category-box {
+                min-width: 200px;
+                max-width: 240px;
+            }
+            .category-img {
+                height: 120px;
+            }
+        }
+        @media (max-width: 700px) {
+            .made-in-italy-gallery-slider {
+                padding: 18px 0 18px 0;
+            }
+            .category-box {
+                min-width: 160px;
+                max-width: 90vw;
+            }
+            .category-img {
+                height: 90px;
+            }
+        }
+        .madeinitaly-split {
+            background: #fafafa;
+            padding: 48px 0;
+        }
+        .madeinitaly-split .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2vw;
+        }
+        .split-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            border: 1.5px solid #ececec;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            padding: 48px 40px;
+        }
+        .split-text {
+            flex: 1 1 340px;
+            min-width: 280px;
+        }
+        .split-text h2 {
+            font-size: 2.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 18px;
+            line-height: 1.1;
+        }
+        .split-text p {
+            font-size: 1.18rem;
+            color: #222;
+            margin-bottom: 32px;
+        }
+        .split-text .btn {
+            font-size: 1.08rem;
+            padding: 14px 36px;
+            border-radius: 0;
+            border: 2px solid #222;
+            background: #fff;
+            color: #222;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .split-text .btn:hover {
+            background: #222;
+            color: #fff;
+        }
+        .split-slider {
+            overflow-x: auto;
+            overflow-y: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .slider-track {
+            display: flex;
+            gap: 24px;
+            min-width: 100%;
+            padding: 10px 0;
+        }
+        .slide {
+            width: 320px;
+            aspect-ratio: 4/3;
+            background: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            flex: 0 0 auto;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .slide-title {
+            position: relative;
+            z-index: 2;
+            background: rgba(255,255,255,0.85);
+            margin: 0;
+            padding: 8px 0 0 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            background: #fff;
+            border: 1.5px solid #ddd;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 1.5rem;
+            color: #222;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-arrow.left { left: 8px; }
+        .slider-arrow.right { right: 8px; }
+        .slider-arrow:hover {
+            background: #222;
+            color: #fff;
+        }
+        @media (max-width: 900px) {
+            .slide { width: 70vw; }
+        }
+        @media (max-width: 600px) {
+            .slide { width: 90vw; }
+        }
+        .hero-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-logo-box {
+            background: #fff;
+            border-radius: 32px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+            padding: 38px 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            max-width: 340px;
+            min-width: 220px;
+        }
+        .hero-logo-img {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .hero-down-arrow {
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.1rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            margin: 0 auto;
+        }
+        .hero-down-arrow:hover {
+            background: var(--secondary);
+            color: #fff;
+        }
+        @media (max-width: 700px) {
+            .hero-logo-box {
+                padding: 22px 18px;
+                border-radius: 18px;
+                max-width: 90vw;
+            }
+            .hero-logo-img {
+                max-width: 120px;
+            }
+            .hero-down-arrow {
+                width: 44px;
+                height: 44px;
+                font-size: 1.5rem;
+            }
+        }
+        .hero-logo-deco {
+            position: absolute;
+            top: 0;
+            right: -8vw;
+            height: 100%;
+            width: 40vw;
+            max-width: 500px;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .hero-logo-deco img {
+            height: 70vh;
+            max-height: 500px;
+            width: auto;
+            opacity: 0.08;
+            object-fit: contain;
+            transform: translateX(12%) scale(0.9);
+            filter: drop-shadow(0 2px 16px rgba(0,0,0,0.08));
+        }
+        @media (max-width: 900px) {
+            .hero-logo-deco {
+                right: -15vw;
+                width: 50vw;
+            }
+            .hero-logo-deco img {
+                height: 35vw;
+                max-height: 250px;
+                transform: translateX(8%) scale(0.8);
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-logo-deco {
+                right: -20vw;
+                width: 60vw;
+            }
+            .hero-logo-deco img {
+                height: 25vw;
+                max-height: 100px;
+                transform: translateX(5%) scale(0.7);
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Elementi decorativi di sfondo -->
+    <div class="decorative-bg"></div>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+    <!-- HERO SECTION MUZI DESIGN -->
+    <section class="hero-muzi" style="position: relative; min-height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <!-- SLIDER SFONDO HERO -->
+      <div class="hero-muzi-bg-slider">
+        <div class="hero-muzi-bg-slide active" style="background-image: url('attached_assets/PRODOTTI/CATTELAN/b22515a0-bc14-47bd-9a27-8b7e8629b556.jpg');"></div>
+        <div class="hero-muzi-bg-slide" style="background-image: url('attached_assets/PRODOTTI/NIDI/NIDI_2023_02.png');"></div>
+        <div class="hero-muzi-bg-slide" style="background-image: url('attached_assets/PRODOTTI/VENETA CUCINE/CUCINE/Sakura/pspl_sakura_c02.jpg');"></div>
+      </div>
+      <div class="hero-muzi-overlay" style="position: absolute; inset: 0; background: linear-gradient(120deg, rgba(30,30,30,0.08) 0%, rgba(0,0,0,0.02) 100%); z-index: 1;"></div>
+      <img src="attached_assets/logo.png" alt="Muzi Design Logo" style="position: absolute; top: 38px; left: 48px; width: 110px; height: auto; opacity: 0.82; z-index: 3;" />
+      <div class="hero-muzi-content-blur">
+        <div class="hero-muzi-content" style="position: relative; z-index: 2; max-width: 600px; margin: 0 auto; text-align: center; color: rgba(255,255,255,0.85);">
+          <h1 style="font-size: 3.8rem; font-weight: 800; letter-spacing: 1.2px; margin-bottom: 18px; line-height: 1.1; color: rgba(255,255,255,0.9);">
+            <img src="attached_assets/logo.png" alt="Muzi Design" style="max-width: 280px; width: 100%; height: auto; margin-bottom: 14px; display: block; margin-left: auto; margin-right: auto; opacity: 0.9;">
+            <span style="font-size: 2.5rem; font-weight: 700; display: block; margin-top: 6px; color: rgba(255,255,255,0.85);">Oltre l'arredare</span>
+          </h1>
+          <p style="font-size: 1.2rem; font-weight: 400; margin-bottom: 32px; line-height: 1.4; color: rgba(255,255,255,0.75);">Progetti su misura, arredi di alta gamma, partner dei migliori brand.<br>Eleganza, qualità e professionalità per il tuo spazio.</p>
+          <div class="hero-muzi-cta">
+            <a href="contatti.html" class="btn-cta-nero">Prenota una visita</a>
+            <a href="prodotti.html" class="btn-cta-bianco">Scopri i nostri prodotti</a>
+          </div>
+        </div>
+      </div>
+      <button class="hero-muzi-down" aria-label="Scorri giù" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'});" style="position: absolute; left: 50%; bottom: 38px; transform: translateX(-50%); background: rgba(255,255,255,0.82); border: none; border-radius: 50%; width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; font-size: 2.1rem; color: #222; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.10); z-index: 3;">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </section>
     <!-- Header & Navigation -->
-    <header>
+    <header class="modern-header fade-in">
         <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
                 </a>
-                <button class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-links">
+                <ul class="modern-nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="categorie.html">Categorie</a></li>
                     <li><a href="chi-siamo.html">Chi Siamo</a></li>
                     <li><a href="prodotti.html">Prodotti</a></li>
                     <li><a href="promozioni.html">Promozioni</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contatti.html">Contatti</a></li>
-                    <li><a href="chatbot.html">Assistente AI</a></li>
                 </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una consulenza</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-slider">
-            <div class="slide slide-1 active"></div>
-            <div class="slide slide-2"></div>
-            <div class="slide slide-3"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Oltre l'arredare, creiamo esperienze</h1>
-                <p>Dal 1957, Muzi Design unisce tradizione artigianale e design contemporaneo per trasformare le vostre case in spazi unici e personali.</p>
-                <div class="hero-btns">
-                    <a href="prodotti.html" class="btn">Scopri la Collezione</a>
-                    <a href="contatti.html" class="btn btn-outline">Prenota Consulenza</a>
-                </div>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
             </div>
+        </div>
+    </header>   
+    <!-- SEZIONE PRODOTTI IN EVIDENZA -->
+    <section class="madeinitaly-section" style="padding: 64px 0 32px 0;">
+      <div class="marble-pattern" style="opacity: 0.03;"></div>
+      <div class="container">
+        <div class="madeinitaly-centered-content">
+          <h2 class="prodotti-title">Scopri le nostre collezioni</h2>
+          <p class="prodotti-desc">Una selezione di ambienti e prodotti per ogni esigenza: cucine, zona giorno, garden, imbottiti, complementi, camere per ragazzi e materassi. Esplora le categorie e trova la soluzione perfetta per il tuo spazio.</p>
+          <div class="madeinitaly-carousel-wrapper centered">
+            <div class="carousel-wrapper madeinitaly-carousel" style="position:relative;">
+              <button class="carousel-btn prev madeinitaly-btn" aria-label="Precedente" style="position:absolute;left:0;top:50%;transform:translateY(-50%);z-index:2;">&#8592;</button>
+              <div class="carousel-track madeinitaly-track" id="madeItalyTrack">
+                <a class="carousel-item madeinitaly-item" href="prodotti-cucina.html" style="background-image: url('attached_assets/PRODOTTI/VENETACUCINE/CUCINE/Sakura/sakura_c02.jpg');">
+                  <div class="carousel-label">Cucine</div>
+                </a>
+                <a class="carousel-item madeinitaly-item" href="prodotti-zonagiorno.html" style="background-image: url('attached_assets/PRODOTTI/NOVAMOBILI/AMBIENTI/libreria_wall30_Novamobili_LIVING-2020_058-059_v2.jxl');">
+                  <div class="carousel-label">Zona Giorno</div>
+                </a>
+                <a class="carousel-item madeinitaly-item" href="prodotti-garden.html" style="background-image: url('attached_assets/PRODOTTI/WANDERLAND/Screenshot2025-06-25alle21.04.10.jpg');">
+                  <div class="carousel-label">Garden</div>
+                </a>
+                <a class="carousel-item madeinitaly-item" href="prodotti-imbottiti.html" style="background-image: url('attached_assets/PRODOTTI/EGOITALIANO/Screenshot2025-06-25alle20.48.22.png');">
+                  <div class="carousel-label">Imbottiti</div>
+                </a>
+                <a class="carousel-item madeinitaly-item" href="prodotti-complementi.html" style="background-image: url('attached_assets/PRODOTTI/CATTELAN/b22515a0-bc14-47bd-9a27-8b7e8629b556.jpg');">
+                  <div class="carousel-label">Complementi</div>
+                </a>
+                <a class="carousel-item madeinitaly-item" href="prodotti-camere.html" style="background-image: url('attached_assets/PRODOTTI/NIDI/NIDI_2023_02.png');">
+                  <div class="carousel-label">Camere per ragazzi</div>
+                </a>
+                <a class="carousel-item madeinitaly-item" href="prodotti-materassi.html" style="background-image: url('attached_assets/PRODOTTI/MATERASSI/supremo-thermo-1600.jpg');">
+                  <div class="carousel-label">Materassi</div>
+                </a>
+              </div>
+              <button class="carousel-btn next madeinitaly-btn" aria-label="Successivo" style="position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:2;">&#8594;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SERVIZI -->
+    <section class="services-section" data-aos="fade-up" style="position: relative;">
+        <div class="marble-pattern"></div>
+        <div class="section-header" style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center;">
+            <h2 class="section-title" style="margin-bottom: 0;">Motivi per scegliere Muzi Design</h2>
+            <span style="display: flex; gap: 10px; font-size: 2.1rem; color: var(--secondary); align-items: center;">
+                <i class="fas fa-shield-alt" title="Affidabilità"></i>
+                <i class="fas fa-award" title="Qualità garantita"></i>
+                <i class="fas fa-handshake" title="Fiducia e servizio"></i>
+            </span>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon" style="position: relative; margin-bottom: 20px;">
+                    <i class="fas fa-pencil-ruler" style="font-size: 2.8rem; color: var(--secondary); position: relative; z-index: 2;"></i>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: radial-gradient(circle, rgba(193,154,107,0.1) 0%, transparent 70%); border-radius: 50%; z-index: 1;"></div>
+                </div>
+                <div class="service-title">Progettazione su misura</div>
+                <div class="service-desc">Soluzioni d'arredo personalizzate, studiate sulle tue esigenze e sullo spazio disponibile.</div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon" style="position: relative; margin-bottom: 20px;">
+                    <i class="fas fa-vr-cardboard" style="font-size: 2.8rem; color: var(--secondary); position: relative; z-index: 2;"></i>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: radial-gradient(circle, rgba(193,154,107,0.1) 0%, transparent 70%); border-radius: 50%; z-index: 1;"></div>
+                </div>
+                <div class="service-title">Render fotorealistici</div>
+                <div class="service-desc">Anteprime digitali realistiche per vedere in anticipo il risultato finale del tuo ambiente.</div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon" style="position: relative; margin-bottom: 20px;">
+                    <i class="fas fa-user-friends" style="font-size: 2.8rem; color: var(--secondary); position: relative; z-index: 2;"></i>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: radial-gradient(circle, rgba(193,154,107,0.1) 0%, transparent 70%); border-radius: 50%; z-index: 1;"></div>
+                </div>
+                <div class="service-title">Consulenza personalizzata</div>
+                <div class="service-desc">Un team di esperti ti accompagna in ogni fase, dalla scelta dei materiali alla realizzazione.</div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon" style="position: relative; margin-bottom: 20px;">
+                    <i class="fas fa-couch" style="font-size: 2.8rem; color: var(--secondary); position: relative; z-index: 2;"></i>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: radial-gradient(circle, rgba(193,154,107,0.1) 0%, transparent 70%); border-radius: 50%; z-index: 1;"></div>
+                </div>
+                <div class="service-title">Montaggio professionale</div>
+                <div class="service-desc">Installazione a regola d'arte, puntuale e precisa, per un risultato perfetto e senza pensieri.</div>
+            </div>
+        </div>
+         <!-- TESTIMONIANZE CLIENTI + FRASE MOTIVAZIONALE + CTA -->
+    <div class="testimonials-motivational-wrap-bg">
+      <svg class="motivational-bg-left" aria-hidden="true" width="320" height="900" viewBox="0 0 320 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M180 0 Q60 180 120 320 Q200 480 40 600 Q-40 700 120 900" stroke="rgba(193,154,107,0.13)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M60 100 Q100 300 40 500 Q-20 700 180 850" stroke="rgba(193,154,107,0.10)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M220 60 Q80 260 200 400 Q320 600 120 800" stroke="rgba(193,154,107,0.09)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M10 300 Q90 400 60 700 Q30 900 200 880" stroke="rgba(193,154,107,0.08)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <svg class="motivational-bg-right" aria-hidden="true" width="320" height="900" viewBox="0 0 320 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M140 0 Q260 180 200 320 Q120 480 280 600 Q360 700 200 900" stroke="rgba(193,154,107,0.13)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M260 100 Q220 300 280 500 Q340 700 140 850" stroke="rgba(193,154,107,0.10)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M100 60 Q240 260 120 400 Q0 600 200 800" stroke="rgba(193,154,107,0.09)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M310 300 Q230 400 260 700 Q290 900 120 880" stroke="rgba(193,154,107,0.08)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="testimonials-motivational-wrap">
+      <section class="testimonials-section">
+        <div class="testimonials-slider-wrapper">
+          <button class="testimonials-arrow left" aria-label="Precedente">&#8592;</button>
+          <div class="testimonials-slider" id="testimonialsSlider">
+            <div class="testimonial-slide active">
+              <div class="testimonial-quote">"Siamo entrati per caso in questo negozio, siamo stati subito accolti con gentilezza e professionalità. In pochissimo tempo ci hanno realizzato tutto ciò che avevamo richiesto. Dopo mesi e mesi che eravamo alla ricerca, abbiamo firmato ed ordinato il tutto in un giorno qui da loro. Siamo molto soddisfatti soprattutto in riferimento al montaggio, una pulizia e un attenzione ai dettagli impeccabile. Grazie di cuore"</div>
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-author">— Marco Panzironi</div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-quote">"Esperienza perfetta sotto ogni aspetto! Il servizio clienti è stato eccellente, mi hanno seguito con grande attenzione nella realizzazione del progetto, ascoltando tutte le mie esigenze e trasformandole in realtà. La qualità dei prodotti è straordinaria e i tempi di consegna sono stati rispettati senza intoppi. Un plauso speciale ai montatori: educati, precisi e professionali, hanno curato ogni dettaglio con grande attenzione. Non posso che consigliare Muzi Design a chi cerca arredamento di alta qualità e un servizio impeccabile!"</div>
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-author">— Valentina Pitton</div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-quote">"Esperienza eccellente dall'inizio alla fine. Staff gentile e sempre disponibile."</div>
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-author">— G. Verdi</div>
+            </div>
+          </div>
+          <button class="testimonials-arrow right" aria-label="Successivo">&#8594;</button>
+        </div>
+        <div class="testimonials-dots" id="testimonialsDots"></div>
+      </section>
+      <div style="text-align:center;">
+        <span class="motivational-deco" aria-hidden="true"></span>
+        <span class="motivational-phrase">Scegliere Muzi Design significa affidarsi a chi trasforma spazi in esperienze.</span>
+        <span class="motivational-deco" aria-hidden="true"></span>
+      </div>
+    </div>
+    </section>
+    <!-- SHOWROOM SECTION -->
+    <section class="intro-section" style="background: linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.78)), url('attached_assets/WhatsApp-Image-2025-01-09-at-15.13.08-1536x1023.jpeg') center center/cover no-repeat; min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 60px 20px;">
+      <div class="intro-content" style="color: #fff; max-width: 1200px; text-align: center; padding: 80px 60px; text-shadow: 0 4px 32px rgba(0,0,0,0.55); background: rgba(0,0,0,0.75); border-radius: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+        <h2 style="font-size: 3.2rem; font-weight: 800; margin-bottom: 32px; letter-spacing: 1px; color: #ffffff;">Showroom Muzi Design</h2>
+        <p style="font-size: 1.6rem; line-height: 1.8; font-weight: 400; color: #ffffff; max-width: 1000px; margin: 0 auto;">
+            Nel nostro showroom di oltre 2000 m² a Valmontone vi accompagniamo alla scoperta del design italiano attraverso ambientazioni reali e curate nei minimi dettagli. Ogni spazio è pensato per ispirare: dalle cucine moderne ai soggiorni eleganti, dalle camere da letto agli spazi outdoor, fino a soluzioni per uffici e hotel.
+            <br><br>
+            Crediamo nell'unicità di ogni progetto. Per questo vi seguiamo passo dopo passo, con consulenze personalizzate, materiali di qualità e soluzioni su misura. Il nostro team è sempre al vostro fianco: dalla scelta iniziale, alla progettazione, fino alla consegna.
+            <br><br>
+            Venite a trovarci e scoprite il piacere di arredare con stile, comfort e passione.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contatti.html" class="btn-cta-nero" style="margin-right: 20px;">Prenota una visita</a>
+          <a href="contatti.html" class="btn-cta-bianco">Chiamaci ora</a>
+        </div>
+      </div>
+    </section>
+    <!-- BRAND CAROUSEL -->
+    <section class="brands-section" style="position: relative;">
+        <div class="marble-pattern" style="opacity: 0.03;"></div>
+        <div class="section-header">
+            <h2 class="section-title">I nostri brand</h2>
+            <p class="section-subtitle">Collaboriamo con i migliori marchi del design contemporaneo</p>
+        </div>
+        <div class="brands-carousel-wrapper">
+            <button class="brands-slider-btn prev" aria-label="Precedente"><i class="fas fa-chevron-left"></i></button>
+            <div class="brands-carousel" id="brandsCarousel">
+                <img src="attached_assets/prodotti/CINQUANTA3/idqjRYyrd9_logos.svg" alt="Cinquanta3" class="brand-logo">
+                <img src="attached_assets/prodotti/EGOITALIANO/idae6XM_kA_logos.png" alt="Egoitaliano" class="brand-logo">
+                <img src="attached_assets/prodotti/VENETA CUCINE/id0ndcNY_J_1750753903956.jpeg" alt="Veneta Cucine" class="brand-logo">
+                <img src="attached_assets/prodotti/CATTELAN/idn5BFcQ5P_1750753919795.jpeg" alt="Cattelan" class="brand-logo">
+                <img src="attached_assets/prodotti/NOVAMOBILI/idVzTltcdc_1750753949777.png" alt="Novamobili" class="brand-logo">
+                <img src="attached_assets/prodotti/TARGET/idkEz9_KPi_logos.jpeg" alt="Target" class="brand-logo">
+                <img src="attached_assets/prodotti/BATTISTELLA/idBHD2pYk-_logos.jpeg" alt="Battistella" class="brand-logo">
+            </div>
+            <button class="brands-slider-btn next" aria-label="Successivo"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
-
-    <!-- Quick Overview Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Benvenuti da Muzi Design</h2>
-                <p class="section-subtitle">Oltre 60 anni di eccellenza nell'arredamento di qualità</p>
-            </div>
-            <div class="quick-overview">
-                <div class="overview-grid">
-                    <div class="overview-card fade-in">
-                        <div class="overview-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>Le Nostre Categorie</h3>
-                        <p>Esplora le nostre soluzioni per ogni ambiente della tua casa</p>
-                        <a href="categorie.html" class="btn btn-outline">Scopri</a>
-                    </div>
-                    <div class="overview-card fade-in">
-                        <div class="overview-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>Chi Siamo</h3>
-                        <p>La nostra storia di famiglia e passione per l'arredamento</p>
-                        <a href="chi-siamo.html" class="btn btn-outline">Scopri</a>
-                    </div>
-                    <div class="overview-card fade-in">
-                        <div class="overview-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3>I Nostri Prodotti</h3>
-                        <p>Scopri la nostra selezione di arredi di alta qualità</p>
-                        <a href="prodotti.html" class="btn btn-outline">Scopri</a>
-                    </div>
-                    <div class="overview-card fade-in">
-                        <div class="overview-icon">
-                            <i class="fas fa-percent"></i>
-                        </div>
-                        <h3>Promozioni</h3>
-                        <p>Approfitta delle nostre offerte speciali</p>
-                        <a href="promozioni.html" class="btn btn-outline">Scopri</a>
-                    </div>
-                    <div class="overview-card fade-in">
-                        <div class="overview-icon">
-                            <i class="fas fa-images"></i>
-                        </div>
-                        <h3>Gallery</h3>
-                        <p>Lasciati ispirare dalle nostre realizzazioni</p>
-                        <a href="gallery.html" class="btn btn-outline">Scopri</a>
-                    </div>
-                    <div class="overview-card fade-in">
-                        <div class="overview-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3>Contatti</h3>
-                        <p>Vieni a trovarci nel nostro showroom</p>
-                        <a href="contatti.html" class="btn btn-outline">Scopri</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Assistant Section -->
-    <section class="section" style="background-color: var(--primary); color: white;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" style="color: white;">Assistente AI sempre a tua disposizione</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Hai domande sui nostri prodotti? Il nostro assistente intelligente è qui per aiutarti 24/7</p>
-            </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <div style="background: rgba(255,255,255,0.1); padding: 40px; border-radius: var(--radius-lg); max-width: 600px; margin: 0 auto;">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">
-                        <i class="fas fa-robot" style="color: var(--secondary);"></i>
-                    </div>
-                    <h3 style="margin-bottom: 15px;">Chiedimi qualsiasi cosa!</h3>
-                    <p style="margin-bottom: 30px; opacity: 0.9;">Informazioni sui prodotti, prezzi, consulenze, tempi di consegna e molto altro</p>
-                    <a href="chatbot.html" class="btn" style="background: var(--secondary); border-color: var(--secondary);">
-                        <i class="fas fa-comments" style="margin-right: 10px;"></i>Inizia a chattare
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="section partners">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">I Nostri Partner</h2>
-                <p class="section-subtitle">Collaboriamo con i migliori brand del design italiano</p>
-            </div>
-            <div class="partners-grid">
-                <div class="partner-logo fade-in">
-                    <img src="https://www.gualtiericentromobili.it/wpcmg/wp-content/uploads/2016/07/veneta-cucine-1.png" alt="Veneta Cucine">
-                </div>
-                <div class="partner-logo fade-in">
-                    <img src="https://www.supermobiliroma.it/wp-content/uploads/2019/03/logo-novamobili.png" alt="Novamobili">
-                </div>
-                <div class="partner-logo fade-in">
-                    <img src="https://www.gualtiericentromobili.it/wpcmg/wp-content/uploads/2016/07/cattelan-italia-1024x424.png" alt="Cattelan Italia">
-                </div>
-                <div class="partner-logo fade-in">
-                    <img src="https://mullanoarredamenti.com/wp-content/uploads/ego-italiano-logo.png" alt="EgoITALIANO">
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -179,18 +1157,18 @@
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
                         <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
-                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Categorie</a></li>
                         <li><a href="prodotti.html"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
                         <li><a href="promozioni.html"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Categorie</h3>
                     <ul class="footer-links">
-                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Cucine</a></li>
-                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
-                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
-                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Camerette</a></li>
+                        <li><a href="prodotti-cucina.html"><i class="fas fa-chevron-right"></i> Cucine</a></li>
+                        <li><a href="prodotti-zonagiorno.html"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
+                        <li><a href="prodotti-zonanotte.html"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
+                        <li><a href="prodotti-camerette.html"><i class="fas fa-chevron-right"></i> Camerette</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -212,12 +1190,189 @@
     <div class="back-to-top">
         <i class="fas fa-chevron-up"></i>
     </div>
-
-    <!-- Floating AI Chatbot Button -->
-    <a href="chatbot.html" class="floating-chatbot" title="Chatta con il nostro assistente AI">
-        <i class="fas fa-robot"></i>
-    </a>
-
+    
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Script universale per menu mobile -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestione menu moderno (.modern-mobile-toggle)
+        const modernToggle = document.querySelector('.modern-mobile-toggle');
+        const modernMenu = document.querySelector('.modern-mobile-menu');
+        if (modernToggle && modernMenu) {
+            // Aggiungi freccia se non presente
+            if (!modernMenu.querySelector('.close-mobile-menu')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-mobile-menu';
+                closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                modernMenu.insertBefore(closeBtn, modernMenu.firstChild);
+            }
+            modernToggle.addEventListener('click', function() {
+                modernMenu.classList.toggle('open');
+                document.body.classList.toggle('menu-open');
+            });
+            // Chiudi con freccia
+            const closeBtn = modernMenu.querySelector('.close-mobile-menu');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    modernMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                });
+            }
+            // Chiudi cliccando fuori
+            document.addEventListener('click', function(e) {
+                if (!modernMenu.contains(e.target) && !modernToggle.contains(e.target)) {
+                    modernMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+        // Gestione menu super (.super-mobile-toggle)
+        const superToggle = document.querySelector('.super-mobile-toggle');
+        const superMenu = document.querySelector('.super-mobile-menu');
+        if (superToggle && superMenu) {
+            if (!superMenu.querySelector('.close-mobile-menu')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-mobile-menu';
+                closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                superMenu.insertBefore(closeBtn, superMenu.firstChild);
+            }
+            superToggle.addEventListener('click', function() {
+                superMenu.classList.toggle('open');
+                document.body.classList.toggle('menu-open');
+            });
+            const closeBtn = superMenu.querySelector('.close-mobile-menu');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    superMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                });
+            }
+            document.addEventListener('click', function(e) {
+                if (!superMenu.contains(e.target) && !superToggle.contains(e.target)) {
+                    superMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+        // Gestione menu vecchio (.mobile-toggle)
+        const oldToggle = document.querySelector('.mobile-toggle');
+        const oldMenu = document.querySelector('.nav-links');
+        if (oldToggle && oldMenu) {
+            oldToggle.addEventListener('click', function() {
+                oldMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!oldMenu.contains(e.target) && !oldToggle.contains(e.target)) {
+                    oldMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+    });
+    </script>
+    
+    <!-- Script per lo slider delle recensioni -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestione slider recensioni
+            const testimonialsSlider = document.getElementById('testimonialsSlider');
+            const testimonialsDots = document.getElementById('testimonialsDots');
+            const prevBtn = document.querySelector('.testimonials-arrow.left');
+            const nextBtn = document.querySelector('.testimonials-arrow.right');
+            
+            if (testimonialsSlider && testimonialsDots) {
+                const slides = testimonialsSlider.querySelectorAll('.testimonial-slide');
+                let currentSlide = 0;
+                
+                // Crea i dots
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'testimonials-dot';
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    testimonialsDots.appendChild(dot);
+                });
+                
+                const dots = testimonialsDots.querySelectorAll('.testimonials-dot');
+                
+                function showSlide(index) {
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    slides[index].classList.add('active');
+                    dots[index].classList.add('active');
+                    currentSlide = index;
+                }
+                
+                function nextSlide() {
+                    const next = (currentSlide + 1) % slides.length;
+                    showSlide(next);
+                }
+                
+                function prevSlide() {
+                    const prev = (currentSlide - 1 + slides.length) % slides.length;
+                    showSlide(prev);
+                }
+                
+                function goToSlide(index) {
+                    showSlide(index);
+                }
+                
+                // Event listeners per i pulsanti
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', nextSlide);
+                }
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', prevSlide);
+                }
+                
+                // Auto-play ogni 5 secondi
+                setInterval(nextSlide, 5000);
+                
+                // Inizializza il primo slide
+                showSlide(0);
+            }
+            
+            // Gestione carousel brand
+            const brandsCarousel = document.getElementById('brandsCarousel');
+            const brandsPrevBtn = document.querySelector('.brands-slider-btn.prev');
+            const brandsNextBtn = document.querySelector('.brands-slider-btn.next');
+            
+            if (brandsCarousel && brandsPrevBtn && brandsNextBtn) {
+                const scrollAmount = 300;
+                
+                brandsNextBtn.addEventListener('click', () => {
+                    brandsCarousel.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                brandsPrevBtn.addEventListener('click', () => {
+                    brandsCarousel.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <!-- Inizializzazione AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>

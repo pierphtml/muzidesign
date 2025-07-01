@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom Design Contemporaneo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a4c;
+            --secondary: #c19a6b;
+            --gray: #6c757d;
+            --light: #f8f5f2;
+            --radius: 18px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 32px rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--light);
+            color: var(--primary);
+            margin: 0;
+            padding: 0;
+        }
+        /* HERO */
+        .hero-full {
+            min-height: 100vh;
+            width: 100vw;
+            background: url('attached_assets/PRODOTTI/VENETA CUCINE/CUCINE/Sakura/pspl_sakura_c02.jpg') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26,58,76,0.48);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 18px 60px 18px;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            letter-spacing: 1px;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 38px;
+            font-weight: 400;
+            color: #f8f5f2;
+        }
+        .hero-content .btn {
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            padding: 16px 38px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .hero-content .btn:hover {
+            background: #fff;
+            color: var(--primary);
+        }
+        /* INTRO */
+        .intro-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 56px 18px 32px 18px;
+            background: #fff;
+            gap: 32px;
+        }
+        .intro-content {
+            max-width: 540px;
+            text-align: center;
+        }
+        .intro-content p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        .intro-media {
+            width: 100%;
+            max-width: 480px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            aspect-ratio: 16/9;
+            background: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .intro-media img, .intro-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* SERVIZI */
+        .services-section {
+            background: var(--light);
+            padding: 56px 0 32px 0;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 36px 24px 28px 24px;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 260px;
+        }
+        .service-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-6px) scale(1.03);
+        }
+        .service-icon {
+            font-size: 2.6rem;
+            color: var(--secondary);
+            margin-bottom: 18px;
+        }
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .service-desc {
+            color: var(--gray);
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        /* BRAND CAROUSEL */
+        .brands-section {
+            background: #fff;
+            padding: 90px 0 60px 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .brands-carousel-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .brands-carousel {
+            display: flex;
+            gap: 60px;
+            overflow-x: hidden;
+            padding: 20px 0 20px 0;
+            scroll-behavior: smooth;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            /* Nascondi scrollbar su tutti i browser */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .brands-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .brand-logo {
+            max-width: 420px;
+            max-height: 220px;
+            width: auto;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            background: #f6f6f6;
+            border-radius: 16px;
+            padding: 32px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+            object-fit: contain;
+        }
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.07);
+        }
+        .brands-slider-btn {
+            position: relative;
+            z-index: 2;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            width: 48px;
+            height: 48px;
+            font-size: 1.7rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .brands-slider-btn:hover {
+            background: var(--secondary);
+            color: #fff;
+        }
+        .brands-slider-btn.prev {
+            margin-right: 18px;
+        }
+        .brands-slider-btn.next {
+            margin-left: 18px;
+        }
+        .brands-section .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+        }
+        /* PROGETTI */
+        .projects-section {
+            background: var(--light);
+            padding: 56px 0 32px 0;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        .project-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            background: #eaeaea;
+            display: block;
+        }
+        .project-img:hover {
+            transform: scale(1.04);
+        }
+        /* CTA FINALE */
+        .cta-section {
+            background: linear-gradient(90deg, #1a3a4c 60%, #c19a6b 100%);
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 2.1rem;
+            margin-bottom: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+        .cta-section p {
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+        .cta-section .btn {
+            font-size: 1.1rem;
+            padding: 16px 38px;
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .cta-section .btn:hover {
+            background: #fff;
+            color: var(--primary);
+        }
+        /* FOOTER */
+        footer {
+            background: #1a3a4c;
+            color: #fff;
+            padding: 44px 0 18px 0;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto 24px auto;
+            width: 100%;
+        }
+        .footer-col {
+            text-align: left;
+            min-width: 220px;
+            flex: 1 1 220px;
+            max-width: 340px;
+            box-sizing: border-box;
+        }
+        .footer-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        .social-links {
+            margin-top: 14px;
+        }
+        .social-link {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-right: 12px;
+            transition: color 0.2s;
+        }
+        .social-link:hover {
+            color: var(--secondary);
+        }
+        .copyright {
+            text-align: center;
+            color: #bfc9d1;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 900px) {
+            .footer-grid {
+                gap: 18px;
+                padding: 0 8px;
+            }
+            .footer-col {
+                min-width: 180px;
+                max-width: 100vw;
+            }
+        }
+        @media (max-width: 700px) {
+            .footer-grid {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 24px;
+                padding: 0 4vw;
+            }
+            .footer-col {
+                min-width: 0;
+                max-width: 100vw;
+                text-align: center;
+                padding: 0 2vw;
+            }
+            .footer-links {
+                display: block;
+                margin: 0 auto;
+            }
+            .footer-links li {
+                white-space: normal;
+                font-size: 1rem;
+            }
+            .social-links {
+                justify-content: center;
+                gap: 14px;
+            }
+            .social-link {
+                font-size: 1.3rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .footer-grid {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 20px;
+                padding: 0 0 12px 0;
+                max-width: 100vw;
+            }
+            .footer-col {
+                text-align: center;
+                padding: 0 4px;
+                min-width: 0;
+                max-width: 100vw;
+            }
+            .footer-col h3 {
+                margin-bottom: 10px;
+                font-size: 1.05rem;
+            }
+            .footer-links {
+                padding: 0;
+                margin: 0 auto;
+                display: block;
+            }
+            .footer-links li {
+                margin-bottom: 6px;
+                white-space: normal;
+            }
+            .footer-links a {
+                font-size: 0.98rem;
+                word-break: break-word;
+            }
+            .social-links {
+                justify-content: center;
+                margin-bottom: 10px;
+                display: flex;
+                gap: 18px;
+            }
+            .social-link {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+            .copyright {
+                font-size: 0.9rem;
+                padding: 0 4px;
+                margin-top: 10px;
+            }
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .hero-content {
+                padding: 28px 7vw 28px 7vw;
+                max-width: 98vw;
+                background: #fff;
+                color: var(--primary);
+                border-radius: 18px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            }
+            .hero-content .btn {
+                margin-top: 10px;
+            }
+        }
+        .testimonials-section {
+            background: #fff;
+            padding: 56px 0 32px 0;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        .testimonial-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 32px 24px 24px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 220px;
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .testimonial-avatar {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 14px;
+        }
+        .testimonial-quote {
+            font-size: 1.08rem;
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        @media (max-width: 700px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .testimonial-card {
+                padding: 24px 10vw 18px 10vw;
+            }
+        }
+        .review-stars-section {
+            text-align: center;
+            margin: 18px 0 36px 0;
+        }
+        .review-stars {
+            color: #FFD700;
+            font-size: 2.1rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .review-link {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 1.08rem;
+            color: var(--primary);
+            background: #fff;
+            border: 1.5px solid var(--secondary);
+            border-radius: 22px;
+            padding: 10px 28px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .review-link:hover {
+            background: var(--secondary);
+            color: #fff;
+            border-color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO FULL SCREEN -->
+    <!-- HERO Section da index.html -->
+    <section class="hero" data-aos="fade-up">
+        <div class="hero-slider">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Oltre l'arredare, creiamo esperienze</h1>
+                <p>Dal 1957, Muzi Design unisce tradizione artigianale e design contemporaneo per trasformare le vostre case in spazi unici e personali.</p>
+                <div class="hero-btns">
+                    <a href="prodotti.html" class="btn">Scopri la Collezione</a>
+                    <a href="contatti.html" class="btn btn-outline">Prenota Consulenza</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FINE HERO -->
+    <!-- INTRO -->
+    <section class="intro-section">
+        <div class="intro-content">
+            <p>Nel nostro showroom di arredamento contemporaneo, ogni progetto nasce dall'ascolto e dalla passione per il design. Offriamo un'esperienza immersiva, fatta di consulenza, materiali di qualità e soluzioni su misura. Il nostro obiettivo è creare ambienti che rispecchino la tua personalità e migliorino la qualità della vita, con attenzione ai dettagli e alle ultime tendenze.</p>
+        </div>
+        <div class="intro-media">
+            <img src="attached_assets/PRODOTTI/VENETA CUCINE/CUCINE/Like/sa_like_g01.jpg" alt="Showroom" loading="lazy">
+            <!-- Per un video immersivo, sostituisci la riga sopra con:
+            <video src="video/showroom.mp4" autoplay muted loop playsinline></video> -->
+        </div>
+    </section>
+    <!-- SERVIZI -->
+    <section class="services-section" data-aos="fade-up">
+        <div class="section-header">
+            <h2 class="section-title">I nostri servizi</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
+                <div class="service-title">Progettazione su misura</div>
+                <div class="service-desc">Soluzioni d'arredo personalizzate, studiate sulle tue esigenze e sullo spazio disponibile.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-vr-cardboard"></i></div>
+                <div class="service-title">Render fotorealistici</div>
+                <div class="service-desc">Anteprime digitali realistiche per vedere in anticipo il risultato finale del tuo ambiente.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+                <div class="service-title">Consulenza personalizzata</div>
+                <div class="service-desc">Un team di esperti ti accompagna in ogni fase, dalla scelta dei materiali alla realizzazione.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-couch"></i></div>
+                <div class="service-title">Montaggio professionale</div>
+                <div class="service-desc">Installazione a regola d'arte, puntuale e precisa, per un risultato perfetto e senza pensieri.</div>
+            </div>
+        </div>
+    </section>
+    <!-- BRAND CAROUSEL -->
+    <section class="brands-section">
+        <div class="section-header">
+            <h2 class="section-title">I nostri brand</h2>
+            <p class="section-subtitle">Collaboriamo con i migliori marchi del design contemporaneo</p>
+        </div>
+        <div class="brands-carousel-wrapper">
+            <button class="brands-slider-btn prev" aria-label="Precedente"><i class="fas fa-chevron-left"></i></button>
+            <div class="brands-carousel" id="brandsCarousel">
+                <img src="attached_assets/prodotti/CINQUANTA3/idqjRYyrd9_logos.svg" alt="Cinquanta3" class="brand-logo">
+                <img src="attached_assets/prodotti/EGOITALIANO/idae6XM_kA_logos.png" alt="Egoitaliano" class="brand-logo">
+                <img src="attached_assets/prodotti/VENETA CUCINE/id0ndcNY_J_1750753903956.jpeg" alt="Veneta Cucine" class="brand-logo">
+                <img src="attached_assets/prodotti/CATTELAN/idn5BFcQ5P_1750753919795.jpeg" alt="Cattelan" class="brand-logo">
+                <img src="attached_assets/prodotti/NOVAMOBILI/idVzTltcdc_1750753949777.png" alt="Novamobili" class="brand-logo">
+                <img src="attached_assets/prodotti/TARGET/idkEz9_KPi_logos.jpeg" alt="Target" class="brand-logo">
+                <img src="attached_assets/prodotti/BATTISTELLA/idBHD2pYk-_logos.jpeg" alt="Battistella" class="brand-logo">
+            </div>
+            <button class="brands-slider-btn next" aria-label="Successivo"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+    <script>
+        // Slider brand
+        const brandsCarousel = document.getElementById('brandsCarousel');
+        document.querySelector('.brands-slider-btn.prev').onclick = () => {
+            brandsCarousel.scrollBy({ left: -320, behavior: 'smooth' });
+        };
+        document.querySelector('.brands-slider-btn.next').onclick = () => {
+            brandsCarousel.scrollBy({ left: 320, behavior: 'smooth' });
+        };
+    </script>
+    <!-- DICONO DI NOI -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <h2 class="section-title">Dicono di noi</h2>
+            <p class="section-subtitle">Le esperienze dei nostri clienti</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-avatar"><i class="fas fa-user-circle"></i></div>
+                <div class="testimonial-quote">“Professionalità, cortesia e attenzione ai dettagli. Il mio soggiorno è diventato il cuore della casa!”</div>
+                <div class="testimonial-author">— Laura B.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar"><i class="fas fa-user-circle"></i></div>
+                <div class="testimonial-quote">“Consulenza su misura e materiali di altissima qualità. Consigliatissimi!”</div>
+                <div class="testimonial-author">— Marco R.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar"><i class="fas fa-user-circle"></i></div>
+                <div class="testimonial-quote">“Esperienza eccellente dall'inizio alla fine. La cucina dei miei sogni!”</div>
+                <div class="testimonial-author">— Giulia S.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar"><i class="fas fa-user-circle"></i></div>
+                <div class="testimonial-quote">“Montaggio preciso e puntuale, staff sempre disponibile. Tornerò sicuramente!”</div>
+                <div class="testimonial-author">— Andrea D.</div>
+            </div>
+        </div>
+    </section>
+    <!-- Stelle e link recensione Google -->
+    <div class="review-stars-section">
+        <div class="review-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <a href="https://g.co/kgs/sRtKuTp" class="review-link" target="_blank" rel="noopener">Lascia una recensione su Google</a>
+    </div>
+    <!-- CTA FINALE -->
+    <section class="cta-section">
+        <h2>Vieni a trovarci nel nostro showroom</h2>
+        <p>Scopri dal vivo materiali, soluzioni e lasciati guidare dai nostri esperti. Prenota una consulenza gratuita o fissa un appuntamento personalizzato.</p>
+        <a href="#" class="btn">Prenota ora</a>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Muzi Design</h3>
+                    <p>Arredamento di qualità dal 1957. Uniamo tradizione artigianale e design contemporaneo per creare spazi unici e personali.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Utili</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Categorie</a></li>
+                        <li><a href="prodotti.html"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
+                        <li><a href="promozioni.html"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categorie</h3>
+                    <ul class="footer-links">
+                        <li><a href="cucine-moderne.html"><i class="fas fa-chevron-right"></i> Cucine Moderne</a></li>
+                        <li><a href="cucine-contemporanee.html"><i class="fas fa-chevron-right"></i> Cucine Contemporanee</a></li>
+                        <li><a href="cucine-classiche.html"><i class="fas fa-chevron-right"></i> Cucine Classiche</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Camerette</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><a href="contatti.html"><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</a></li>
+                        <li><a href="tel:800202530"><i class="fas fa-phone-alt"></i> 800 202 530</a></li>
+                        <li><a href="mailto:info@muzidesign.it"><i class="fas fa-envelope"></i> info@muzidesign.it</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Muzi Design. Tutti i diritti riservati. P.IVA IT15934181007</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

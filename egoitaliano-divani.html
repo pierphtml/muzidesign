@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divani Egoitaliano - Muzi Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero {
+            background: none;
+            color: var(--primary);
+            text-align: center;
+            height: 400px;
+            min-height: 400px;
+            max-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-decor {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-decor .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.28);
+        }
+        .hero-decor .circle1 {
+            width: 240px; height: 240px;
+            left: 4%; top: 10%;
+        }
+        .hero-decor .circle2 {
+            width: 110px; height: 110px;
+            right: 10%; top: 38%;
+        }
+        .hero-decor .circle3 {
+            width: 80px; height: 80px;
+            left: 22%; bottom: 12%;
+        }
+        .hero-decor .line {
+            position: absolute;
+            width: 140px; height: 6px;
+            background: rgba(52, 152, 219, 0.32);
+            border-radius: 3px;
+        }
+        .hero-decor .line1 {
+            left: 32%; top: 14%; transform: rotate(-18deg);
+        }
+        .hero-decor .line2 {
+            right: 16%; bottom: 18%; transform: rotate(12deg);
+        }
+        .hero-box {
+            background: #1a3a4c;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            padding: 38px 32px 28px 32px;
+            max-width: 520px;
+            margin: 0 auto;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-box h1,
+        .hero-box p {
+            color: #fff;
+        }
+        .hero-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 18px;
+        }
+        .hero-box p {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                height: 220px;
+                min-height: 220px;
+                max-height: 220px;
+            }
+            .hero-box {
+                padding: 22px 10px 16px 10px;
+            }
+            .hero-box h1 {
+                font-size: 2rem;
+            }
+            .hero-box p {
+                font-size: 1rem;
+            }
+        }
+        .products {
+            padding: 60px 0;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        .brand-header {
+            background: #f8f9fa;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .brand-logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .brand-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="modern-header fade-in">
+        <div class="container">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
+                </a>
+                <ul class="modern-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una visita</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-decor">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+        </div>
+        <div class="hero-box">
+            <h1>Egoitaliano</h1>
+            <p>Design italiano contemporaneo, comfort artigianale e qualità made in Italy.</p>
+        </div>
+    </section>
+    <!-- Brand Header -->
+    <section class="brand-header">
+        <div class="container">
+            <img src="attached_assets/PRODOTTI/EGOITALIANO/idae6XM_kA_logos.png" alt="Egoitaliano" class="brand-logo">
+            <p class="brand-description">
+                Design italiano contemporaneo, comfort artigianale e qualità made in Italy. Collezione completa per ogni esigenza di arredamento.
+            </p>
+        </div>
+    </section>
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="products-grid">
+                <!-- Astoria -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Astoria">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Astoria</h3>
+                        <p class="product-description">Design elegante e comfort superiore per il tuo salotto.</p>
+                        <a href="divani/astoria.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Babouche -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Babouche">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Babouche</h3>
+                        <p class="product-description">Stile orientale incontra design italiano contemporaneo.</p>
+                        <a href="divani/babouche.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Bebop -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Bebop">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bebop</h3>
+                        <p class="product-description">Ritmo e movimento nel design del comfort.</p>
+                        <a href="divani/bebop.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Beverly -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Beverly">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Beverly</h3>
+                        <p class="product-description">Eleganza hollywoodiana per ambienti raffinati.</p>
+                        <a href="divani/beverly.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Bliss -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Bliss">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bliss</h3>
+                        <p class="product-description">Felicità e serenità nel comfort quotidiano.</p>
+                        <a href="divani/bliss.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Candice -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Candice">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Candice</h3>
+                        <p class="product-description">Dolcezza e grazia nel design contemporaneo.</p>
+                        <a href="divani/candice.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Caveoso -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Caveoso">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Caveoso</h3>
+                        <p class="product-description">Forme organiche e comfort naturale.</p>
+                        <a href="divani/caveoso.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Dusk -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Dusk">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Dusk</h3>
+                        <p class="product-description">Atmosfera crepuscolare e relax serale.</p>
+                        <a href="divani/dusk.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Eros -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Eros">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Eros</h3>
+                        <p class="product-description">Passione e seduzione nel design.</p>
+                        <a href="divani/eros.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Feng -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Feng">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Feng</h3>
+                        <p class="product-description">Armonia e equilibrio secondo la filosofia orientale.</p>
+                        <a href="divani/feng.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Funny -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Funny">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Funny</h3>
+                        <p class="product-description">Allegria e divertimento nel comfort.</p>
+                        <a href="divani/funny.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Gaia -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Gaia">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gaia</h3>
+                        <p class="product-description">Connessione con la natura e la terra.</p>
+                        <a href="divani/gaia.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Giada -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Giada">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Giada</h3>
+                        <p class="product-description">Purezza e preziosità come la pietra omonima.</p>
+                        <a href="divani/giada.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Gloria -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Gloria">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gloria</h3>
+                        <p class="product-description">Splendore e magnificenza nel design.</p>
+                        <a href="divani/gloria.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Ludo -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Ludo">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ludo</h3>
+                        <p class="product-description">Gioco e divertimento per la famiglia.</p>
+                        <a href="divani/ludo.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Lego -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Lego">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Lego</h3>
+                        <p class="product-description">Modularità e versatilità nel design.</p>
+                        <a href="divani/lego.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Looming -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Looming">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Looming</h3>
+                        <p class="product-description">Presenza imponente e design distintivo.</p>
+                        <a href="divani/looming.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Mavie -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Mavie">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mavie</h3>
+                        <p class="product-description">La mia vita, il mio comfort personalizzato.</p>
+                        <a href="divani/mavie.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Martine -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Martine">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Martine</h3>
+                        <p class="product-description">Eleganza francese e raffinatezza.</p>
+                        <a href="divani/martine.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Masù -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Masù">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Masù</h3>
+                        <p class="product-description">Design giapponese e minimalismo zen.</p>
+                        <a href="divani/masu.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Momo -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Momo">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Momo</h3>
+                        <p class="product-description">Semplicità e purezza nel design.</p>
+                        <a href="divani/momo.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Namy -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Namy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Namy</h3>
+                        <p class="product-description">Personalità e carattere distintivo.</p>
+                        <a href="divani/namy.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Nefele -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Nefele">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Nefele</h3>
+                        <p class="product-description">Leggerezza e morbidezza delle nuvole.</p>
+                        <a href="divani/nefele.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Nora -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Nora">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Nora</h3>
+                        <p class="product-description">Luce e luminosità nel design.</p>
+                        <a href="divani/nora.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Oliver -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Oliver">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Oliver</h3>
+                        <p class="product-description">Classicità britannica e raffinatezza.</p>
+                        <a href="divani/oliver.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Pacha -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Pacha">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pacha</h3>
+                        <p class="product-description">Forme organiche e comfort naturale.</p>
+                        <a href="divani/pacha.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Piper -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Piper">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Piper</h3>
+                        <p class="product-description">Musicalità e ritmo nel design.</p>
+                        <a href="divani/piper.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Plaza -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Plaza">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Plaza</h3>
+                        <p class="product-description">Spazio urbano e design contemporaneo.</p>
+                        <a href="divani/plaza.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Pongo -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Pongo">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pongo</h3>
+                        <p class="product-description">Flessibilità e adattabilità nel design.</p>
+                        <a href="divani/pongo.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Sauvanne -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Sauvanne">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sauvanne</h3>
+                        <p class="product-description">Eleganza francese e raffinatezza.</p>
+                        <a href="divani/sauvanne.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Selfy -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Selfy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Selfy</h3>
+                        <p class="product-description">Design contemporaneo per l'era digitale.</p>
+                        <a href="divani/selfy.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Shai -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Shai">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Shai</h3>
+                        <p class="product-description">Regalità e maestosità nel design.</p>
+                        <a href="divani/shai.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Sofia -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Sofia">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sofia</h3>
+                        <p class="product-description">Saggezza e intelligenza nel design.</p>
+                        <a href="divani/sofia.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Tate -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Tate">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Tate</h3>
+                        <p class="product-description">Arte e cultura nel design contemporaneo.</p>
+                        <a href="divani/tate.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Vera -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Vera">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Vera</h3>
+                        <p class="product-description">Verità e autenticità nel design.</p>
+                        <a href="divani/vera.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Viola -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Viola">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Viola</h3>
+                        <p class="product-description">Musicalità e armonia nel design.</p>
+                        <a href="divani/viola.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Zara -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Zara">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Zara</h3>
+                        <p class="product-description">Stile moderno e design contemporaneo.</p>
+                        <a href="divani/zara.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Zazou -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Zazou">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Zazou</h3>
+                        <p class="product-description">Allegria e vivacità nel design.</p>
+                        <a href="divani/zazou.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Zoe -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Zoe">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Zoe</h3>
+                        <p class="product-description">Vita e vitalità nel design contemporaneo.</p>
+                        <a href="divani/zoe.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+<!-- Zoomy -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="attached_assets/images.jpeg" alt="Zoomy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Zoomy</h3>
+                        <p class="product-description">Velocità e dinamismo nel design.</p>
+                        <a href="divani/zoomy.html" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Muzi Design</h3>
+                    <p>Arredamento di qualità dal 1957. Uniamo tradizione artigianale e design contemporaneo per creare spazi unici e personali.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Utili</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="brand-divani.html"><i class="fas fa-chevron-right"></i> Brand Divani</a></li>
+                        <li><a href="prodotti.html"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
+                        <li><a href="promozioni.html"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Brand Divani</h3>
+                    <ul class="footer-links">
+                        <li><a href="egoitaliano-divani.html"><i class="fas fa-chevron-right"></i> Egoitaliano</a></li>
+                        <li><a href="novamobili-divani.html"><i class="fas fa-chevron-right"></i> Novamobili</a></li>
+                        <li><a href="cattelan-divani.html"><i class="fas fa-chevron-right"></i> Cattelan</a></li>
+                        <li><a href="cubo-rosso-divani.html"><i class="fas fa-chevron-right"></i> Cubo Rosso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><a href="contatti.html"><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</a></li>
+                        <li><a href="tel:800202530"><i class="fas fa-phone-alt"></i> 800 202 530</a></li>
+                        <li><a href="mailto:info@muzidesign.it"><i class="fas fa-envelope"></i> info@muzidesign.it</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Muzi Design. Tutti i diritti riservati. P.IVA IT15934181007</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- Floating AI Chatbot Button -->
+    <button class="floating-chatbot">
+        <i class="fas fa-robot"></i>
+    </button>
+    <script src="script.js"></script>
+    <script>
+        // Script universale per menu mobile moderno e super
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modern
+            var modernToggle = document.querySelector('.modern-mobile-toggle');
+            var modernMenu = document.querySelector('.modern-mobile-menu');
+            var modernClose = document.querySelector('.modern-mobile-menu .close-mobile-menu');
+            if (modernToggle && modernMenu) {
+                if (modernClose) {
+                    modernClose.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                }
+                modernToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                    var icon = this.querySelector('i');
+                    if (icon) {
+                        if (modernMenu.classList.contains('open')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+                document.querySelectorAll('.modern-mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+            // Super
+            var superToggle = document.querySelector('.super-mobile-toggle');
+            var superMenu = document.querySelector('.super-mobile-menu');
+            var superClose = document.querySelector('.super-mobile-menu .close-mobile-menu');
+            if (superToggle && superMenu) {
+                if (superClose) {
+                    superClose.addEventListener('click', function() {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    superMenu.classList.toggle('open');
+                    superToggle.classList.toggle('open');
+                    if (superMenu.classList.contains('open')) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    var bars = superToggle.querySelector('.fa-bars');
+                    var times = superToggle.querySelector('.fa-times');
+                    if (superToggle.classList.contains('open')) {
+                        if (bars) bars.style.opacity = 0;
+                        if (times) times.style.opacity = 1;
+                    } else {
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+                var closeBtn = document.querySelector('.super-mobile-menu-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superMenu.addEventListener('click', function(e) {
+                    if (e.target === superMenu) {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

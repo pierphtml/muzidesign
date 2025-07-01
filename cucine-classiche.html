@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cucine Classiche | Muzi Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero {
+            background: none;
+            color: var(--primary);
+            text-align: center;
+            height: 400px;
+            min-height: 400px;
+            max-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-decor {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-decor .ellipse {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(222, 202, 172, 0.22);
+        }
+        .hero-decor .ellipse1 {
+            width: 220px; height: 120px;
+            left: 6%; top: 18%;
+            transform: rotate(-10deg);
+        }
+        .hero-decor .ellipse2 {
+            width: 90px; height: 90px;
+            right: 14%; top: 36%;
+            background: rgba(222, 202, 172, 0.13);
+        }
+        .hero-decor .ellipse3 {
+            width: 60px; height: 100px;
+            left: 28%; bottom: 10%;
+            background: rgba(222, 202, 172, 0.18);
+        }
+        .hero-decor .line {
+            position: absolute;
+            width: 110px; height: 5px;
+            background: rgba(222, 202, 172, 0.18);
+            border-radius: 3px;
+        }
+        .hero-decor .line1 {
+            left: 38%; top: 12%; transform: rotate(-8deg);
+        }
+        .hero-decor .line2 {
+            right: 20%; bottom: 18%; transform: rotate(6deg);
+        }
+        .hero-box {
+            background: #1a3a4c;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            padding: 38px 32px 28px 32px;
+            max-width: 520px;
+            margin: 0 auto;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-box h1,
+        .hero-box p {
+            color: #fff;
+        }
+        .hero-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 18px;
+        }
+        .hero-box p {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                height: 220px;
+                min-height: 220px;
+                max-height: 220px;
+            }
+            .hero-box {
+                padding: 22px 10px 16px 10px;
+            }
+            .hero-box h1 {
+                font-size: 2rem;
+            }
+            .hero-box p {
+                font-size: 1rem;
+            }
+        }
+        .products {
+            padding: 60px 0;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .product-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .product-title {
+            box-sizing: border-box;
+            color: rgb(26, 58, 76);
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            height: 28px;
+            line-height: 28.8px;
+            margin-block-end: 10px;
+            margin-block-start: 0px;
+            margin-bottom: 10px;
+            margin-inline-end: 0px;
+            margin-inline-start: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            text-align: center;
+            width: 392px;
+        }
+        .product-description {
+            box-sizing: border-box;
+            color: rgb(108, 117, 125);
+            display: block;
+            font-family: Lato, Arial, sans-serif;
+            height: 25px;
+            line-height: 25.6px;
+            margin-block-end: 32px;
+            margin-block-start: 0px;
+            margin-bottom: 32px;
+            margin-inline-end: 0px;
+            margin-inline-start: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            text-align: center;
+            width: 392px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            margin-top: 0;
+        }
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="modern-header fade-in">
+        <div class="container">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
+                </a>
+                <ul class="modern-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una visita</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-decor">
+            <div class="ellipse ellipse1"></div>
+            <div class="ellipse ellipse2"></div>
+            <div class="ellipse ellipse3"></div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+        </div>
+        <div class="hero-box">
+                <h1>Cucine Classiche</h1>
+                <p>Scopri la nostra collezione di cucine classiche, dove eleganza e tradizione si uniscono per creare ambienti senza tempo.</p>
+        </div>
+    </section>
+    <!-- Products Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="products-grid">
+                <!-- Mirabeau -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://www.venetacucine.com/cache/media/2023/06/veneta_cucine_-_mirabeau_chantilly_13660.jpg/295551c224e2b4abf80959d743b5b1a8.jpg" alt="Cucina Mirabeau">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mirabeau</h3>
+                        <p class="product-description" style="color: rgb(108, 117, 125);">Eleganza senza tempo, intarsi raffinati, materiali pregiati, fascino classico.</p>
+                        <a href="mirabeau.html" class="btn btn-outline">Scopri di più</a>
+                    </div>
+                </div>
+                <!-- Pavese -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://www.venetacucine.com/cache/media/2023/06/veneta_cucine_-_pavese_noce_chiaro_13663.jpg/7f635e7d7991eecbd4007daa3367c118.jpg" alt="Cucina Pavese">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pavese</h3>
+                        <p class="product-description" style="color: rgb(108, 117, 125);">Legno massello, anta a telaio, tradizione e funzionalità contemporanea.</p>
+                        <a href="pavese.html" class="btn btn-outline">Scopri di più</a>
+                    </div>
+                </div>
+                <!-- Memory -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://www.venetacucine.com/cache/media/2024/12/memory_1000x560_24327.jpg/06021138733b85f70343fed9e1278831.jpg" alt="Cucina Memory">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Memory</h3>
+                        <p class="product-description" style="color: rgb(108, 117, 125);">Stile shabby-chic, ante bugnate, atmosfera romantica, calda e accogliente.</p>
+                        <a href="memory.html" class="btn btn-outline">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Muzi Design</h3>
+                    <p>Arredamento di qualità dal 1957. Uniamo tradizione artigianale e design contemporaneo per creare spazi unici e personali.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Utili</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Categorie</a></li>
+                        <li><a href="prodotti.html"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
+                        <li><a href="promozioni.html"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categorie</h3>
+                    <ul class="footer-links">
+                        <li><a href="cucine-moderne.html"><i class="fas fa-chevron-right"></i> Cucine Moderne</a></li>
+                        <li><a href="cucine-contemporanee.html"><i class="fas fa-chevron-right"></i> Cucine Contemporanee</a></li>
+                        <li><a href="cucine-classiche.html"><i class="fas fa-chevron-right"></i> Cucine Classiche</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Camerette</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><a href="contatti.html"><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</a></li>
+                        <li><a href="tel:800202530"><i class="fas fa-phone-alt"></i> 800 202 530</a></li>
+                        <li><a href="mailto:info@muzidesign.it"><i class="fas fa-envelope"></i> info@muzidesign.it</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Muzi Design. Tutti i diritti riservati. P.IVA IT15934181007</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to top button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <!-- Floating AI Chatbot Button -->
+    <a href="chatbot.html" class="floating-chatbot" title="Chatta con il nostro assistente AI">
+        <i class="fas fa-robot"></i>
+    </a>
+    <script src="script.js"></script>
+    <script>
+        // Script universale per menu mobile moderno e super
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modern
+            var modernToggle = document.querySelector('.modern-mobile-toggle');
+            var modernMenu = document.querySelector('.modern-mobile-menu');
+            var modernClose = document.querySelector('.modern-mobile-menu .close-mobile-menu');
+            if (modernToggle && modernMenu) {
+                if (modernClose) {
+                    modernClose.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                }
+                modernToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                    var icon = this.querySelector('i');
+                    if (icon) {
+                        if (modernMenu.classList.contains('open')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+                document.querySelectorAll('.modern-mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+            // Super
+            var superToggle = document.querySelector('.super-mobile-toggle');
+            var superMenu = document.querySelector('.super-mobile-menu');
+            var superClose = document.querySelector('.super-mobile-menu .close-mobile-menu');
+            if (superToggle && superMenu) {
+                if (superClose) {
+                    superClose.addEventListener('click', function() {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    superMenu.classList.toggle('open');
+                    superToggle.classList.toggle('open');
+                    if (superMenu.classList.contains('open')) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    var bars = superToggle.querySelector('.fa-bars');
+                    var times = superToggle.querySelector('.fa-times');
+                    if (superToggle.classList.contains('open')) {
+                        if (bars) bars.style.opacity = 0;
+                        if (times) times.style.opacity = 1;
+                    } else {
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+                var closeBtn = document.querySelector('.super-mobile-menu-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superMenu.addEventListener('click', function(e) {
+                    if (e.target === superMenu) {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

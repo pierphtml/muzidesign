@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -20,31 +19,26 @@
             display: flex;
             flex-direction: column;
         }
-        
         .chatbot-header {
             background: linear-gradient(135deg, var(--primary) 0%, #2a4d63 100%);
             color: white;
             padding: 20px;
             text-align: center;
         }
-        
         .chat-messages {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
             background: #f8f9fa;
         }
-        
         .message {
             margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
         }
-        
         .message.user {
             justify-content: flex-end;
         }
-        
         .message-content {
             max-width: 70%;
             padding: 12px 16px;
@@ -52,20 +46,17 @@
             font-size: 14px;
             line-height: 1.4;
         }
-        
         .message.bot .message-content {
             background: white;
             color: var(--dark);
             border: 1px solid #e9ecef;
             margin-left: 10px;
         }
-        
         .message.user .message-content {
             background: var(--secondary);
             color: white;
             margin-right: 10px;
         }
-        
         .message-avatar {
             width: 35px;
             height: 35px;
@@ -76,28 +67,23 @@
             font-size: 16px;
             flex-shrink: 0;
         }
-        
         .message.bot .message-avatar {
             background: var(--primary);
             color: white;
         }
-        
         .message.user .message-avatar {
             background: var(--secondary);
             color: white;
         }
-        
         .chat-input {
             padding: 20px;
             border-top: 1px solid #e9ecef;
             background: white;
         }
-        
         .input-group {
             display: flex;
             gap: 10px;
         }
-        
         .chat-input input {
             flex: 1;
             padding: 12px 16px;
@@ -106,11 +92,9 @@
             font-size: 14px;
             outline: none;
         }
-        
         .chat-input input:focus {
             border-color: var(--secondary);
         }
-        
         .send-btn {
             width: 45px;
             height: 45px;
@@ -124,19 +108,16 @@
             justify-content: center;
             transition: var(--transition);
         }
-        
         .send-btn:hover {
             background: var(--primary);
             transform: scale(1.05);
         }
-        
         .quick-questions {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
         }
-        
         .quick-question {
             background: white;
             border: 1px solid var(--secondary);
@@ -147,12 +128,10 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        
         .quick-question:hover {
             background: var(--secondary);
             color: white;
         }
-        
         .typing-indicator {
             display: none;
             align-items: center;
@@ -161,12 +140,10 @@
             color: var(--gray);
             font-size: 13px;
         }
-        
         .typing-dots {
             display: flex;
             gap: 3px;
         }
-        
         .typing-dot {
             width: 6px;
             height: 6px;
@@ -174,21 +151,17 @@
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
-        
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        
         @keyframes typing {
             0%, 60%, 100% { transform: translateY(0); }
             30% { transform: translateY(-10px); }
         }
-        
         @media (max-width: 768px) {
             .chatbot-container {
                 margin: 20px;
                 height: calc(100vh - 40px);
             }
-            
             .message-content {
                 max-width: 85%;
             }
@@ -201,7 +174,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
                 </a>
                 <button class="mobile-toggle">
                     <i class="fas fa-bars"></i>
@@ -214,19 +187,16 @@
                     <li><a href="promozioni.html">Promozioni</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contatti.html">Contatti</a></li>
-                    <li><a href="chatbot.html">Assistente AI</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <div class="container">
         <div class="chatbot-container">
             <div class="chatbot-header">
                 <h2><i class="fas fa-robot"></i> Assistente AI Muzi Design</h2>
                 <p>Sono qui per aiutarti! Chiedimi tutto sui nostri prodotti e servizi</p>
             </div>
-            
             <div class="chat-messages" id="chatMessages">
                 <div class="message bot">
                     <div class="message-avatar">
@@ -236,7 +206,6 @@
                         Ciao! Sono l'assistente virtuale di Muzi Design. Sono qui per aiutarti con qualsiasi domanda sui nostri prodotti, servizi o per guidarti nella scelta dell'arredamento perfetto per la tua casa. Come posso aiutarti oggi?
                     </div>
                 </div>
-                
                 <div class="quick-questions">
                     <div class="quick-question" onclick="sendQuickQuestion('Quali cucine avete disponibili?')">Cucine disponibili</div>
                     <div class="quick-question" onclick="sendQuickQuestion('Quanto costa una consulenza?')">Costi consulenza</div>
@@ -245,7 +214,6 @@
                     <div class="quick-question" onclick="sendQuickQuestion('Tempi di consegna?')">Tempi di consegna</div>
                 </div>
             </div>
-            
             <div class="typing-indicator" id="typingIndicator">
                 <span>L'assistente sta scrivendo</span>
                 <div class="typing-dots">
@@ -254,7 +222,6 @@
                     <div class="typing-dot"></div>
                 </div>
             </div>
-            
             <div class="chat-input">
                 <div class="input-group">
                     <input type="text" id="messageInput" placeholder="Scrivi la tua domanda..." onkeypress="handleKeyPress(event)">
@@ -265,8 +232,117 @@
             </div>
         </div>
     </div>
-
     <script src="script.js"></script>
+    <script>
+        // Script universale per menu mobile moderno e super
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modern
+            var modernToggle = document.querySelector('.modern-mobile-toggle');
+            var modernMenu = document.querySelector('.modern-mobile-menu');
+            var modernClose = document.querySelector('.modern-mobile-menu .close-mobile-menu');
+            if (modernToggle && modernMenu) {
+                if (modernClose) {
+                    modernClose.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                }
+                modernToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                    var icon = this.querySelector('i');
+                    if (icon) {
+                        if (modernMenu.classList.contains('open')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+                document.querySelectorAll('.modern-mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+            // Super
+            var superToggle = document.querySelector('.super-mobile-toggle');
+            var superMenu = document.querySelector('.super-mobile-menu');
+            var superClose = document.querySelector('.super-mobile-menu .close-mobile-menu');
+            if (superToggle && superMenu) {
+                if (superClose) {
+                    superClose.addEventListener('click', function() {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    superMenu.classList.toggle('open');
+                    superToggle.classList.toggle('open');
+                    if (superMenu.classList.contains('open')) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    var bars = superToggle.querySelector('.fa-bars');
+                    var times = superToggle.querySelector('.fa-times');
+                    if (superToggle.classList.contains('open')) {
+                        if (bars) bars.style.opacity = 0;
+                        if (times) times.style.opacity = 1;
+                    } else {
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+                var closeBtn = document.querySelector('.super-mobile-menu-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superMenu.addEventListener('click', function(e) {
+                    if (e.target === superMenu) {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+            }
+        });
+    </script>
     <script>
         // Database delle risposte AI
         const responses = {
@@ -307,49 +383,39 @@
                 answer: 'Offriamo diverse soluzioni di finanziamento:\n\n💳 **Rate personalizzate** - Da 6 a 84 mesi\n💳 **Tasso agevolato** - Condizioni vantaggiose\n💳 **Anticipo flessibile** - Anche senza anticipo\n💳 **Approvazione rapida** - Risposta in 24h\n\nContattaci per una valutazione gratuita e personalizzata!'
             }
         };
-
         function findBestResponse(message) {
             const normalizedMessage = message.toLowerCase();
             let bestMatch = null;
             let maxMatches = 0;
-
             for (const category in responses) {
                 const response = responses[category];
                 let matches = 0;
-                
                 response.keywords.forEach(keyword => {
                     if (normalizedMessage.includes(keyword)) {
                         matches++;
                     }
                 });
-
                 if (matches > maxMatches) {
                     maxMatches = matches;
                     bestMatch = response;
                 }
             }
-
             if (bestMatch) {
                 return bestMatch.answer;
             }
-
             // Risposta di default
             return 'Mi dispiace, non ho capito bene la tua domanda. Potresti riformularla? \n\nPosso aiutarti con informazioni su:\n• Cucine e prodotti\n• Prezzi e preventivi\n• Consulenze gratuite\n• Showroom e contatti\n• Garanzie e assistenza\n• Tempi di consegna\n\nOppure puoi contattare direttamente il nostro team al 800 202 530!';
         }
-
         function addMessage(content, isUser = false) {
             const messagesContainer = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
-            
             const avatar = document.createElement('div');
             avatar.className = 'message-avatar';
             avatar.innerHTML = isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
-            
             const messageContent = document.createElement('div');
             messageContent.className = 'message-content';
             messageContent.innerHTML = content.replace(/\n/g, '<br>');
-            
             if (isUser) {
                 messageDiv.appendChild(messageContent);
                 messageDiv.appendChild(avatar);
@@ -357,36 +423,28 @@
                 messageDiv.appendChild(avatar);
                 messageDiv.appendChild(messageContent);
             }
-            
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-
         function showTyping() {
             const typingIndicator = document.getElementById('typingIndicator');
             typingIndicator.style.display = 'flex';
             const messagesContainer = document.getElementById('chatMessages');
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-
         function hideTyping() {
             const typingIndicator = document.getElementById('typingIndicator');
             typingIndicator.style.display = 'none';
         }
-
         function sendMessage() {
             const input = document.getElementById('messageInput');
             const message = input.value.trim();
-            
             if (message === '') return;
-            
             // Aggiungi messaggio utente
             addMessage(message, true);
             input.value = '';
-            
             // Mostra indicatore di digitazione
             showTyping();
-            
             // Simula tempo di risposta
             setTimeout(() => {
                 hideTyping();
@@ -394,19 +452,16 @@
                 addMessage(response);
             }, 1000 + Math.random() * 2000);
         }
-
         function sendQuickQuestion(question) {
             const input = document.getElementById('messageInput');
             input.value = question;
             sendMessage();
         }
-
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
         }
-
         // Focus sull'input al caricamento
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('messageInput').focus();

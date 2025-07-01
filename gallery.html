@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,28 +10,38 @@
 </head>
 <body>
     <!-- Header & Navigation -->
-    <header>
+    <header class="modern-header fade-in">
         <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="./attached_assets/muzi-logo-2022-2_1749130649372.png" alt="Muzi Design">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
                 </a>
-                <button class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-links">
+                <ul class="modern-nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="categorie.html">Categorie</a></li>
                     <li><a href="chi-siamo.html">Chi Siamo</a></li>
                     <li><a href="prodotti.html">Prodotti</a></li>
                     <li><a href="promozioni.html">Promozioni</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contatti.html">Contatti</a></li>
                 </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una consulenza</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
         </div>
     </header>
-
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
@@ -40,7 +49,6 @@
             <p>Lasciati ispirare dalle nostre realizzazioni e scopri l'eleganza dei nostri prodotti</p>
         </div>
     </section>
-
     <!-- Gallery Section - Cucine -->
     <section class="section gallery">
         <div class="container">
@@ -49,37 +57,37 @@
                 <p class="section-subtitle">Il cuore della casa dove design e funzionalità si incontrano</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://www.venetacucine.com/cache/media/2021/05/oyster-bianca-veneta-cucine-be-personal-1000x560_6900.jpg/f5651754e98d5c2752f8f7cd3ec57080.jpg" alt="Cucina Veneta Oyster">
                     <div class="gallery-overlay">
                         <h3>Veneta Cucine Oyster</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://www.venetacucine.com/cache/media/2023/04/iconica_anteprima_01_13089.jpg/11553f147e7fa6806ef86f78ec163877.jpg" alt="Cucina Veneta Iconica">
                     <div class="gallery-overlay">
                         <h3>Veneta Cucine Iconica</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://www.venetacucine.com/cache/media/2023/06/veneta_cucine_-_lounge_shellsystem__13653.jpg/77437985ce50331b883db44ce03ec079.jpg" alt="Cucina Veneta Lounge">
                     <div class="gallery-overlay">
                         <h3>Veneta Cucine Lounge</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://www.venetacucine.com/cache/media/2024/12/memory_1000x560_24327.jpg/06021138733b85f70343fed9e1278831.jpg" alt="Cucina Veneta Memory">
                     <div class="gallery-overlay">
                         <h3>Veneta Cucine Memory</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cucina Moderna">
                     <div class="gallery-overlay">
                         <h3>Cucina Moderna</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cucina Classica">
                     <div class="gallery-overlay">
                         <h3>Cucina Classica</h3>
@@ -88,7 +96,6 @@
             </div>
         </div>
     </section>
-
     <!-- Gallery Section - Zona Giorno -->
     <section class="section">
         <div class="container">
@@ -97,25 +104,25 @@
                 <p class="section-subtitle">Spazi living eleganti e funzionali</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://www.muzidesign.it/wp-content/uploads/2024/11/Napoleon_Keramik_Design_Table_Desktop_Cattelan_Italia_24-1.jpg" alt="Tavolo Cattelan Italia Napoleon">
                     <div class="gallery-overlay">
                         <h3>Cattelan Italia Napoleon</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Living Moderno">
                     <div class="gallery-overlay">
                         <h3>Living Moderno</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zona TV Design">
                     <div class="gallery-overlay">
                         <h3>Zona TV Design</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Libreria Moderna">
                     <div class="gallery-overlay">
                         <h3>Libreria Moderna</h3>
@@ -124,7 +131,6 @@
             </div>
         </div>
     </section>
-
     <!-- Gallery Section - Divani -->
     <section class="section gallery">
         <div class="container">
@@ -133,18 +139,19 @@
                 <p class="section-subtitle">Comfort e design per momenti di relax</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://immagini.designbest.com/pictures/product-107022-80482.jpg" alt="Divano EgoItaliano Plaza">
                     <div class="gallery-overlay">
                         <h3>EgoItaliano Plaza</h3>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item fade-in appear">
                     <img src="https://www.muzidesign.it/wp-content/uploads/2024/01/Egoitaliano_caveoso_blu.jpg" alt="Divano EgoItaliano Caveoso">
                     <div class="gallery-overlay">
                         <h3>EgoItaliano Caveoso</h3>
                     </div>
                 </div>
+                <div class="gallery-item fade-in appear">
                 <div class="gallery-item fade-in">
                     <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Divano Angolare">
                     <div class="gallery-overlay">
@@ -160,7 +167,6 @@
             </div>
         </div>
     </section>
-
     <!-- Gallery Section - Zona Notte -->
     <section class="section">
         <div class="container">
@@ -196,7 +202,6 @@
             </div>
         </div>
     </section>
-
     <!-- Call to Action -->
     <section class="section" style="background-color: var(--light);">
         <div class="container">
@@ -207,7 +212,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -255,12 +259,417 @@
             </div>
         </div>
     </footer>
-
     <!-- Back to top button -->
     <div class="back-to-top">
         <i class="fas fa-chevron-up"></i>
     </div>
+    <!-- Floating AI Chatbot Button -->
+    <a href="chatbot.html" class="floating-chatbot" title="Chatta con il nostro assistente AI">
+        <i class="fas fa-robot"></i>
+    </a>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+    <script>
+    // Script universale per menu mobile
+    // Inserisce una freccia indietro come pulsante di chiusura
+    // Funziona per modern, super e vecchio menu mobile
 
-    <script src="script.js"></script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestione menu moderno (.modern-mobile-toggle)
+        const modernToggle = document.querySelector('.modern-mobile-toggle');
+        const modernMenu = document.querySelector('.modern-mobile-menu');
+        if (modernToggle && modernMenu) {
+            // Aggiungi freccia se non presente
+            if (!modernMenu.querySelector('.close-mobile-menu')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-mobile-menu';
+                closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                modernMenu.insertBefore(closeBtn, modernMenu.firstChild);
+            }
+            modernToggle.addEventListener('click', function() {
+                modernMenu.classList.toggle('open');
+                document.body.classList.toggle('menu-open');
+            });
+            // Chiudi con freccia
+            const closeBtn = modernMenu.querySelector('.close-mobile-menu');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    modernMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                });
+            }
+            // Chiudi cliccando fuori
+            document.addEventListener('click', function(e) {
+                if (!modernMenu.contains(e.target) && !modernToggle.contains(e.target)) {
+                    modernMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+        // Gestione menu super (.super-mobile-toggle)
+        const superToggle = document.querySelector('.super-mobile-toggle');
+        const superMenu = document.querySelector('.super-mobile-menu');
+        if (superToggle && superMenu) {
+            if (!superMenu.querySelector('.close-mobile-menu')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-mobile-menu';
+                closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                closeBtn.setAttribute('aria-label', 'Chiudi menu');
+                superMenu.insertBefore(closeBtn, superMenu.firstChild);
+            }
+            superToggle.addEventListener('click', function() {
+                superMenu.classList.toggle('open');
+                document.body.classList.toggle('menu-open');
+            });
+            const closeBtn = superMenu.querySelector('.close-mobile-menu');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    superMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                });
+            }
+            document.addEventListener('click', function(e) {
+                if (!superMenu.contains(e.target) && !superToggle.contains(e.target)) {
+                    superMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+        // Gestione menu vecchio (.mobile-toggle)
+        const oldToggle = document.querySelector('.mobile-toggle');
+        const oldMenu = document.querySelector('.nav-links');
+        if (oldToggle && oldMenu) {
+            oldToggle.addEventListener('click', function() {
+                oldMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!oldMenu.contains(e.target) && !oldToggle.contains(e.target)) {
+                    oldMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+    });
+    </script>
+    <style>
+    .super-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+        transition: background 0.3s, box-shadow 0.3s;
+        animation: fadeInDown 0.8s cubic-bezier(.77,0,.18,1) 0.1s both;
+        width: 100%;
+    }
+    @keyframes fadeInDown {
+        0% { opacity: 0; transform: translateY(-40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    .super-navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 32px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .super-navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 90px;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+        overflow: visible;
+    }
+    .super-logo {
+        flex-shrink: 0;
+    }
+    .super-logo img {
+        max-width: 160px;
+        min-width: 90px;
+        width: 12vw;
+        display: block;
+        transition: transform 0.2s, max-width 0.2s;
+    }
+    @media (min-width: 1600px) {
+        .super-navbar-inner { max-width: 1300px; }
+        .super-logo img { max-width: 200px; }
+        .super-nav-links { gap: 48px; }
+    }
+    @media (max-width: 1200px) {
+        .super-navbar { padding: 0 10px; }
+        .super-navbar-inner { max-width: 1000px; }
+        .super-nav-links { gap: 22px; }
+    }
+    @media (max-width: 900px) {
+        .super-navbar-inner { min-height: 70px; }
+        .super-logo img { max-width: 110px; }
+        .super-cta-btn {
+            display: none !important;
+        }
+    }
+    @media (max-width: 800px) {
+        .super-nav-links, .super-cta-btn { display: none; }
+        .super-mobile-toggle { display: block; }
+        .super-navbar-inner { min-height: 60px; }
+    }
+    @media (max-width: 600px) {
+        .super-logo img { max-width: 80px; }
+        .super-navbar { padding: 0 4vw; }
+    }
+    .super-nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 38px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.13rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    @media (max-width: 1219px) {
+        .super-nav-links, .super-cta-btn { display: none; }
+        .super-mobile-toggle { display: block; }
+    }
+    .super-mobile-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        width: 52px;
+        height: 52px;
+        font-size: 2.1rem;
+        color: var(--primary);
+        margin-left: 24px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.25s, color 0.2s, transform 0.2s;
+        position: relative;
+        z-index: 10001;
+    }
+    .super-mobile-toggle:hover {
+        background: linear-gradient(135deg, var(--secondary) 60%, #fff 100%);
+        color: #fff;
+        transform: scale(1.08);
+    }
+    .super-mobile-toggle .fa-bars,
+    .super-mobile-toggle .fa-times {
+        transition: opacity 0.25s, transform 0.25s;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .super-mobile-toggle .fa-times {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7) rotate(-90deg);
+    }
+    .super-mobile-toggle.open .fa-bars {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7) rotate(90deg);
+    }
+    .super-mobile-toggle.open .fa-times {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    @media (max-width: 1219px) {
+        .super-mobile-toggle { display: flex; }
+    }
+    .super-nav-links li a {
+        color: var(--primary);
+        text-decoration: none;
+        padding: 8px 0;
+        position: relative;
+        transition: color 0.2s;
+    }
+    .super-nav-links li a::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 0;
+        background: var(--secondary);
+        border-radius: 2px;
+        transition: width 0.25s cubic-bezier(.77,0,.18,1);
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+    }
+    .super-nav-links li a:hover {
+        color: var(--secondary);
+    }
+    .super-nav-links li a:hover::after {
+        width: 100%;
+    }
+    .super-cta-btn {
+        background: linear-gradient(90deg, var(--secondary) 0%, #bfa77a 100%);
+        color: #fff;
+        font-weight: 700;
+        border-radius: 32px;
+        padding: 0.95rem 2.3rem;
+        font-size: 1.13rem;
+        box-shadow: 0 6px 24px rgba(191,167,122,0.18), 0 1.5px 6px rgba(0,0,0,0.07);
+        border: none;
+        outline: none;
+        margin-left: 32px;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow 0.2s, transform 0.18s, background 0.25s;
+    }
+    .super-cta-btn::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        background: linear-gradient(90deg, #bfa77a 0%, var(--secondary) 100%);
+        opacity: 0;
+        transition: opacity 0.25s;
+        z-index: 0;
+        border-radius: 32px;
+    }
+    .super-cta-btn:hover::before {
+        opacity: 1;
+    }
+    .super-cta-btn:hover {
+        color: #fff;
+        box-shadow: 0 12px 32px rgba(191,167,122,0.22), 0 2px 8px rgba(0,0,0,0.10);
+        transform: translateY(-2px) scale(1.04);
+        background: linear-gradient(90deg, #bfa77a 0%, var(--secondary) 100%);
+    }
+    .super-cta-btn span {
+        position: relative;
+        z-index: 1;
+    }
+    .super-mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(120deg, #ffe6b0 0%, #ffe6b0 10%, rgba(255,255,255,0.97) 40%, var(--primary) 100%);
+        /* giallo a sinistra, blu a destra */
+        backdrop-filter: blur(16px);
+        box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        padding-top: 120px;
+        transition: all 0.3s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .super-mobile-menu::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.82);
+        z-index: 0;
+        pointer-events: none;
+    }
+    .super-mobile-menu.open {
+        display: flex;
+        animation: fadeInMobileMenu 0.4s cubic-bezier(.77,0,.18,1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .super-mobile-menu ul {
+        position: relative;
+        z-index: 1;
+    }
+    .super-mobile-menu ul li a {
+        color: var(--primary);
+        font-size: 1.35rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.2s, letter-spacing 0.18s, background 0.18s, box-shadow 0.18s;
+        padding: 18px 38px;
+        border-radius: 28px;
+        display: inline-block;
+        margin-bottom: 8px;
+        outline: none;
+    }
+    .super-mobile-menu ul li a:hover,
+    .super-mobile-menu ul li a:focus {
+        color: #fff;
+        background: linear-gradient(90deg, var(--secondary) 0%, #bfa77a 100%);
+        box-shadow: 0 4px 18px rgba(191,167,122,0.13);
+        letter-spacing: 1.5px;
+        outline: 2px solid var(--secondary);
+        outline-offset: 2px;
+    }
+    .super-mobile-menu ul li:last-child { margin-bottom: 0; }
+    .super-cta-btn-mobile {
+        margin-top: 32px;
+        border-radius: 36px;
+        font-size: 1.22rem;
+        font-weight: 800;
+        padding: 1.1rem 2.7rem;
+        background: linear-gradient(90deg, var(--primary) 0%, #ffe6b0 100%);
+        color: #fff;
+        box-shadow: 0 10px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(191,167,122,0.10);
+        border: none;
+        outline: none;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: inline-block;
+        transition: box-shadow 0.2s, transform 0.18s, background 0.25s, color 0.18s;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .super-cta-btn-mobile:hover,
+    .super-cta-btn-mobile:focus {
+        background: linear-gradient(90deg, #ffe6b0 0%, var(--primary) 100%);
+        color: var(--primary);
+        box-shadow: 0 18px 48px rgba(0,0,0,0.18), 0 2px 8px rgba(191,167,122,0.13);
+        transform: translateY(-2px) scale(1.06);
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+    @media (max-width: 600px) {
+        .super-mobile-menu ul li a {
+            font-size: 1.1rem;
+            padding: 14px 18px;
+        }
+        .super-cta-btn-mobile {
+            font-size: 1rem;
+            padding: 0.9rem 1.2rem;
+        }
+    }
+    /* Blocca lo scroll sotto il menu mobile */
+    body.menu-open {
+        overflow: hidden !important;
+        height: 100vh;
+    }
+    /* Stile opzionale per il logo mobile */
+    .super-mobile-menu-logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        position: relative;
+        z-index: 2;
+    }
+    </style>
 </body>
 </html>

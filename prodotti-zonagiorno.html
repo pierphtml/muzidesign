@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona Giorno | Muzi Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .img-horizontal-box {
+        width: 100%;
+        max-width: 1400px;
+        aspect-ratio: 16/9;
+        height: 260px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 18px 18px 0 0;
+        background: #f8f5f2;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        display: block;
+        margin: 0 auto 18px auto;
+        transition: transform 0.3s;
+    }
+    .product-card:hover .img-horizontal-box {
+        transform: scale(1.04);
+    }
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .product-info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 24px;
+    }
+    .product-description {
+        flex-grow: 1;
+        margin-bottom: 8px;
+    }
+    .product-info .btn {
+        align-self: flex-start;
+        margin-top: auto;
+    }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="modern-header fade-in">
+        <div class="container">
+            <nav class="modern-navbar">
+                <a href="index.html" class="modern-logo">
+                    <img src="attached_assets/logo.png" alt="Muzi Design">
+                </a>
+                <ul class="modern-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn">Prenota una consulenza</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="promozioni.html">Promozioni</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+                <a href="contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
+        </div>
+    </header>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Zona Giorno</h1>
+            <p>Comfort e design per il massimo relax</p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="products-grid">
+                <div class="product-card fade-in appear">
+                    <img src="attached_assets/divano-Lego-1.jpg" alt="Divani" class="product-img img-horizontal-box">
+                    <div class="product-info">
+                        <h3 class="product-title">Divani</h3>
+                        <p class="product-description">Scopri la nostra collezione di divani: comfort, design e modularità per ogni zona giorno. Soluzioni personalizzate per creare il tuo spazio di relax ideale.</p>
+                        <a href="brand-divani.html" class="btn">Scopri la Collezione</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in appear">
+                    <img src="attached_assets/Egoitaliano-poltrona-Sauvanne.jpg" alt="Poltrone" class="product-img img-horizontal-box">
+                    <div class="product-info">
+                        <h3 class="product-title">Poltrone</h3>
+                        <p class="product-description">Esplora la nostra collezione di poltrone: eleganza, comfort e stile per completare il tuo ambiente living con pezzi unici e raffinati.</p>
+                        <a href="poltrone.html" class="btn">Scopri la Collezione</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in appear">
+                    <img src="attached_assets/tavolo-artu.jpg" alt="Tavoli" class="product-img img-horizontal-box">
+                    <div class="product-info">
+                        <h3 class="product-title">Tavoli</h3>
+                        <p class="product-description">Scopri la nostra collezione di tavoli: fissi, allungabili, rotondi e di design per creare il punto di ritrovo perfetto per la tua famiglia.</p>
+                        <a href="tavoli.html" class="btn">Scopri la Collezione</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Muzi Design</h3>
+                    <p>Arredamento di qualità dal 1957. Uniamo tradizione artigianale e design contemporaneo per creare spazi unici e personali.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Utili</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Categorie</a></li>
+                        <li><a href="prodotti.html"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
+                        <li><a href="promozioni.html"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categorie</h3>
+                    <ul class="footer-links">
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Cucine</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
+                        <li><a href="categorie.html"><i class="fas fa-chevron-right"></i> Camerette</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><a href="contatti.html"><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</a></li>
+                        <li><a href="tel:800202530"><i class="fas fa-phone-alt"></i> 800 202 530</a></li>
+                        <li><a href="mailto:info@muzidesign.it"><i class="fas fa-envelope"></i> info@muzidesign.it</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Muzi Design. Tutti i diritti riservati. P.IVA IT15934181007</p>
+            </div>
+        </div>
+    </footer>
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Script universale per menu mobile moderno e super
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modern
+            var modernToggle = document.querySelector('.modern-mobile-toggle');
+            var modernMenu = document.querySelector('.modern-mobile-menu');
+            var modernClose = document.querySelector('.modern-mobile-menu .close-mobile-menu');
+            if (modernToggle && modernMenu) {
+                if (modernClose) {
+                    modernClose.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                }
+                modernToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                    var icon = this.querySelector('i');
+                    if (icon) {
+                        if (modernMenu.classList.contains('open')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+                document.querySelectorAll('.modern-mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+            // Super
+            var superToggle = document.querySelector('.super-mobile-toggle');
+            var superMenu = document.querySelector('.super-mobile-menu');
+            var superClose = document.querySelector('.super-mobile-menu .close-mobile-menu');
+            if (superToggle && superMenu) {
+                if (superClose) {
+                    superClose.addEventListener('click', function() {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    superMenu.classList.toggle('open');
+                    superToggle.classList.toggle('open');
+                    if (superMenu.classList.contains('open')) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    var bars = superToggle.querySelector('.fa-bars');
+                    var times = superToggle.querySelector('.fa-times');
+                    if (superToggle.classList.contains('open')) {
+                        if (bars) bars.style.opacity = 0;
+                        if (times) times.style.opacity = 1;
+                    } else {
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+                var closeBtn = document.querySelector('.super-mobile-menu-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superMenu.addEventListener('click', function(e) {
+                    if (e.target === superMenu) {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

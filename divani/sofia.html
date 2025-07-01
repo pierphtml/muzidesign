@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofia - Muzi Design</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .product-detail {
+            padding: 120px 0 60px;
+        }
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .gallery-main {
+            grid-column: span 2;
+            height: 600px;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-thumb {
+            height: 300px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-thumb:hover img {
+            transform: scale(1.05);
+        }
+        .product-info-table {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .info-table tr {
+            transition: var(--transition);
+        }
+        .info-table tr:hover {
+            background-color: rgba(193, 154, 107, 0.05);
+        }
+        .info-table th,
+        .info-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .info-table th {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 30%;
+        }
+        .info-table td {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        .product-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .feature-text {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        @media (max-width: 992px) {
+            .product-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .product-gallery {
+                grid-template-columns: 1fr;
+            }
+            .gallery-main {
+                grid-column: span 1;
+                height: 400px;
+            }
+            .gallery-thumb {
+                height: 200px;
+            }
+            .product-features {
+                grid-template-columns: 1fr;
+            }
+            .info-table th,
+            .info-table td {
+                padding: 15px;
+            }
+        }
+        .hero-slider-cucina {
+            width: 100vw;
+            max-width: 100%;
+            background: #f7f7f7;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+        .slider-cucina {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 36px auto;
+            height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+        }
+        .slider-cucina .slider-img {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 18px;
+            transition: opacity 0.4s;
+        }
+        .slider-cucina .slider-img.active {
+            display: block;
+            position: relative;
+            z-index: 2;
+            opacity: 1;
+        }
+        .slider-cucina .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            color: var(--primary);
+            padding: 0 10px;
+            border-radius: 0;
+            cursor: pointer;
+            z-index: 3;
+            transition: color 0.2s;
+            box-shadow: none;
+        }
+        .slider-cucina .slider-btn[disabled] {
+            display: none;
+        }
+        .slider-cucina .slider-btn:hover {
+            color: var(--secondary);
+            background: none;
+        }
+        .slider-cucina .slider-btn.prev {
+            left: 8px;
+        }
+        .slider-cucina .slider-btn.next {
+            right: 8px;
+        }
+        .slider-thumbs {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 4;
+        }
+        .slider-thumb {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: border 0.2s, opacity 0.2s;
+        }
+        .slider-thumb.active {
+            border: 2px solid var(--primary);
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .slider-cucina {
+                height: 320px;
+                max-width: 98vw;
+            }
+            .slider-thumb {
+                width: 40px;
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="modern-header fade-in">
+        <div class="container">
+            <nav class="modern-navbar">
+                <a href="../index.html" class="modern-logo">
+                    <img src="../attached_assets/logo.png" alt="Muzi Design">
+                </a>
+                <ul class="modern-nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="../prodotti.html">Prodotti</a></li>
+                    <li><a href="../promozioni.html">Promozioni</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li><a href="../contatti.html">Contatti</a></li>
+                </ul>
+                <a href="../contatti.html" class="modern-cta-btn">Prenota una visita</a>
+                <button class="modern-mobile-toggle" aria-label="Apri menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="modern-mobile-menu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="../prodotti.html">Prodotti</a></li>
+                    <li><a href="../promozioni.html">Promozioni</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li><a href="../contatti.html">Contatti</a></li>
+                </ul>
+                <a href="../contatti.html" class="modern-cta-btn-mobile"><span><i class="fas fa-calendar-check"></i> PRENOTA UNA VISITA</span></a>
+            </div>
+        </div>
+    </header>
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="slider-cucina" data-slider="sofia">
+                <button class="slider-btn prev" onclick="slidePrev(event, 'sofia')"><i class="fas fa-chevron-left"></i></button>
+                <img src="../attached_assets/images.jpeg" alt="Sofia" class="slider-img active">
+                <button class="slider-btn next" onclick="slideNext(event, 'sofia')"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-thumbs">
+                    <img src="../attached_assets/images.jpeg" alt="Sofia" class="slider-thumb active" onclick="goToSlide('sofia',0)">
+                </div>
+            </div>
+            <div class="product-info-table">
+                <h2 class="section-title">Sofia</h2>
+                <p class="section-subtitle">Design moderno e confortevole per il tuo soggiorno.</p>
+                <table class="info-table">
+                    <tr><th>Stile</th><td>Moderno, confortevole</td></tr>
+                    <tr><th>Design</th><td>Linee pulite, imbottitura ergonomica</td></tr>
+                    <tr><th>Colori</th><td>Disponibile in vari tessuti e colori</td></tr>
+                    <tr><th>Materiali</th><td>Tessuti di qualità, struttura robusta</td></tr>
+                    <tr><th>Caratteristiche</th><td>Comfort ottimale, design contemporaneo</td></tr>
+                </table>
+                <div class="product-features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-couch"></i></div>
+                        <h3 class="feature-title">Design moderno</h3>
+                        <p class="feature-text">Linee pulite e contemporanee per ambienti moderni.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-star"></i></div>
+                        <h3 class="feature-title">Comfort superiore</h3>
+                        <p class="feature-text">Imbottitura studiata per il massimo relax.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                        <h3 class="feature-title">Personalizzabile</h3>
+                        <p class="feature-text">Vari tessuti e colori per ogni stile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Muzi Design</h3>
+                    <p>Arredamento di qualità dal 1957. Uniamo tradizione artigianale e design contemporaneo per creare spazi unici e personali.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Utili</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="../chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="../categorie.html"><i class="fas fa-chevron-right"></i> Categorie</a></li>
+                        <li><a href="../prodotti.html"><i class="fas fa-chevron-right"></i> Prodotti</a></li>
+                        <li><a href="../promozioni.html"><i class="fas fa-chevron-right"></i> Promozioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categorie</h3>
+                    <ul class="footer-links">
+                        <li><a href="../cucine-moderne.html"><i class="fas fa-chevron-right"></i> Cucine Moderne</a></li>
+                        <li><a href="../cucine-contemporanee.html"><i class="fas fa-chevron-right"></i> Cucine Contemporanee</a></li>
+                        <li><a href="../cucine-classiche.html"><i class="fas fa-chevron-right"></i> Cucine Classiche</a></li>
+                        <li><a href="../categorie.html"><i class="fas fa-chevron-right"></i> Zona Giorno</a></li>
+                        <li><a href="../categorie.html"><i class="fas fa-chevron-right"></i> Zona Notte</a></li>
+                        <li><a href="../categorie.html"><i class="fas fa-chevron-right"></i> Camerette</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><a href="../contatti.html"><i class="fas fa-map-marker-alt"></i> Via Artena 54, Valmontone (RM)</a></li>
+                        <li><a href="tel:800202530"><i class="fas fa-phone-alt"></i> 800 202 530</a></li>
+                        <li><a href="mailto:info@muzidesign.it"><i class="fas fa-envelope"></i> info@muzidesign.it</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Muzi Design. Tutti i diritti riservati. P.IVA IT15934181007</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- Floating AI Chatbot Button -->
+    <button class="floating-chatbot">
+        <i class="fas fa-robot"></i>
+    </button>
+    <script src="../script.js"></script>
+    <script>
+        // Script universale per menu mobile moderno e super
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modern
+            var modernToggle = document.querySelector('.modern-mobile-toggle');
+            var modernMenu = document.querySelector('.modern-mobile-menu');
+            var modernClose = document.querySelector('.modern-mobile-menu .close-mobile-menu');
+            if (modernToggle && modernMenu) {
+                if (modernClose) {
+                    modernClose.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                }
+                modernToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modernMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open');
+                    var icon = this.querySelector('i');
+                    if (icon) {
+                        if (modernMenu.classList.contains('open')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+                document.querySelectorAll('.modern-mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        modernMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var icon = modernToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+            // Super
+            var superToggle = document.querySelector('.super-mobile-toggle');
+            var superMenu = document.querySelector('.super-mobile-menu');
+            var superClose = document.querySelector('.super-mobile-menu .close-mobile-menu');
+            if (superToggle && superMenu) {
+                if (superClose) {
+                    superClose.addEventListener('click', function() {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    superMenu.classList.toggle('open');
+                    superToggle.classList.toggle('open');
+                    if (superMenu.classList.contains('open')) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    var bars = superToggle.querySelector('.fa-bars');
+                    var times = superToggle.querySelector('.fa-times');
+                    if (superToggle.classList.contains('open')) {
+                        if (bars) bars.style.opacity = 0;
+                        if (times) times.style.opacity = 1;
+                    } else {
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+                var closeBtn = document.querySelector('.super-mobile-menu-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    });
+                }
+                superMenu.addEventListener('click', function(e) {
+                    if (e.target === superMenu) {
+                        superMenu.classList.remove('open');
+                        superToggle.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        var bars = superToggle.querySelector('.fa-bars');
+                        var times = superToggle.querySelector('.fa-times');
+                        if (bars) bars.style.opacity = 1;
+                        if (times) times.style.opacity = 0;
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+    function updateSliderButtons(sliderName) {
+        const slider = document.querySelector('.slider-cucina[data-slider="' + sliderName + '"]');
+        const images = slider.querySelectorAll('.slider-img');
+        const prevBtn = slider.querySelector('.slider-btn.prev');
+        const nextBtn = slider.querySelector('.slider-btn.next');
+        let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+        prevBtn.disabled = (current === 0);
+        nextBtn.disabled = (current === images.length - 1);
+    }
+    function slidePrev(event, sliderName) {
+        event.preventDefault();
+        const slider = document.querySelector('.slider-cucina[data-slider="' + sliderName + '"]');
+        const images = slider.querySelectorAll('.slider-img');
+        const thumbs = slider.querySelectorAll('.slider-thumb');
+        let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+        if (current === 0) return;
+        images[current].classList.remove('active');
+        thumbs[current].classList.remove('active');
+        current = (current - 1 + images.length) % images.length;
+        images[current].classList.add('active');
+        thumbs[current].classList.add('active');
+        updateSliderButtons(sliderName);
+    }
+    function slideNext(event, sliderName) {
+        event.preventDefault();
+        const slider = document.querySelector('.slider-cucina[data-slider="' + sliderName + '"]');
+        const images = slider.querySelectorAll('.slider-img');
+        const thumbs = slider.querySelectorAll('.slider-thumb');
+        let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+        if (current === images.length - 1) return;
+        images[current].classList.remove('active');
+        thumbs[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+        thumbs[current].classList.add('active');
+        updateSliderButtons(sliderName);
+    }
+    function goToSlide(sliderName, index) {
+        const slider = document.querySelector('.slider-cucina[data-slider="' + sliderName + '"]');
+        const images = slider.querySelectorAll('.slider-img');
+        const thumbs = slider.querySelectorAll('.slider-thumb');
+        images.forEach(img => img.classList.remove('active'));
+        thumbs.forEach(thumb => thumb.classList.remove('active'));
+        images[index].classList.add('active');
+        thumbs[index].classList.add('active');
+        updateSliderButtons(sliderName);
+    }
+    </script>
+</body>
+</html>
