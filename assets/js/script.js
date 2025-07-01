@@ -333,3 +333,25 @@ function slideNext(event, sliderName) {
 // === INIZIO: Swipe touch per slider ===
 // (RIMOSSO: ora solo frecce visibili su mobile)
 // === FINE: Swipe touch per slider ===
+
+// === HERO SLIDER FRECCE MANUALI ===
+document.addEventListener('DOMContentLoaded', function() {
+  const heroSlides = document.querySelectorAll('.hero-muzi-bg-slide');
+  const prevBtn = document.getElementById('heroPrevBtn');
+  const nextBtn = document.getElementById('heroNextBtn');
+  if (heroSlides.length > 0 && prevBtn && nextBtn) {
+    let current = Array.from(heroSlides).findIndex(slide => slide.classList.contains('active'));
+    function showHeroSlide(n) {
+      heroSlides.forEach(slide => slide.classList.remove('active'));
+      heroSlides[n].classList.add('active');
+    }
+    prevBtn.addEventListener('click', function() {
+      current = (current - 1 + heroSlides.length) % heroSlides.length;
+      showHeroSlide(current);
+    });
+    nextBtn.addEventListener('click', function() {
+      current = (current + 1) % heroSlides.length;
+      showHeroSlide(current);
+    });
+  }
+});
