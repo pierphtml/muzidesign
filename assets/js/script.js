@@ -335,23 +335,36 @@ function slideNext(event, sliderName) {
 // === FINE: Swipe touch per slider ===
 
 // === HERO SLIDER FRECCE MANUALI ===
+// (RIMOSSO: ora la hero non ha più frecce)
+// === LOGICA FRECCE CAROUSEL PRODOTTI ===
 document.addEventListener('DOMContentLoaded', function() {
-  const heroSlides = document.querySelectorAll('.hero-muzi-bg-slide');
-  const prevBtn = document.getElementById('heroPrevBtn');
-  const nextBtn = document.getElementById('heroNextBtn');
-  if (heroSlides.length > 0 && prevBtn && nextBtn) {
-    let current = Array.from(heroSlides).findIndex(slide => slide.classList.contains('active'));
-    function showHeroSlide(n) {
-      heroSlides.forEach(slide => slide.classList.remove('active'));
-      heroSlides[n].classList.add('active');
+  document.querySelectorAll('.slider').forEach(function(slider) {
+    const images = slider.querySelectorAll('.slider-img');
+    const prevBtn = slider.querySelector('.slider-btn.prev');
+    const nextBtn = slider.querySelector('.slider-btn.next');
+    let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+    function updateArrows() {
+      if (prevBtn) prevBtn.disabled = (current === 0);
+      if (nextBtn) nextBtn.disabled = (current === images.length - 1);
     }
-    prevBtn.addEventListener('click', function() {
-      current = (current - 1 + heroSlides.length) % heroSlides.length;
-      showHeroSlide(current);
-    });
-    nextBtn.addEventListener('click', function() {
-      current = (current + 1) % heroSlides.length;
-      showHeroSlide(current);
-    });
-  }
+    if (prevBtn && nextBtn && images.length > 0) {
+      prevBtn.addEventListener('click', function() {
+        if (current > 0) {
+          images[current].classList.remove('active');
+          current--;
+          images[current].classList.add('active');
+          updateArrows();
+        }
+      });
+      nextBtn.addEventListener('click', function() {
+        if (current < images.length - 1) {
+          images[current].classList.remove('active');
+          current++;
+          images[current].classList.add('active');
+          updateArrows();
+        }
+      });
+      updateArrows();
+    }
+  });
 });
